@@ -9883,162 +9883,1133 @@ orderQty | Yes | Integer and Greater than Zero
 price | Yes | Decimal and Greater than Zero
 stopPrice | Yes |	Decimal and Greater than Zero
 orderType	| Yes	| LIMIT
-timeinForce	NO	GTC
-triggerType	NO	MarkPrice
-IndexPrice
-LastPrice
-isReduceOnly	NO	True/False
-IsCloseOnTrigger	NO	True/False
-IsPostOnly	NO	True/False
+timeinForce	| NO |	GTC
+triggerType	| NO | 	MarkPrice
+isReduceOnly | NO | True/False
+IsCloseOnTrigger | NO | True/False
+IsPostOnly | NO | True/False
 
-# Kittens
-
-## Get All Kittens
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## POST Cancel Order
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl --location --request POST '{{api_url}}/api/cancel-order' \
+--header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: EF950375703CE12226EE653B78B5154B3563ECFA0C458C0476025C4246B0CCBB52E2987CF2E95BDEB6D5A8E01BF87302DF0C8EE601DC4716B918979F27451C89' \
+--data-raw '{
+	"timestamp":"1587820973",
+	"recvWindow":10000,
+	"orderID":"3ec4facb-c2bf-4bdf-8adf-b11e2851d235"
+}'
 ```
 
-```javascript
-const kittn = require('kittn');
+This endpoint cancel a new order
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+### HTTP Request
+
+`POST https://bff.goesoteric.com/api/cancel-order`
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+orderID | Yes | string
+
+## POST All Orders
+
+```shell
+curl --location --request POST 'https://bff.goesoteric.com/api/new-order' \
+--header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: FBDF9E1CC798C5897D6E32A2ED336B762C3E3565ABE16A482DC0E30A2F775227B18F0D93E77F38BB6397C73FA814E165D237B85AE01CA6510E9DE528ADA29DB2' \
+--data-raw '{
+    "symbol": "XBTUSD",
+    "side": "SELL",
+    "orderQty": 1,
+    "price": 100,
+    "stopPrice": 0,
+    "orderType": "LIMIT",
+    "timeinForce": "DO"
+}'
+```
+
+This endpoint post all order // todo
+
+### HTTP Request
+
+`POST https://bff.goesoteric.com/api/all-orders`
+
+Note: place order using api-key and HMAC authentication.
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+DateTo | NO | string 'yyyy/mm/dd'
+DateFrom | NO | string 'yyyy/mm/dd'
+Contract | NO | XBTUSD
+OrderStatus | NO | true or false
+Limit | NO | MAX:1000
+timestamp | YES | Current UTC TS
+recvWindow | YES | Default: 30sec ,any integar value
+
+### Response
+
+FieldName |	Short Description
+--------- | -----------
+sym | Symbol or ContractName
+o | Orderid
+sp | Stop price
+p | Price
+r |	Remaining
+s | Order Side "S": Sell, "B": Buy
+ts | Accepted Timestamp
+u | UserID
+q | Quantity or Size
+st | Order Status
+tif | Time in force
+t | Order Type
+v | Order Value
+fp | Filled Price
+odst | Order detailed Status
+
+## POST My Trade History
+
+```shell
+curl --location --request POST '{{api_url}}/LP/my-trade-history' \
+--header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: 14F846BFC247D40B56A71547888C0E51D226E835683A530BE55A27ED93C3B6F1681C4F8EFED8BAD949B9C8A12D8E323A931FD33FD54B703D23367E272E662ECB' \
+--data-raw '{
+	"side":"sell",
+	"symbol":"",
+	"orderid":""
+}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": [
+      {
+        "sym": "XBTUSD",
+        "ts": 1583394834,
+        "o": "d3e87c02-d02d-4078-aef9-b4e2e29fcf51",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8800,
+        "ep": 8800,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583403228,
+        "o": "d145b742-716e-470a-bcaf-2052ea918be6",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583404613,
+        "o": "01bf5823-b4be-41b3-83bd-98bb767ab15f",
+        "q": 20,
+        "eq": 20,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583404622,
+        "o": "6efbd950-2bd0-4d84-88a8-0871184cbbb2",
+        "q": 20,
+        "eq": 20,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583404742,
+        "o": "bc2aab73-ad09-4a76-a7be-f54a5e4a8711",
+        "q": 10,
+        "eq": 10,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "1a1052d7-5511-496b-addd-b54cc4c2a3a8",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "fc5c5144-e448-4fc4-9593-80c8f9e0dcbf",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "a38426e2-1d45-4baa-8341-d4f0a9ed9bea",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "16d6d58b-856c-46aa-824f-e69e86191805",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "8fefe614-ed72-4d4b-9aab-685503d59e1f",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408427,
+        "o": "981f7364-6c2d-46f3-9e0a-8db37dd030ee",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408897,
+        "o": "b16769b3-29d4-4ae2-877a-2d88b998703c",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408897,
+        "o": "b042b4bb-1e9a-4249-bbd4-26086f1f9dce",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583408897,
+        "o": "8772caa0-b528-471a-8aaa-5822cbd47705",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583409787,
+        "o": "d1cd5a23-3091-47b7-81f1-3cfb71bac328",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583409787,
+        "o": "7b48270e-3cab-4df7-93eb-5241ccf5250c",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583409787,
+        "o": "67918f29-1206-443b-916d-914c9030c4b3",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583409787,
+        "o": "c421bf21-dab0-491c-b188-ea510d5541b9",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583410932,
+        "o": "2fb6469a-3740-4cc7-9839-e8c30a26e748",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583410932,
+        "o": "49e0819f-dc8f-4386-bcba-50a5455402dd",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583410933,
+        "o": "baeea5e3-8d44-4e99-a09d-67c30a4b72f8",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583410942,
+        "o": "6883df1e-1885-4d3c-a1fe-510e4f1901f6",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583410944,
+        "o": "9401bee2-5850-48d8-828e-a8120263c8c8",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8900,
+        "ep": 8900,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411669,
+        "o": "c3f6ac51-ccb6-4fda-b5dd-c833d12ec051",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411673,
+        "o": "40397084-98ed-49dd-ac5c-80fd53029e7f",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411678,
+        "o": "1a861ad7-6445-4c8c-bee2-ef392482fc22",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411680,
+        "o": "7f2b5e0f-4435-4d10-aabd-6138a86e18ca",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411680,
+        "o": "f07eebf8-9fcb-448b-bc6b-5341aac2db22",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411680,
+        "o": "0a637876-361b-4731-9fae-abe818f3c68c",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411680,
+        "o": "609ed9b8-6cb1-4a8d-b32e-e34dc84effe2",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411682,
+        "o": "a8fc873d-a04d-4d23-93eb-55dee412ed22",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411682,
+        "o": "a30f71e0-37b4-4268-9818-4498ee5c9c5c",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411689,
+        "o": "2bfe50a4-6305-4af5-bbcd-25a6292e93b2",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411689,
+        "o": "1136d988-13a5-401b-946b-132cb9e100e3",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411689,
+        "o": "b365808d-67dc-4f7c-a668-5ec76ddd4f77",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411689,
+        "o": "0a15a7ee-dbf8-4a4c-b3a5-8585e8925a17",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411690,
+        "o": "a0b24a16-89a3-4892-b0d0-53810a377456",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411703,
+        "o": "7d01ba99-bfae-48c4-bf8d-31f6deb84888",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411705,
+        "o": "19e27c85-b369-4760-88cb-7b7cbab59f12",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411706,
+        "o": "569ab73e-e1cb-4cb8-8d57-4c887dedd4af",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896.5,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411757,
+        "o": "427054a0-2b12-4afa-b7fc-3bf71e476bbc",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411759,
+        "o": "070f683f-9d4c-47cd-a277-66e4f6442aae",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      },
+      {
+        "sym": "XBTUSD",
+        "ts": 1583411761,
+        "o": "d3355d81-d75a-4841-968f-5f3972a20544",
+        "q": 1,
+        "eq": 1,
+        "v": 0,
+        "t": "Limit",
+        "sp": 0,
+        "p": 8896,
+        "ep": 8896.5,
+        "r": 0,
+        "s": "S",
+        "tif": "GTC"
+      }
+    ]
   }
-]
+}      
 ```
 
-This endpoint retrieves all kittens.
+
+This endpoint post my trade history  //todo
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://bff.goesoteric.com/api/my-trade-history`
 
-### Query Parameters
+### Request Payload
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+DateTo | NO | string 'yyyy/mm/dd'
+DateFrom | NO | string 'yyyy/mm/dd'
+Contract | NO | XBTUSD
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+### Response
 
-## Get a Specific Kitten
+FieldName |	Short Description
+--------- | -----------
+sym | Symbol or ContractName
+ts | Timestamp
+o | Orderid
+q	| Quantity or Size
+eq | Entry Quantity
+v	| Order Value
+t	| Order Type
+sp | Stop price
+p	| Price
+ep | Entry Price
+r	| Remaining
+s	| Order Side "S": Sell, "B": Buy
+tif	| Time in force
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## POST My Trade History
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl --location --request POST '{{api_url}}/api/open-orders' \
+--header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: eedcfe4022dce12898e9171327de3daa3e1339dd5f788a778effdc85d02456b5' \
+--data-raw '{
+	"timestamp":"1590230834",
+	"recvWindow":10000,
+	"Contract":"XBTUSD"
+}'
 ```
 
-```javascript
-const kittn = require('kittn');
+This endpoint post open orders  //todo
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+### HTTP Request
+
+`POST https://bff.goesoteric.com/api/open-orders`
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | XBTUSD
+
+## POST Wallet Balance
+
+```shell
+curl --location --request POST '{{api_url}}/api/wallet-balance' \
+--header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: 56E8B6C4AE66DBFFF1C11E79C03F9938E9C8A0E1B4005DFEE7769700B861A9B411C9FDF7ACB048F643E793A9890B01410F1A82B69C87C5920BDB54E33DA3FDF8' \
+--data-raw '{
+	"timestamp":"1587820973",
+	"recvWindow":10000,
+	"currency":"BTC"
+}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": [
+      {
+        "currency": "BTC",
+        "balance": 25.90798327
+      }
+    ]
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint get wallet balance
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://bff.goesoteric.com/api/wallet-balance`
 
-### URL Parameters
+### Request Payload
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | XBTUSD
 
-## Delete a Specific Kitten
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## POST Cancel Muliti Orders
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl --location --request POST '{{api_url}}/api/cancel-multi-orders' \
+--header 'Content-Type: application/json' \
+--header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
+--header 'HMAC: 213f60555b3eda2c79c8fc36e01363407041e03af351b5f73518133377937110' \
+--data-raw '{
+	 "timestamp":"1590230475",
+	"recvWindow":1000,
+	"Oid": [
+		{
+			"Orderid":"07114653-9fa0-4c5d-a797-14936cfc33a3"
+		},
+		{
+			"Orderid":"39e9cfc8-2cfe-48a7-ad0a-927490818ca8"
+		}
+		]
+}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "success": [
+    {
+      "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+          "userID": "332424",
+          "orderID": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8"
+        }
+      }
+    }
+  ],
+  "error": [
+    {
+      "error": {
+        "code": 3036,
+        "message": "Payload_Invalid_OrderID",
+        "description": " Invalid orderid "
+      }
+    }
+  ]
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint cancel multi orders.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST https://bff.goesoteric.com/api/cancel-multi-orders`
 
-### URL Parameters
+### Request Payload
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | XBTUSD
 
+## POST Cancel All Orders
+
+```shell
+curl --location --request POST '{{api_url}}/api/cancel-all-orders' \
+--header 'Content-Type: application/json' \
+--header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
+--header 'HMAC: 90e665bf0ab0f2867bc9472a8762ff336a984d4361ec819e0beac328238852bf' \
+--data-raw '{
+	"timestamp":"1590230603",
+	"recvWindow":1000
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": [
+    {
+      "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+          "userID": "332424",
+          "orderID": "d45e47a8-24f1-4718-b350-77798a91f67a"
+        }
+      }
+    }
+  ],
+  "error": []
+}
+```
+
+This endpoint cancel all orders.
+
+### HTTP Request
+
+`POST https://bff.goesoteric.com/api/cancel-all-orders`
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | XBTUSD
+
+## POST Place All Orders
+
+```shell
+curl --location --request POST '{{api_url}}/api/place-multi-orders' \
+--header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: 773a9a4fcdd64473c0453846c3b0a91e6848a9d93a79a6fab1be731b88d1445d' \
+--data-raw '{
+     "timestamp":"1590229685",
+	"recvWindow":1000,
+	"Orderpayload": [
+		{
+		  "symbol": "XBTUSD",
+		  "side": "BUY",
+		  "orderQty": 2,
+		  "price": 30,
+		  "stopPrice": 0,
+		  "orderType": "LIMIT",
+		  "timeinForce": "GTC",
+		  "triggerType": "LastPrice",
+		  "isReduceOnly": false,
+		  "IsCloseOnTrigger": false,
+		  "IsHiddenOrder": false,
+		  "IsPostOnly": false
+		},
+		{
+		  "symbol": "XBTUSD",
+		  "side": "SELL",
+		  "orderQty": 1,
+		  "price": 7030,
+		  "stopPrice": 0,
+		  "orderType": "LIMIT",
+		  "timeinForce": "GTC",
+		  "triggerType": "LastPrice",
+		  "isReduceOnly": false,
+		  "IsCloseOnTrigger": false,
+		  "IsHiddenOrder": false,
+		  "IsPostOnly": false
+		}
+	]
+}
+'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": [
+    {
+      "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+          "natsPayload": {
+            "symbol": "XBTUSD",
+            "size": 2,
+            "side": 1,
+            "type": 2,
+            "timeInForce": 1,
+            "limitPrice": 30,
+            "stopPrice": 0,
+            "trailingAmount": 0,
+            "orderID": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8",
+            "userID": "332424",
+            "balance": 100000,
+            "orderMargin": 0.00068132,
+            "liquidationPrice": 0.00001999,
+            "takerFee": 0.011,
+            "makerFee": -0.025,
+            "filledPrice": 0,
+            "orderValue": 0.06666666,
+            "isReduceOnly": false,
+            "isCloseOnTrigger": false,
+            "isHiddenOrder": false,
+            "isPostOnly": false,
+            "triggerType": 0
+          },
+          "mtCalc": {
+            "liquidationPrice": 0.00001999,
+            "maintainanceMarginPerc": 0.5,
+            "initialMarginPerc": 1,
+            "leverage": 0,
+            "initialCollateral": 0.00066666,
+            "takerfeePerc": 0.011,
+            "fundingRate": 0,
+            "markPrice": 8748.51,
+            "orderSize": 0.06666666,
+            "transactionFee": -0.00000733,
+            "twoWayFee": 0.00001466,
+            "maintainanceMargin": 0.00033333,
+            "costNormal": 0.00068132,
+            "costAbnormal": -0.06609006,
+            "cost": 0.00068132,
+            "pLatMarkPrice": 0.06643805,
+            "costOfPlacingNewOrder": 0.0006813333
+          }
+        }
+      }
+    },
+    {
+      "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+          "natsPayload": {
+            "symbol": "XBTUSD",
+            "size": 1,
+            "side": 2,
+            "type": 2,
+            "timeInForce": 1,
+            "limitPrice": 7030,
+            "stopPrice": 0,
+            "trailingAmount": 0,
+            "orderID": "340a1eb4-f502-47f7-8518-15a1b36feaf2",
+            "userID": "332424",
+            "balance": 100000,
+            "orderMargin": 0.00002867,
+            "liquidationPrice": 1000000,
+            "takerFee": 0.011,
+            "makerFee": -0.025,
+            "filledPrice": 0,
+  
+```
+
+This endpoint place multi orders.
+
+### HTTP Request
+
+`POST https://bff.goesoteric.com/api/place-all-orders`
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+symbol | Yes | XBTUSD
+side | Yes | BUY,SELL
+orderQty | Yes | Integer and Greater than Zero
+price | Yes | Decimal and Greater than Zero
+stopPrice | Yes | Decimal and Greater than Zero
+orderType | Yes| LIMIT,MARKET,STOPMARKET,STOPLIMIT,TAKEPROFITLIMIT,TAKEPROFITMARKET
+timeinForce	| NO | GTC,DO,IOC,FOK
+triggerType | NO	| MarkPrice,IndexPrice,LastPrice
+isReduceOnly | NO | True/False
+IsCloseOnTrigger | NO | True/False
+IsPostOnly | NO | True/False
