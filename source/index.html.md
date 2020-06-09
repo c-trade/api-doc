@@ -20,7 +20,13 @@ search: true
 
 Welcome to the official documentation for the C-Trade APIs and Websocket! Here you can find details on how to access all of our endpoints, their respective expected outputs, and possible errors you may encounter.
 
-# Authentication
+# REST API 
+
+HTTP-based API with full trading and asset management functionality, with public orderbook and trades data as well as private account data and order management.
+
+REST endpoint URL: https://bff.goesoteric.com
+
+Requests and responses use JSON.
 
 > To authorize, use this code:
 
@@ -11013,3 +11019,543 @@ triggerType | NO	| MarkPrice,IndexPrice,LastPrice
 isReduceOnly | NO | True/False
 IsCloseOnTrigger | NO | True/False
 IsPostOnly | NO | True/False
+
+# WebSocket API
+
+## Establish a Connection
+
+GOESOTERIC offers a complete pub/sub API with table diffing over WebSocket. You may subscribe to real-time changes on any available table.
+
+Connect your websocket client to `wss://bff.goesoteric.com/updates`
+Command: `{ operation": "argument" }`
+
+Operation | Argument
+--------- | -----------
+authorization | 254rejag45asd34534asdsd5433erww34534ewewere
+contract | XBTUSD
+chart	| 5M
+myorderbook |	
+orderbook	|
+logout |	
+trades |	
+
+## Establish a Connection using API key
+
+An APIkey based authentication request will require HMAC Signature for following payload
+
+```json
+{
+  "apikey" : "user's API public key here",
+  "timestamp": 1586860702
+}
+```
+
+* if the authentication request comes after 10 seconds from the time (timestamp) it mentions in the request payload, we will not serve it.
+* HMAC Signature will be computed using your API Secret Key.
+* You will append computed HMAC Signature in the payload as shown below
+
+```json
+{
+  "apikey" : "dbea9305-5289-48a1-a0a3-6558f28aaa00",
+  "timestamp": 1586860702,
+  "signature": "computed hmac for above goes here"
+}           
+```
+
+## HMAC Signature Calculation
+
+Message authentication signature. The request message is hashed with the API secret key using SHA256 algorithm. The structure of the message:
+
+* Request URI i.e. /updates
+* The unix timestamp value
+* The payload in JSON format.
+* To ensure the signature is successfully validated, please be aware of the following:
+    * Each piece of information in the signature message should be separated by a new line. (see the example)
+    * The payload should not contain any whitespace between the names and values
+    * The Request URI should not contain the host name. e.g. '/updates' instead of 'https://myexchange.com/updates'
+
+> // Example for calculating signature message for a Socket message request to {{base_url}}/updates
+
+> signature_message = "/updates" + "\n" + "1587820973" + "\n" + "{"contract":"XBTUSD","orderbook":""}"
+> signature = HMAC(signature_message)
+
+> // computed signature should be Hexadecimal equivalent of the HMAC signature.
+
+# WebSocket Market Data Stream
+
+Authentication is not required for market data stream
+
+## Order Book (Snapshot)
+
+Command:`{ "contract": "XBTUSD", "orderbook": " " }`
+
+> Example Response
+
+> //Order book Snapshot for XBTUSD contract at 1590067427598647145 timestamp
+
+```json
+{
+  "orderbook-snapshot-XBTUSD-1590067427598647145":{
+  "buy": {
+    "8973.5": 249.0,
+    "8974": 81266.0, 
+    "8997.5": 2.0, 
+    },
+  "sell": {
+    "10000": 2651.0,
+    "9059": 13.0,
+    "9060": 238989.0,
+    "9060.5": 62862.0, 
+    }
+  }
+}
+```
+
+## Order Book (Ticker)
+
+Command:`{ "contract": "XBTUSD" }`
+
+> Example Response
+
+> //Order book Ticker for XBTUSD contract at 1590067628959409438 timestamp
+
+```json
+{
+  "orderbook-ticker-XBTUSD-1590067628959409438":{
+  "buy": {
+    "changed": {},
+    "inserted": {},
+    "deleted": {},
+  },
+  "sell": {
+    "changed": {
+    "9060": 238978.0
+    },
+    "inserted": {},
+    "deleted": {
+    "9059": 14.0
+    }
+    }
+  }
+}
+```
+
+## Trade (Snapshot)
+
+Command:`{ "contract": "XBTUSD",  "trades": " " }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "trades-XBTUSD":[ //contract name
+      {
+        "ts":1582025083482,  // timestamp
+        "q":0.00197900,     // size or quantity
+        "p":9716.55000000,  // price
+        "s":"S"   // order-side "S": Sell, "B": Buy
+      }
+  ]
+}
+```
+
+## Trade (Ticker)
+
+Command:`{ "contract": "XBTUSD"}`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "trades-XBTUSD":[ //contract name
+      {
+        "ts":1582025083482,  // timestamp
+        "q":0.00197900,     // size or quantity
+        "p":9716.55000000,  // price
+        "s":"S"   // order-side "S": Sell, "B": Buy
+      }
+  ]
+}
+```
+
+## Chart (Ticker)
+
+Command:`{ "chart": "xbtusD-1M" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "xbtusD-1M":[ // contract-name & interval (1M) in minutes
+      1582025100000, // timestamp
+      9726.5,  // open
+      9726.77, // high
+      9722.08, // low
+      9722.08, // low
+      0        // volume
+  ]
+}
+```
+
+## Mark Price & Index Price
+
+Command:`{ "contract": "XBTUSD" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "mark_price_ticker-XBTUSD":{
+    "IP": 6999.99,   // index price
+    "P": 6979.69,   // price
+    "T": 1582025083000   // timestamp
+  }
+}
+```
+
+## Premium Index 
+
+Command: `{ "contract": "XBTUSD" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  ".XBTUSDPI":{
+    "r":0.9982796123777362,  // premium rate
+    "t":1582025520000       // timestamp
+  }
+}
+```
+
+## Funding Rate 
+
+Command: `{ "contract": "XBTUSD", "fundingrate": "" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "funding_rate_ticker-XBTUSD":{
+    "R":0.004166666666666667,  // funding rate
+    "T":1582026300000         // timestamp
+  }
+}
+```
+
+## Funding Basis 
+
+Command: `{ "contract": "XBTUSD"}`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "funding_basis_ticker-XBTUSD":{
+    "r":0,
+    "t":1582026300000
+  }
+}
+```
+
+# WebSocket User Data Stream
+
+Authentication is required for user data stream
+
+## Funding Basis 
+
+Command: `{ "contract": "XBTUSD", "authorization": "Token" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "user_margin_ticker-XBTUSD":{
+      "userId":"id123",
+      "data":{
+        "rl":400,
+        "cl":63.0,
+        "im":1.5000,
+        "mm":1.0000,
+        "ml":66.67
+      }
+  }
+}
+```
+
+## Position
+
+Command: `{ "position": " ", "authorization": "Token" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "positions":{
+      "open":[
+        {
+            "pid":"f6bc948c-10e1-423e-9d02-7f146ebb3nov",
+            "sym":"XBTUSD",
+            "size":-68,
+            "value":0.0069,
+            "collateral_currency":"BTC",
+            "entry_price":9739.5,
+            "mark_price":9710.91,
+            "liq_price":11890.5,
+            "margin":0.0013,
+            "leverage_x":35,
+            "uPNL":0,
+            "uPNL_ROE":10.91,
+            "rPNL":0
+        }
+      ],
+      "closed":[
+        {
+            "pid":"f6bc948c-10e1-423e-9d02-7f146ebb3nov",
+            "sym":"XBTUSD",
+            "size":-68,
+            "value":0.0069,
+            "collateral_currency":"BTC",
+            "entry_price":9739.5,
+            "mark_price":9710.91,
+            "liq_price":11890.5,
+            "margin":0.0013,
+            "leverage_x":35,
+            "uPNL":0,
+            "uPNL_ROE":10.91,
+            "rPNL":0
+        }
+      ]
+  }
+}
+```
+
+## My Order (Snapshot)
+
+Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "myorders_snapshot":[
+    {
+      "sym": "XBTUSD",                               //contract name
+      "ts": 1583409427176,                          // acceptance timestamp
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
+      "u": "37FB2199FDF244",                      // UserID
+      "sp": 0,                                   // stop price
+      "p": 8000,                                // price
+      "r": 1,                                 // remaining
+      "s": "B",                               // order-side "S": Sell, "B": Buy
+      "q": 1,                                // size or quantity
+      "st": true,                           //Status
+      "tif": "GTC",                        //Time In Force
+      "t": "Limit",                       //Order Type
+      "odst": "Accepted",                //Order detailed Status
+      "v": 0.000125,                    // Value
+      "fp": 0                         //Fill Price
+  },
+    {
+      "sym": "XBTUSD",
+      "ts": 1583409427176,
+      "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
+      "u": "37FB2199FDF244",
+      "sp": 0,
+      "p": 8000,
+      "r": 1,
+      "s": "B",
+      "q": 1,
+      "st": true,
+      "tif": "GTC",
+      "t": "Limit",
+      "odst": "Cancelled",
+      "v": 0.000125,
+      "fp": 0
+    }
+  ]
+}
+```
+
+## My Order (Ticket)
+
+Command: `{"authorization": "Token" }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "myorders_snapshot":[
+    {
+      "sym": "XBTUSD",                               //contract name
+      "ts": 1583409427176,                          // acceptance timestamp
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
+      "u": "37FB2199FDF244",                      // UserID
+      "sp": 0,                                   // stop price
+      "p": 8000,                                // price
+      "r": 1,                                 // remaining
+      "s": "B",                               // order-side "S": Sell, "B": Buy
+      "q": 1,                                // size or quantity
+      "st": true,                           //Status
+      "tif": "GTC",                        //Time In Force
+      "t": "Limit",                       //Order Type
+      "odst": "Accepted",                //Order detailed Status
+      "v": 0.000125,                    // Value
+      "fp": 0                         //Fill Price
+    }
+  ]
+}
+```
+
+## My Trades (Snapshot)
+
+Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
+
+> Example Response
+
+```json
+{
+  "mytrades_snapshot":[
+    {
+      "sym": "XBTUSD",                               //contract name
+      "ts": 1583409427176,                          // acceptance timestamp
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
+      "u": "37FB2199FDF244",                      // UserID
+      "sp": 0,                                   // stop price
+      "p": 8000,                                // price
+      "r": 1,                                 // remaining
+      "s": "B",                               // order-side "S": Sell, "B": Buy
+      "q": 1,                                // size or quantity
+      "st": true,                           //Status
+      "tif": "GTC",                        //Time In Force
+      "t": "Limit",                       //Order Type
+      "odst": "Accepted",                //Order detailed Status
+      "v": 0.000125,                    // Value
+      "fp": 0                         //Fill Price
+  },
+    {
+      "sym": "XBTUSD",
+      "ts": 1583409427176,
+      "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
+      "u": "37FB2199FDF244",
+      "sp": 0,
+      "p": 8000,
+      "r": 1,
+      "s": "B",
+      "q": 1,
+      "st": true,
+      "tif": "GTC",
+      "t": "Limit",
+      "odst": "Cancelled",
+      "v": 0.000125,
+      "fp": 0
+    }
+  ]
+}
+```
+
+## My Trades (Ticker)
+
+Command: `{ "authorization": "Token" }`
+
+> Example Response
+
+```json
+{
+  "mytrades_ticker":[
+    {
+      "sym": "XBTUSD",                               //contract name
+      "ts": 1583409427176,                          // acceptance timestamp
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
+      "u": "37FB2199FDF244",                      // UserID
+      "sp": 0,                                   // stop price
+      "p": 8000,                                // price
+      "r": 1,                                 // remaining
+      "s": "B",                               // order-side "S": Sell, "B": Buy
+      "q": 1,                                // size or quantity
+      "st": true,                           //Status
+      "tif": "GTC",                        //Time In Force
+      "t": "Limit",                       //Order Type
+      "odst": "Accepted",                //Order detailed Status
+      "v": 0.000125,                    // Value
+      "fp": 0                         //Fill Price
+  },
+    {
+      "sym": "XBTUSD",
+      "ts": 1583409427176,
+      "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
+      "u": "37FB2199FDF244",
+      "sp": 0,
+      "p": 8000,
+      "r": 1,
+      "s": "B",
+      "q": 1,
+      "st": true,
+      "tif": "GTC",
+      "t": "Limit",
+      "odst": "Cancelled",
+      "v": 0.000125,
+      "fp": 0
+    }
+  ]
+}
+```
+
+## Balances
+
+Command: `{"balance": "BTC" / "ALL", "authorization": "Token" }`
+
+> Example Response
+
+```json
+  {
+    "balance":
+    {
+      "currency":"BTC",
+      "balance":202010.41097504,
+      "bonus":0.0,
+      "upnl":0.0,
+      "margin":202010.41097504,
+      "position":0.0,
+      "order":0.0,
+      "available":202010.41097504,
+      "breakdown":
+      {
+        "XBTUSD":
+          {
+            "upnl":0.0,
+            "position":0.0,
+            "order":0.0
+          },
+          "XBTM20":
+          {
+            "upnl":0.0,
+            "position":0.0,
+            "order":0.0
+          }
+      }
+    }
+  }
+```         
