@@ -346,7 +346,7 @@
             <a href="#websocket-user-data-stream" class="toc-h1 toc-link" data-title="WebSocket User Data Stream">WebSocket User Data Stream</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#funding-basis-2" class="toc-h2 toc-link" data-title="Funding Basis">Funding Basis</a>
+                    <a href="#user-margin" class="toc-h2 toc-link" data-title="User Margin">User Margin</a>
                   </li>
                   <li>
                     <a href="#position" class="toc-h2 toc-link" data-title="Position">Position</a>
@@ -355,7 +355,7 @@
                     <a href="#my-order-snapshot" class="toc-h2 toc-link" data-title="My Order (Snapshot)">My Order (Snapshot)</a>
                   </li>
                   <li>
-                    <a href="#my-order-ticket" class="toc-h2 toc-link" data-title="My Order (Ticket)">My Order (Ticket)</a>
+                    <a href="#my-order-ticker" class="toc-h2 toc-link" data-title="My Order (Ticker)">My Order (Ticker)</a>
                   </li>
                   <li>
                     <a href="#my-trades-snapshot" class="toc-h2 toc-link" data-title="My Trades (Snapshot)">My Trades (Snapshot)</a>
@@ -10389,14 +10389,38 @@ signature = HMAC(signature_message)</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"trades-XBTUSD"</span><span class="p">:[</span><span class="w"> </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w"> 
       </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='trade-ticker'>Trade (Ticker)</h2>
+</span></code></pre></div><h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>Timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+</tbody></table>
+<h2 id='trade-ticker'>Trade (Ticker)</h2>
 <p>Command:<code>{ &quot;contract&quot;: &quot;XBTUSD&quot;}</code></p>
 
 <blockquote>
@@ -10407,14 +10431,38 @@ signature = HMAC(signature_message)</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"trades-XBTUSD"</span><span class="p">:[</span><span class="w"> </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w">  
+        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w">  
       </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='chart-ticker'>Chart (Ticker)</h2>
+</span></code></pre></div><h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>Timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+</tbody></table>
+<h2 id='chart-ticker'>Chart (Ticker)</h2>
 <p>Command:<code>{ &quot;chart&quot;: &quot;xbtusD-1M&quot; }</code></p>
 
 <blockquote>
@@ -10437,8 +10485,6 @@ signature = HMAC(signature_message)</p>
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"mark_price_ticker-XBTUSD"</span><span class="p">:{</span><span class="w">
@@ -10447,13 +10493,31 @@ signature = HMAC(signature_message)</p>
     </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582025083000</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='premium-index'>Premium Index</h2>
+</span></code></pre></div><h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IP</td>
+<td>Index price</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Timestamp in milliseconds</td>
+</tr>
+</tbody></table>
+<h2 id='premium-index'>Premium Index</h2>
 <p>Command: <code>{ &quot;contract&quot;: &quot;XBTUSD&quot; }</code></p>
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">".XBTUSDPI"</span><span class="p">:{</span><span class="w">
@@ -10480,8 +10544,6 @@ signature = HMAC(signature_message)</p>
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"funding_basis_ticker-XBTUSD"</span><span class="p">:{</span><span class="w">
@@ -10493,13 +10555,11 @@ signature = HMAC(signature_message)</p>
 <aside class="notice">
 Authentication is required for user data stream
 </aside>
-<h2 id='funding-basis-2'>Funding Basis</h2>
+<h2 id='user-margin'>User Margin</h2>
 <p>Command: <code>{ &quot;contract&quot;: &quot;XBTUSD&quot;, &quot;authorization&quot;: &quot;Token&quot; }</code></p>
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"user_margin_ticker-XBTUSD"</span><span class="p">:{</span><span class="w">
@@ -10518,8 +10578,6 @@ Authentication is required for user data stream
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"positions"</span><span class="p">:{</span><span class="w">
@@ -10564,27 +10622,27 @@ Authentication is required for user data stream
 
 <blockquote>
 <p>Example Response</p>
-
-<p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"myorders_snapshot"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                               </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">                          </span><span class="err">//</span><span class="w"> </span><span class="err">acceptance</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">OrderID</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">UserID</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                 </span><span class="err">//</span><span class="w"> </span><span class="err">remaining</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                               </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           </span><span class="err">//Status</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Time</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">Force</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                </span><span class="err">//Order</span><span class="w"> </span><span class="err">detailed</span><span class="w"> </span><span class="err">Status</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Value</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">                         </span><span class="err">//Fill</span><span class="w"> </span><span class="err">Price</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                             
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                            
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                           
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                            
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                       
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">               
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                         
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
@@ -10601,11 +10659,89 @@ Authentication is required for user data stream
       </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='my-order-ticket'>My Order (Ticket)</h2>
+</span></code></pre></div><h3 id='response-6'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sym</td>
+<td>Contract Name</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>o</td>
+<td>OrderId</td>
+</tr>
+<tr>
+<td>u</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>Stop Price</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>r</td>
+<td>Remaining</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order side</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>st</td>
+<td>Non-active statuys</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>Time in Force</td>
+</tr>
+<tr>
+<td>t</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>odst</td>
+<td>Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected</td>
+</tr>
+<tr>
+<td>v</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>fp</td>
+<td>Full Price</td>
+</tr>
+<tr>
+<td>trg</td>
+<td>Trigger</td>
+</tr>
+<tr>
+<td>trgtyp</td>
+<td>Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)</td>
+</tr>
+</tbody></table>
+<h2 id='my-order-ticker'>My Order (Ticker)</h2>
 <p>Command: <code>{&quot;authorization&quot;: &quot;Token&quot; }</code></p>
 
 <blockquote>
@@ -10614,27 +10750,129 @@ Authentication is required for user data stream
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"myorders_snapshot"</span><span class="p">:[</span><span class="w">
+  </span><span class="nl">"myorders_ticker"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                               </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">                          </span><span class="err">//</span><span class="w"> </span><span class="err">acceptance</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">OrderID</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">UserID</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                 </span><span class="err">//</span><span class="w"> </span><span class="err">remaining</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                               </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           </span><span class="err">//Status</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Time</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">Force</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                </span><span class="err">//Order</span><span class="w"> </span><span class="err">detailed</span><span class="w"> </span><span class="err">Status</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Value</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">                         </span><span class="err">//Fill</span><span class="w"> </span><span class="err">Price</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='my-trades-snapshot'>My Trades (Snapshot)</h2>
+</span></code></pre></div><h3 id='response-7'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sym</td>
+<td>Contract Name</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>o</td>
+<td>OrderId</td>
+</tr>
+<tr>
+<td>u</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>Stop Price</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>r</td>
+<td>Remaining</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order side</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>st</td>
+<td>Non-active statuys</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>Time in Force</td>
+</tr>
+<tr>
+<td>t</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>odst</td>
+<td>Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected</td>
+</tr>
+<tr>
+<td>v</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>fp</td>
+<td>Full Price</td>
+</tr>
+<tr>
+<td>trg</td>
+<td>Trigger</td>
+</tr>
+<tr>
+<td>trgtyp</td>
+<td>Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)</td>
+</tr>
+</tbody></table>
+<h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>Timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+</tbody></table>
+<h2 id='my-trades-snapshot'>My Trades (Snapshot)</h2>
 <p>Command: <code>{ &quot;mytrades&quot;: &quot;XBTUSD (optional)&quot;, &quot;authorization&quot;: &quot;Token&quot; }</code></p>
 
 <blockquote>
@@ -10643,21 +10881,21 @@ Authentication is required for user data stream
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"mytrades_snapshot"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                               </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">                          </span><span class="err">//</span><span class="w"> </span><span class="err">acceptance</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">OrderID</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">UserID</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                 </span><span class="err">//</span><span class="w"> </span><span class="err">remaining</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                               </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           </span><span class="err">//Status</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Time</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">Force</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                </span><span class="err">//Order</span><span class="w"> </span><span class="err">detailed</span><span class="w"> </span><span class="err">Status</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Value</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">                         </span><span class="err">//Fill</span><span class="w"> </span><span class="err">Price</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                             
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">   
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">   
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">  
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">  
   </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
@@ -10687,21 +10925,21 @@ Authentication is required for user data stream
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"mytrades_ticker"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                               </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">                          </span><span class="err">//</span><span class="w"> </span><span class="err">acceptance</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">OrderID</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">UserID</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                 </span><span class="err">//</span><span class="w"> </span><span class="err">remaining</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                               </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           </span><span class="err">//Status</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Time</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">Force</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                </span><span class="err">//Order</span><span class="w"> </span><span class="err">detailed</span><span class="w"> </span><span class="err">Status</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Value</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">                         </span><span class="err">//Fill</span><span class="w"> </span><span class="err">Price</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                            
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">    
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">           
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">  
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
