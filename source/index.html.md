@@ -9740,14 +9740,22 @@ Command:`{ "contract": "XBTUSD",  "trades": " " }`
 {
   "trades-XBTUSD":[ //contract name
       {
-        "ts":1582025083482,  // timestamp
-        "q":0.00197900,     // size or quantity
-        "p":9716.55000000,  // price
-        "s":"S"   // order-side "S": Sell, "B": Buy
+        "ts":1582025083482, 
+        "q":0.00197900, 
+        "p":9716.55000000, 
+        "s":"S" 
       }
   ]
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+ts | Timestamp in milliseconds
+q | Size or quantity 
+p | Price 
+s | Order-side "S": Sell, "B": Buy
 
 ## Trade (Ticker)
 
@@ -9761,14 +9769,22 @@ Command:`{ "contract": "XBTUSD"}`
 {
   "trades-XBTUSD":[ //contract name
       {
-        "ts":1582025083482,  // timestamp
-        "q":0.00197900,     // size or quantity
-        "p":9716.55000000,  // price
-        "s":"S"   // order-side "S": Sell, "B": Buy
+        "ts":1582025083482, 
+        "q":0.00197900,  
+        "p":9716.55000000, 
+        "s":"S"  
       }
   ]
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+ts | Timestamp in milliseconds
+q | Size or quantity 
+p | Price 
+s | Order-side "S": Sell, "B": Buy
 
 ## Chart (Ticker)
 
@@ -9797,8 +9813,6 @@ Command:`{ "contract": "XBTUSD" }`
 
 > Example Response
 
-> // One item per match and multiple items per snapshot on group change.
-
 ```json
 {
   "mark_price_ticker-XBTUSD":{
@@ -9809,13 +9823,18 @@ Command:`{ "contract": "XBTUSD" }`
 }
 ```
 
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+IP | Index price
+P | Price
+T | Timestamp in milliseconds 
+
 ## Premium Index 
 
 Command: `{ "contract": "XBTUSD" }`
 
 > Example Response
-
-> // One item per match and multiple items per snapshot on group change.
 
 ```json
 {
@@ -9849,8 +9868,6 @@ Command: `{ "contract": "XBTUSD"}`
 
 > Example Response
 
-> // One item per match and multiple items per snapshot on group change.
-
 ```json
 {
   "funding_basis_ticker-XBTUSD":{
@@ -9866,13 +9883,11 @@ Command: `{ "contract": "XBTUSD"}`
 Authentication is required for user data stream
 </aside>
 
-## Funding Basis 
+## User Margin 
 
 Command: `{ "contract": "XBTUSD", "authorization": "Token" }`
 
 > Example Response
-
-> // One item per match and multiple items per snapshot on group change.
 
 ```json
 {
@@ -9894,8 +9909,6 @@ Command: `{ "contract": "XBTUSD", "authorization": "Token" }`
 Command: `{ "position": " ", "authorization": "Token" }`
 
 > Example Response
-
-> // One item per match and multiple items per snapshot on group change.
 
 ```json
 {
@@ -9944,27 +9957,27 @@ Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
 
 > Example Response
 
-> // One item per match and multiple items per snapshot on group change.
-
 ```json
 {
   "myorders_snapshot":[
     {
-      "sym": "XBTUSD",                               //contract name
-      "ts": 1583409427176,                          // acceptance timestamp
-      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
-      "u": "37FB2199FDF244",                      // UserID
-      "sp": 0,                                   // stop price
-      "p": 8000,                                // price
-      "r": 1,                                 // remaining
-      "s": "B",                               // order-side "S": Sell, "B": Buy
-      "q": 1,                                // size or quantity
-      "st": true,                           //Status
-      "tif": "GTC",                        //Time In Force
-      "t": "Limit",                       //Order Type
-      "odst": "Accepted",                //Order detailed Status
-      "v": 0.000125,                    // Value
-      "fp": 0                         //Fill Price
+      "sym": "XBTUSD",
+      "ts": 1583409427176,
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
+      "u": "37FB2199FDF244",
+      "sp": 0,                             
+      "p": 8000,                            
+      "r": 1,                
+      "s": "B",                           
+      "q": 1,                            
+      "st": true,                           
+      "tif": "GTC",                       
+      "t": "Limit",                       
+      "odst": "Accepted",                
+      "v": 0.000125,               
+      "fp": 0,                         
+      "trg":false,
+      "trgtyp":0
   },
     {
       "sym": "XBTUSD",
@@ -9981,13 +9994,36 @@ Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
       "t": "Limit",
       "odst": "Cancelled",
       "v": 0.000125,
-      "fp": 0
+      "fp": 0,
+      "trg":false,
+      "trgtyp":0
     }
   ]
 }
 ```
 
-## My Order (Ticket)
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+sym | Contract Name
+ts | Timestamp 
+o | OrderId 
+u | Order-side "S": Sell, "B": Buy
+sp | Stop Price
+p | Price
+r | Remaining
+s | Order side
+q | Size or quantity
+st | Non-active statuys
+tif | Time in Force
+t | Order type
+odst | Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected
+v | Value
+fp | Full Price
+trg | Trigger
+trgtyp | Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)
+
+## My Order (Ticker)
 
 Command: `{"authorization": "Token" }`
 
@@ -9997,27 +10033,58 @@ Command: `{"authorization": "Token" }`
 
 ```json
 {
-  "myorders_snapshot":[
+  "myorders_ticker":[
     {
-      "sym": "XBTUSD",                               //contract name
-      "ts": 1583409427176,                          // acceptance timestamp
-      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
-      "u": "37FB2199FDF244",                      // UserID
-      "sp": 0,                                   // stop price
-      "p": 8000,                                // price
-      "r": 1,                                 // remaining
-      "s": "B",                               // order-side "S": Sell, "B": Buy
-      "q": 1,                                // size or quantity
-      "st": true,                           //Status
-      "tif": "GTC",                        //Time In Force
-      "t": "Limit",                       //Order Type
-      "odst": "Accepted",                //Order detailed Status
-      "v": 0.000125,                    // Value
-      "fp": 0                         //Fill Price
+      "sym": "XBTUSD",
+      "ts": 1583409427176,
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
+      "u": "37FB2199FDF244",
+      "sp": 0,
+      "p": 8000,
+      "r": 1,
+      "s": "B",
+      "q": 1,
+      "st": true,
+      "tif": "GTC",
+      "t": "Limit",
+      "odst": "Accepted", 
+      "v": 0.000125,
+      "fp": 0,
+      "trg":false,
+      "trgtyp":0
     }
   ]
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+sym | Contract Name
+ts | Timestamp 
+o | OrderId 
+u | Order-side "S": Sell, "B": Buy
+sp | Stop Price
+p | Price
+r | Remaining
+s | Order side
+q | Size or quantity
+st | Non-active statuys
+tif | Time in Force
+t | Order type
+odst | Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected
+v | Value
+fp | Full Price
+trg | Trigger
+trgtyp | Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+ts | Timestamp in milliseconds
+q | Size or quantity 
+p | Price 
+s | Order-side "S": Sell, "B": Buy
 
 ## My Trades (Snapshot)
 
@@ -10029,21 +10096,21 @@ Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
 {
   "mytrades_snapshot":[
     {
-      "sym": "XBTUSD",                               //contract name
-      "ts": 1583409427176,                          // acceptance timestamp
-      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
-      "u": "37FB2199FDF244",                      // UserID
-      "sp": 0,                                   // stop price
-      "p": 8000,                                // price
-      "r": 1,                                 // remaining
-      "s": "B",                               // order-side "S": Sell, "B": Buy
-      "q": 1,                                // size or quantity
-      "st": true,                           //Status
-      "tif": "GTC",                        //Time In Force
-      "t": "Limit",                       //Order Type
-      "odst": "Accepted",                //Order detailed Status
-      "v": 0.000125,                    // Value
-      "fp": 0                         //Fill Price
+      "sym": "XBTUSD",                             
+      "ts": 1583409427176,   
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
+      "u": "37FB2199FDF244",
+      "sp": 0,
+      "p": 8000,
+      "r": 1,
+      "s": "B", 
+      "q": 1, 
+      "st": true,   
+      "tif": "GTC", 
+      "t": "Limit", 
+      "odst": "Accepted",  
+      "v": 0.000125, 
+      "fp": 0  
   },
     {
       "sym": "XBTUSD",
@@ -10076,21 +10143,21 @@ Command: `{ "authorization": "Token" }`
 {
   "mytrades_ticker":[
     {
-      "sym": "XBTUSD",                               //contract name
-      "ts": 1583409427176,                          // acceptance timestamp
-      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f", // OrderID
-      "u": "37FB2199FDF244",                      // UserID
-      "sp": 0,                                   // stop price
-      "p": 8000,                                // price
-      "r": 1,                                 // remaining
-      "s": "B",                               // order-side "S": Sell, "B": Buy
-      "q": 1,                                // size or quantity
-      "st": true,                           //Status
-      "tif": "GTC",                        //Time In Force
-      "t": "Limit",                       //Order Type
-      "odst": "Accepted",                //Order detailed Status
-      "v": 0.000125,                    // Value
-      "fp": 0                         //Fill Price
+      "sym": "XBTUSD",                            
+      "ts": 1583409427176, 
+      "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
+      "u": "37FB2199FDF244", 
+      "sp": 0,    
+      "p": 8000,           
+      "r": 1,
+      "s": "B",
+      "q": 1,
+      "st": true,
+      "tif": "GTC",
+      "t": "Limit",  
+      "odst": "Accepted",
+      "v": 0.000125,
+      "fp": 0
   },
     {
       "sym": "XBTUSD",
