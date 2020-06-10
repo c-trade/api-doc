@@ -9839,11 +9839,17 @@ Command: `{ "contract": "XBTUSD" }`
 ```json
 {
   ".XBTUSDPI":{
-    "r":0.9982796123777362,  // premium rate
-    "t":1582025520000       // timestamp
+    "r":0.9982796123777362, 
+    "t":1582025520000     
   }
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+r | Premium rate
+t | Timestamp 
 
 ## Funding Rate 
 
@@ -9856,11 +9862,17 @@ Command: `{ "contract": "XBTUSD", "fundingrate": "" }`
 ```json
 {
   "funding_rate_ticker-XBTUSD":{
-    "R":0.004166666666666667,  // funding rate
-    "T":1582026300000         // timestamp
+    "R":0.004166666666666667,  
+    "T":1582026300000    
   }
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+R | Funding rate
+T | Timestamp 
 
 ## Funding Basis 
 
@@ -9876,6 +9888,12 @@ Command: `{ "contract": "XBTUSD"}`
   }
 }
 ```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+r | Premium rate
+t | Timestamp 
 
 # WebSocket User Data Stream
 
