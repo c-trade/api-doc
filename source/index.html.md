@@ -20,7 +20,7 @@ Welcome to the official documentation for the C-Trade APIs and Websocket! Here y
 
 HTTP-based API with full trading and asset management functionality, with public orderbook and trades data as well as private account data and order management.
 
-REST endpoint URL: https://bff.goesoteric.com
+REST endpoint URL: https://api.c-trade.com
 
 Requests and responses use JSON.
 
@@ -29,7 +29,7 @@ Requests and responses use JSON.
 ## Get Contracts Menu
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/contracts-menu' \
+curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
 --header 'Content-Type: application/json'
 ```
 
@@ -43,8 +43,8 @@ curl --location --request GET 'https://bff.goesoteric.com/public/contracts-menu'
     "data": {
       "XBT (Bitcoin)": [
         {
-          "name": "XBTUSD",
-          "description": "XBTUSD is a XBT/USD perpetual contract priced on the .BXBT Index. Each contract is worth 1 USD of Bitcoin. \n\nFunding is paid and received every 8 hours. The next payout event is at 5:30 PM UTC+5:30.",
+          "name": "BTCUSD",
+          "description": "BTCUSD is a XBT/USD perpetual contract priced on the .BXBT Index. Each contract is worth 1 USD of Bitcoin. \n\nFunding is paid and received every 8 hours. The next payout event is at 5:30 PM UTC+5:30.",
           "type": "InversePerpetual",
           "expiryTS": 0,
           "settledIn": "BTC",
@@ -114,12 +114,12 @@ This endpoint retrieves contracts menu.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/contracts-menu`
+`GET https://api.c-trade.com/public/contracts-menu`
 
 ## Get Contract Detail
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/contracts/ETHBTC' \
+curl --location --request GET 'https://api.c-trade.com/public/contracts/ETHBTC' \
 --header 'Content-Type: application/json'
 ```
 
@@ -172,7 +172,7 @@ This endpoint retrieves a specific contract detail.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/contracts/<contractsymbol>`
+`GET https://api.c-trade.com/public/contracts/<contractsymbol>`
 
 ### URL Parameters
 
@@ -183,7 +183,7 @@ contractsymbol | The symbol of the contract
 ## Get Charts
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/charts/ETHBTC/1M?limit=100&ts=1574813820000'
+curl --location --request GET 'https://api.c-trade.com/public/charts/ETHBTC/1M?limit=100&ts=1574813820000'
 ```
 
 > The above command returns JSON structured like this:
@@ -243,7 +243,7 @@ This endpoint retrieves charts of a specific contract detail.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/charts/<contractsymbol>/<interval>`
+`GET https://api.c-trade.com/public/charts/<contractsymbol>/<interval>`
 
 ### URL Parameters
 
@@ -262,7 +262,7 @@ ts | false | From timestamp in milliseconds
 ## Get Indices List
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/indices-hierarchy' \
+curl --location --request GET 'https://api.c-trade.com/public/indices-hierarchy' \
 --header 'Content-Type: application/json'
 ```
 
@@ -315,7 +315,7 @@ This endpoint retrieves indices list.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/indices-hierarchy`
+`GET https://api.c-trade.com/public/indices-hierarchy`
 
 ### URL Parameters
 
@@ -326,7 +326,7 @@ contractsymbol | The symbol of the contract
 ## Get Indices Details
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/indices-detailed-breakdown/.BXBT/1'
+curl --location --request GET 'https://api.c-trade.com/public/indices-detailed-breakdown/.BXBT/1'
 ```
 
 > The above command returns JSON structured like this:
@@ -964,7 +964,7 @@ This endpoint retrieves details of a specific index.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/indices-detailed-breakdown/<index>/<todo>`
+`GET https://api.c-trade.com/public/indices-detailed-breakdown/<index>/<todo>`
 
 ### URL Parameters
 
@@ -976,7 +976,7 @@ todo | todo
 ## Get Index Data
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/indices/ETHBTC/1?limit=500&ts=1575465605000'
+curl --location --request GET 'https://api.c-trade.com/public/indices/ETHBTC/1?limit=500&ts=1575465605000'
 ```
 
 > The above command returns JSON structured like this:
@@ -1496,7 +1496,7 @@ This endpoint retrieves data of a specific index.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/indices-detailed-breakdown/<index>/<todo>`
+`GET https://api.c-trade.com/public/indices-detailed-breakdown/<index>/<todo>`
 
 ### URL Parameters
 
@@ -1515,7 +1515,7 @@ ts | false | From timestamp in milliseconds
 ## Get Index Chart OHLC
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/indices-charts/ETHBTC/1M?limit=1000&ts=1575465605000'
+curl --location --request GET 'https://api.c-trade.com/public/indices-charts/ETHBTC/1M?limit=1000&ts=1575465605000'
 ```
 
 > The above command returns JSON structured like this:
@@ -8535,7 +8535,7 @@ This endpoint retrieves index chart OHLC of a specific index.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/indices-detailed-breakdown/<index>/<todo>`
+`GET https://api.c-trade.com/public/indices-detailed-breakdown/<index>/<todo>`
 
 ### URL Parameters
 
@@ -8554,7 +8554,7 @@ ts | false | From timestamp in milliseconds
 ## Get Order Book
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/order-book/XBTUSD/200'
+curl --location --request GET 'https://api.c-trade.com/public/order-book/BTCUSD/200'
 ```
 
 > The above command returns JSON structured like this:
@@ -8779,7 +8779,7 @@ This endpoint retrieves a specific order book.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/order-book/<contractsymbol>/<ordernumber>`
+`GET https://api.c-trade.com/public/order-book/<contractsymbol>/<ordernumber>`
 
 ### URL Parameters
 
@@ -8791,7 +8791,7 @@ ordernumber | The specific ordernumber
 ## Get Cache Delete
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/all-cache/all' \
+curl --location --request GET 'https://api.c-trade.com/public/all-cache/all' \
 --header 'Content-Type: application/json'
 ```
 
@@ -8811,12 +8811,12 @@ This endpoint delete cache.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/order-book/cache-delete/all`
+`GET https://api.c-trade.com/public/order-book/cache-delete/all`
 
 ## Get Cache 
 
 ```shell
-curl --location --request GET 'https://bff.goesoteric.com/public/all-cache/all' \
+curl --location --request GET 'https://api.c-trade.com/public/all-cache/all' \
 --header 'Content-Type: application/json'
 ```
 
@@ -8836,7 +8836,7 @@ This endpoint get cache.
 
 ### HTTP Request
 
-`GET https://bff.goesoteric.com/public/order-book/cache-delete/all`
+`GET https://api.c-trade.com/public/order-book/cache-delete/all`
 
 # Orders/Wallet Endpoints
 
@@ -8872,12 +8872,12 @@ Python Snippet: https://repl.it/@AnkitSinghal1/modulus-derivatives-hmac-signatur
 ## POST New Order
 
 ```shell
-curl --location --request POST 'https://bff.goesoteric.com/api/new-order' \
+curl --location --request POST 'https://api.c-trade.com/api/new-order' \
 --header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: FBDF9E1CC798C5897D6E32A2ED336B762C3E3565ABE16A482DC0E30A2F775227B18F0D93E77F38BB6397C73FA814E165D237B85AE01CA6510E9DE528ADA29DB2' \
 --data-raw '{
-    "symbol": "XBTUSD",
+    "symbol": "BTCUSD",
     "side": "SELL",
     "orderQty": 1,
     "price": 100,
@@ -8896,7 +8896,7 @@ curl --location --request POST 'https://bff.goesoteric.com/api/new-order' \
     "message": "Payload_Instant_Liquidation",
     "description": {
       "natsPayload": {
-        "symbol": "XBTUSD",
+        "symbol": "BTCUSD",
         "size": 1,
         "side": 2,
         "type": 2,
@@ -8941,7 +8941,7 @@ This endpoint create a new order
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/new-order`
+`POST https://api.c-trade.com/api/new-order`
 
 Note: place order using api-key and HMAC authentication.
 
@@ -8951,7 +8951,7 @@ FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
 timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
-symbol | Yes | XBTUSD
+symbol | Yes | BTCUSD
 side| Yes | BUY,SELL
 orderQty | Yes | Integer and Greater than Zero
 price | Yes | Decimal and Greater than Zero
@@ -8981,7 +8981,7 @@ This endpoint cancel a new order
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/cancel-order`
+`POST https://api.c-trade.com/api/cancel-order`
 
 ### Request Payload
 
@@ -8994,12 +8994,12 @@ orderID | Yes | string
 ## POST All Orders
 
 ```shell
-curl --location --request POST 'https://bff.goesoteric.com/api/new-order' \
+curl --location --request POST 'https://api.c-trade.com/api/new-order' \
 --header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: FBDF9E1CC798C5897D6E32A2ED336B762C3E3565ABE16A482DC0E30A2F775227B18F0D93E77F38BB6397C73FA814E165D237B85AE01CA6510E9DE528ADA29DB2' \
 --data-raw '{
-    "symbol": "XBTUSD",
+    "symbol": "BTCUSD",
     "side": "SELL",
     "orderQty": 1,
     "price": 100,
@@ -9013,7 +9013,7 @@ This endpoint post all order // todo
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/all-orders`
+`POST https://api.c-trade.com/api/all-orders`
 
 Note: place order using api-key and HMAC authentication.
 
@@ -9025,7 +9025,7 @@ timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
 DateTo | NO | string 'yyyy/mm/dd'
 DateFrom | NO | string 'yyyy/mm/dd'
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 OrderStatus | NO | true or false
 Limit | NO | MAX:1000
 timestamp | YES | Current UTC TS
@@ -9074,7 +9074,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
     "message": "Success",
     "data": [
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583394834,
         "o": "d3e87c02-d02d-4078-aef9-b4e2e29fcf51",
         "q": 1,
@@ -9089,7 +9089,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583403228,
         "o": "d145b742-716e-470a-bcaf-2052ea918be6",
         "q": 1,
@@ -9104,7 +9104,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583404613,
         "o": "01bf5823-b4be-41b3-83bd-98bb767ab15f",
         "q": 20,
@@ -9119,7 +9119,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583404622,
         "o": "6efbd950-2bd0-4d84-88a8-0871184cbbb2",
         "q": 20,
@@ -9134,7 +9134,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583404742,
         "o": "bc2aab73-ad09-4a76-a7be-f54a5e4a8711",
         "q": 10,
@@ -9149,7 +9149,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583408427,
         "o": "1a1052d7-5511-496b-addd-b54cc4c2a3a8",
         "q": 1,
@@ -9164,7 +9164,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583408427,
         "o": "fc5c5144-e448-4fc4-9593-80c8f9e0dcbf",
         "q": 1,
@@ -9179,7 +9179,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583411706,
         "o": "569ab73e-e1cb-4cb8-8d57-4c887dedd4af",
         "q": 1,
@@ -9194,7 +9194,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583411757,
         "o": "427054a0-2b12-4afa-b7fc-3bf71e476bbc",
         "q": 1,
@@ -9209,7 +9209,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583411759,
         "o": "070f683f-9d4c-47cd-a277-66e4f6442aae",
         "q": 1,
@@ -9224,7 +9224,7 @@ curl --location --request POST '{{api_url}}/LP/my-trade-history' \
         "tif": "GTC"
       },
       {
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "ts": 1583411761,
         "o": "d3355d81-d75a-4841-968f-5f3972a20544",
         "q": 1,
@@ -9248,7 +9248,7 @@ This endpoint post my trade history  //todo
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/my-trade-history`
+`POST https://api.c-trade.com/api/my-trade-history`
 
 ### Request Payload
 
@@ -9258,7 +9258,7 @@ timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
 DateTo | NO | string 'yyyy/mm/dd'
 DateFrom | NO | string 'yyyy/mm/dd'
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 
 ### Response
 
@@ -9288,7 +9288,7 @@ curl --location --request POST '{{api_url}}/api/open-orders' \
 --data-raw '{
 	"timestamp":"1590230834",
 	"recvWindow":10000,
-	"Contract":"XBTUSD"
+	"Contract":"BTCUSD"
 }'
 ```
 
@@ -9296,7 +9296,7 @@ This endpoint post open orders  //todo
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/open-orders`
+`POST https://api.c-trade.com/api/open-orders`
 
 ### Request Payload
 
@@ -9304,7 +9304,7 @@ FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
 timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 
 ## POST Wallet Balance
 
@@ -9341,7 +9341,7 @@ This endpoint get wallet balance
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/wallet-balance`
+`POST https://api.c-trade.com/api/wallet-balance`
 
 ### Request Payload
 
@@ -9349,7 +9349,7 @@ FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
 timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 
 ## POST Cancel Muliti Orders
 
@@ -9404,7 +9404,7 @@ This endpoint cancel multi orders.
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/cancel-multi-orders`
+`POST https://api.c-trade.com/api/cancel-multi-orders`
 
 ### Request Payload
 
@@ -9412,7 +9412,7 @@ FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
 timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 
 ## POST Cancel All Orders
 
@@ -9451,7 +9451,7 @@ This endpoint cancel all orders.
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/cancel-all-orders`
+`POST https://api.c-trade.com/api/cancel-all-orders`
 
 ### Request Payload
 
@@ -9459,7 +9459,7 @@ FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
 timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
-Contract | NO | XBTUSD
+Contract | NO | BTCUSD
 
 ## POST Place All Orders
 
@@ -9473,7 +9473,7 @@ curl --location --request POST '{{api_url}}/api/place-multi-orders' \
 	"recvWindow":1000,
 	"Orderpayload": [
 		{
-		  "symbol": "XBTUSD",
+		  "symbol": "BTCUSD",
 		  "side": "BUY",
 		  "orderQty": 2,
 		  "price": 30,
@@ -9487,7 +9487,7 @@ curl --location --request POST '{{api_url}}/api/place-multi-orders' \
 		  "IsPostOnly": false
 		},
 		{
-		  "symbol": "XBTUSD",
+		  "symbol": "BTCUSD",
 		  "side": "SELL",
 		  "orderQty": 1,
 		  "price": 7030,
@@ -9516,7 +9516,7 @@ curl --location --request POST '{{api_url}}/api/place-multi-orders' \
         "message": "Success",
         "data": {
           "natsPayload": {
-            "symbol": "XBTUSD",
+            "symbol": "BTCUSD",
             "size": 2,
             "side": 1,
             "type": 2,
@@ -9567,7 +9567,7 @@ curl --location --request POST '{{api_url}}/api/place-multi-orders' \
         "message": "Success",
         "data": {
           "natsPayload": {
-            "symbol": "XBTUSD",
+            "symbol": "BTCUSD",
             "size": 1,
             "side": 2,
             "type": 2,
@@ -9590,13 +9590,13 @@ This endpoint place multi orders.
 
 ### HTTP Request
 
-`POST https://bff.goesoteric.com/api/place-all-orders`
+`POST https://api.c-trade.com/api/place-all-orders`
 
 ### Request Payload
 
 FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
-symbol | Yes | XBTUSD
+symbol | Yes | BTCUSD
 side | Yes | BUY,SELL
 orderQty | Yes | Integer and Greater than Zero
 price | Yes | Decimal and Greater than Zero
@@ -9612,15 +9612,15 @@ IsPostOnly | NO | True/False
 
 ## Establish a Connection
 
-GOESOTERIC offers a complete pub/sub API with table diffing over WebSocket. You may subscribe to real-time changes on any available table.
+C-trade offers a complete pub/sub API with table diffing over WebSocket. You may subscribe to real-time changes on any available table.
 
-Connect your websocket client to `wss://bff.goesoteric.com/updates`
+Connect your websocket client to `ws.c-trade.com/updates`
 Command: `{ operation": "argument" }`
 
 Operation | Argument
 --------- | -----------
 authorization | 254rejag45asd34534asdsd5433erww34534ewewere
-contract | XBTUSD
+contract | BTCUSD
 chart	| 5M
 myorderbook |	
 orderbook	|
@@ -9664,7 +9664,7 @@ Message authentication signature. The request message is hashed with the API sec
 
 > // Example for calculating signature message for a Socket message request to {{base_url}}/updates
 
-> signature_message = "/updates" + "\n" + "1587820973" + "\n" + "{"contract":"XBTUSD","orderbook":""}"
+> signature_message = "/updates" + "\n" + "1587820973" + "\n" + "{"contract":"BTCUSD","orderbook":""}"
 > signature = HMAC(signature_message)
 
 > // computed signature should be Hexadecimal equivalent of the HMAC signature.
@@ -9675,15 +9675,15 @@ Authentication is not required for market data stream
 
 ## Order Book (Snapshot)
 
-Command:`{ "contract": "XBTUSD", "orderbook": " " }`
+Command:`{ "contract": "BTCUSD", "orderbook": " " }`
 
 > Example Response
 
-> //Order book Snapshot for XBTUSD contract at 1590067427598647145 timestamp
+> //Order book Snapshot for BTCUSD contract at 1590067427598647145 timestamp
 
 ```json
 {
-  "orderbook-snapshot-XBTUSD-1590067427598647145":{
+  "orderbook-snapshot-BTCUSD-1590067427598647145":{
   "buy": {
     "8973.5": 249.0,
     "8974": 81266.0, 
@@ -9701,15 +9701,15 @@ Command:`{ "contract": "XBTUSD", "orderbook": " " }`
 
 ## Order Book (Ticker)
 
-Command:`{ "contract": "XBTUSD" }`
+Command:`{ "contract": "BTCUSD" }`
 
 > Example Response
 
-> //Order book Ticker for XBTUSD contract at 1590067628959409438 timestamp
+> //Order book Ticker for BTCUSD contract at 1590067628959409438 timestamp
 
 ```json
 {
-  "orderbook-ticker-XBTUSD-1590067628959409438":{
+  "orderbook-ticker-BTCUSD-1590067628959409438":{
   "buy": {
     "changed": {},
     "inserted": {},
@@ -9730,7 +9730,7 @@ Command:`{ "contract": "XBTUSD" }`
 
 ## Trade (Snapshot)
 
-Command:`{ "contract": "XBTUSD",  "trades": " " }`
+Command:`{ "contract": "BTCUSD",  "trades": " " }`
 
 > Example Response
 
@@ -9738,7 +9738,7 @@ Command:`{ "contract": "XBTUSD",  "trades": " " }`
 
 ```json
 {
-  "trades-XBTUSD":[ //contract name
+  "trades-BTCUSD":[ //contract name
       {
         "ts":1582025083482, 
         "q":0.00197900, 
@@ -9759,7 +9759,7 @@ s | Order-side "S": Sell, "B": Buy
 
 ## Trade (Ticker)
 
-Command:`{ "contract": "XBTUSD"}`
+Command:`{ "contract": "BTCUSD"}`
 
 > Example Response
 
@@ -9767,7 +9767,7 @@ Command:`{ "contract": "XBTUSD"}`
 
 ```json
 {
-  "trades-XBTUSD":[ //contract name
+  "trades-BTCUSD":[ //contract name
       {
         "ts":1582025083482, 
         "q":0.00197900,  
@@ -9788,7 +9788,7 @@ s | Order-side "S": Sell, "B": Buy
 
 ## Chart (Ticker)
 
-Command:`{ "chart": "xbtusD-1M" }`
+Command:`{ "chart": "BTCUSD-1M" }`
 
 > Example Response
 
@@ -9796,7 +9796,7 @@ Command:`{ "chart": "xbtusD-1M" }`
 
 ```json
 {
-  "xbtusD-1M":[ // contract-name & interval (1M) in minutes
+  "BTCUSD-1M":[ // contract-name & interval (1M) in minutes
       1582025100000, // timestamp
       9726.5,  // open
       9726.77, // high
@@ -9809,13 +9809,13 @@ Command:`{ "chart": "xbtusD-1M" }`
 
 ## Mark Price & Index Price
 
-Command:`{ "contract": "XBTUSD" }`
+Command:`{ "contract": "BTCUSD" }`
 
 > Example Response
 
 ```json
 {
-  "mark_price_ticker-XBTUSD":{
+  "mark_price_ticker-BTCUSD":{
     "IP": 6999.99,   // index price
     "P": 6979.69,   // price
     "T": 1582025083000   // timestamp
@@ -9832,13 +9832,13 @@ T | Timestamp in milliseconds
 
 ## Premium Index 
 
-Command: `{ "contract": "XBTUSD" }`
+Command: `{ "contract": "BTCUSD" }`
 
 > Example Response
 
 ```json
 {
-  ".XBTUSDPI":{
+  ".BTCUSDPI":{
     "r":0.9982796123777362, 
     "t":1582025520000     
   }
@@ -9853,7 +9853,7 @@ t | Timestamp
 
 ## Funding Rate 
 
-Command: `{ "contract": "XBTUSD", "fundingrate": "" }`
+Command: `{ "contract": "BTCUSD", "fundingrate": "" }`
 
 > Example Response
 
@@ -9861,7 +9861,7 @@ Command: `{ "contract": "XBTUSD", "fundingrate": "" }`
 
 ```json
 {
-  "funding_rate_ticker-XBTUSD":{
+  "funding_rate_ticker-BTCUSD":{
     "R":0.004166666666666667,  
     "T":1582026300000    
   }
@@ -9876,13 +9876,13 @@ T | Timestamp
 
 ## Funding Basis 
 
-Command: `{ "contract": "XBTUSD"}`
+Command: `{ "contract": "BTCUSD"}`
 
 > Example Response
 
 ```json
 {
-  "funding_basis_ticker-XBTUSD":{
+  "funding_basis_ticker-BTCUSD":{
     "r":0,
     "t":1582026300000
   }
@@ -9903,13 +9903,13 @@ Authentication is required for user data stream
 
 ## User Margin 
 
-Command: `{ "contract": "XBTUSD", "authorization": "Token" }`
+Command: `{ "contract": "BTCUSD" }`
 
 > Example Response
 
 ```json
 {
-  "user_margin_ticker-XBTUSD":{
+  "user_margin_ticker-BTCUSD":{
       "userId":"id123",
       "data":{
         "rl":400,
@@ -9924,7 +9924,7 @@ Command: `{ "contract": "XBTUSD", "authorization": "Token" }`
 
 ## Position
 
-Command: `{ "position": " ", "authorization": "Token" }`
+Command: `{ "position": " "}`
 
 > Example Response
 
@@ -9934,7 +9934,7 @@ Command: `{ "position": " ", "authorization": "Token" }`
       "open":[
         {
             "pid":"f6bc948c-10e1-423e-9d02-7f146ebb3nov",
-            "sym":"XBTUSD",
+            "sym":"BTCUSD",
             "size":-68,
             "value":0.0069,
             "collateral_currency":"BTC",
@@ -9951,7 +9951,7 @@ Command: `{ "position": " ", "authorization": "Token" }`
       "closed":[
         {
             "pid":"f6bc948c-10e1-423e-9d02-7f146ebb3nov",
-            "sym":"XBTUSD",
+            "sym":"BTCUSD",
             "size":-68,
             "value":0.0069,
             "collateral_currency":"BTC",
@@ -9971,7 +9971,9 @@ Command: `{ "position": " ", "authorization": "Token" }`
 
 ## My Order (Snapshot)
 
-Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
+Command: `{ "myorderbook": " " }`
+To filter your orderbook by contract, please include the contract symbol in the command, eg:
+Command: `{ "myorderbook": "BTCUSD" }`
 
 > Example Response
 
@@ -9979,7 +9981,7 @@ Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
 {
   "myorders_snapshot":[
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1583409427176,
       "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
       "u": "37FB2199FDF244",
@@ -9998,7 +10000,7 @@ Command: `{ "myorderbook": "XBTUSD (optional)", "authorization": "Token" }`
       "trgtyp":0
   },
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1583409427176,
       "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
       "u": "37FB2199FDF244",
@@ -10043,8 +10045,6 @@ trgtyp | Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)
 
 ## My Order (Ticker)
 
-Command: `{"authorization": "Token" }`
-
 > Example Response
 
 > // One item per match and multiple items per snapshot on group change.
@@ -10053,7 +10053,7 @@ Command: `{"authorization": "Token" }`
 {
   "myorders_ticker":[
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1583409427176,
       "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
       "u": "37FB2199FDF244",
@@ -10106,7 +10106,9 @@ s | Order-side "S": Sell, "B": Buy
 
 ## My Trades (Snapshot)
 
-Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
+Command: `{ "mytrades": "BTCUSD"`
+To filter your trades by contract, please include the contract symbol in the command, eg:
+Command: `{ "mytrades": "BTCUSD" }`
 
 > Example Response
 
@@ -10114,7 +10116,7 @@ Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
 {
   "mytrades_snapshot":[
     {
-      "sym": "XBTUSD",                             
+      "sym": "BTCUSD",                             
       "ts": 1583409427176,   
       "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
       "u": "37FB2199FDF244",
@@ -10131,7 +10133,7 @@ Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
       "fp": 0  
   },
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1583409427176,
       "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
       "u": "37FB2199FDF244",
@@ -10153,15 +10155,13 @@ Command: `{ "mytrades": "XBTUSD (optional)", "authorization": "Token" }`
 
 ## My Trades (Ticker)
 
-Command: `{ "authorization": "Token" }`
-
 > Example Response
 
 ```json
 {
   "mytrades_ticker":[
     {
-      "sym": "XBTUSD",                            
+      "sym": "BTCUSD",                            
       "ts": 1583409427176, 
       "o": "9eavd4f7-6a71-48ai-82ub-6a45aj645k0f",
       "u": "37FB2199FDF244", 
@@ -10178,7 +10178,7 @@ Command: `{ "authorization": "Token" }`
       "fp": 0
   },
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1583409427176,
       "o": "9ehj14f7-6h71-48af-8h0b-6a45avf4590f",
       "u": "37FB2199FDF244",
@@ -10200,7 +10200,7 @@ Command: `{ "authorization": "Token" }`
 
 ## Balances
 
-Command: `{"balance": "BTC" / "ALL", "authorization": "Token" }`
+Command: `{"balance": "BTC" / "ALL"`
 
 > Example Response
 
@@ -10218,7 +10218,7 @@ Command: `{"balance": "BTC" / "ALL", "authorization": "Token" }`
       "available":202010.41097504,
       "breakdown":
       {
-        "XBTUSD":
+        "BTCUSD":
           {
             "upnl":0.0,
             "position":0.0,
