@@ -11523,7 +11523,7 @@ Command: `{ "authorization": "Token" }`
 }
 ```
 
-## My Balances
+## Balances
 
 Command: `{"balance": "BTC" / "ALL", "authorization": "Token" }`
 
