@@ -9972,7 +9972,9 @@ Command: `{ "position": " "}`
 ## My Order (Snapshot)
 
 Command: `{ "myorderbook": " " }`
+
 To filter your orderbook by contract, please include the contract symbol in the command, eg:
+
 Command: `{ "myorderbook": "BTCUSD" }`
 
 > Example Response
@@ -10107,7 +10109,9 @@ s | Order-side "S": Sell, "B": Buy
 ## My Trades (Snapshot)
 
 Command: `{ "mytrades": "BTCUSD"`
+
 To filter your trades by contract, please include the contract symbol in the command, eg:
+
 Command: `{ "mytrades": "BTCUSD" }`
 
 > Example Response
