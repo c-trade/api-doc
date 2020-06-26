@@ -253,12 +253,6 @@
                   <li>
                     <a href="#get-order-book" class="toc-h2 toc-link" data-title="Get Order Book">Get Order Book</a>
                   </li>
-                  <li>
-                    <a href="#get-cache-delete" class="toc-h2 toc-link" data-title="Get Cache Delete">Get Cache Delete</a>
-                  </li>
-                  <li>
-                    <a href="#get-cache" class="toc-h2 toc-link" data-title="Get Cache">Get Cache</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -337,9 +331,6 @@
                   <li>
                     <a href="#funding-rate" class="toc-h2 toc-link" data-title="Funding Rate">Funding Rate</a>
                   </li>
-                  <li>
-                    <a href="#funding-basis" class="toc-h2 toc-link" data-title="Funding Basis">Funding Basis</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -347,6 +338,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#user-margin" class="toc-h2 toc-link" data-title="User Margin">User Margin</a>
+                  </li>
+                  <li>
+                    <a href="#user-margin-2" class="toc-h2 toc-link" data-title="User Margin">User Margin</a>
                   </li>
                   <li>
                     <a href="#position" class="toc-h2 toc-link" data-title="Position">Position</a>
@@ -612,12 +606,12 @@
 <tr>
 <td>limit</td>
 <td>false</td>
-<td>Limit for data size per page</td>
+<td>Limit for data size per page, default = 500, max = 1000</td>
 </tr>
 <tr>
 <td>ts</td>
 <td>false</td>
-<td>From timestamp in milliseconds</td>
+<td>From timestamp in milliseconds, default = current time</td>
 </tr>
 </tbody></table>
 <h2 id='get-indices-list'>Get Indices List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices-hierarchy'</span> <span class="se">\</span>
@@ -1849,7 +1843,7 @@
 </span></code></pre></div>
 <p>This endpoint retrieves data of a specific index.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;</code></p>
+<p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1862,8 +1856,8 @@
 <td>The index</td>
 </tr>
 <tr>
-<td>todo</td>
-<td>todo</td>
+<td>time</td>
+<td>time for the chart data grouping(in minutes)</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-2'>Request Parameters</h3>
@@ -1877,12 +1871,12 @@
 <tr>
 <td>limit</td>
 <td>false</td>
-<td>Limit for data size per page</td>
+<td>Limit for data size per page, default = 500, max = 1000</td>
 </tr>
 <tr>
 <td>ts</td>
 <td>false</td>
-<td>From timestamp in milliseconds</td>
+<td>From timestamp in milliseconds, default = current time</td>
 </tr>
 </tbody></table>
 <h2 id='get-index-chart-ohlc'>Get Index Chart OHLC</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices-charts/ETHBTC/1M?limit=1000&amp;ts=1575465605000'</span>
@@ -9175,40 +9169,6 @@
 <td>The specific ordernumber</td>
 </tr>
 </tbody></table>
-<h2 id='get-cache-delete'>Get Cache Delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/all-cache/all'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint delete cache.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/order-book/cache-delete/all</code></p>
-<h2 id='get-cache'>Get Cache</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/all-cache/all'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint get cache.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/order-book/cache-delete/all</code></p>
 <h1 id='orders-wallet-endpoints'>Orders/Wallet Endpoints</h1><h2 id='hmac-signature-calculation'>HMAC Signature Calculation</h2><div class="highlight"><pre class="highlight plaintext"><code>// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
 {
     timestamp:1587820973,
@@ -9302,7 +9262,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint create a new order</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/new-order</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -9391,7 +9351,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint cancel a new order</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-order</code></p>
 <h3 id='request-payload-2'>Request Payload</h3>
 <table><thead>
@@ -9432,7 +9392,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post all order // todo</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/all-orders</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -9746,7 +9706,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">      
 </span></code></pre></div>
 <p>This endpoint post my trade history  //todo</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/my-trade-history</code></p>
 <h3 id='request-payload-4'>Request Payload</h3>
 <table><thead>
@@ -9853,7 +9813,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post open orders  //todo</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/open-orders</code></p>
 <h3 id='request-payload-5'>Request Payload</h3>
 <table><thead>
@@ -9906,7 +9866,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get wallet balance</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/wallet-balance</code></p>
 <h3 id='request-payload-6'>Request Payload</h3>
 <table><thead>
@@ -9977,7 +9937,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel multi orders.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-multi-orders</code></p>
 <h3 id='request-payload-7'>Request Payload</h3>
 <table><thead>
@@ -10032,7 +9992,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel all orders.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
 <h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
@@ -10179,7 +10139,7 @@ signature = HMAC(signature_message)
 
 </span></code></pre></div>
 <p>This endpoint place multi orders.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/place-all-orders</code></p>
 <h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
@@ -10250,39 +10210,53 @@ signature = HMAC(signature_message)
 
 <p>Connect your websocket client to <code>ws.c-trade.com/updates</code>
 Command: <code>{ operation&quot;: &quot;argument&quot; }</code></p>
-
+<h3 id='operation'>Operation</h3>
 <table><thead>
 <tr>
 <th>Operation</th>
-<th>Argument</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>authorization</td>
-<td>254rejag45asd34534asdsd5433erww34534ewewere</td>
+<td>subscribe</td>
 </tr>
 <tr>
-<td>contract</td>
-<td>BTCUSD</td>
+<td>authorization:token</td>
 </tr>
 <tr>
-<td>chart</td>
-<td>5M</td>
-</tr>
-<tr>
-<td>myorderbook</td>
-<td></td>
-</tr>
-<tr>
-<td>orderbook</td>
-<td></td>
+<td>query</td>
 </tr>
 <tr>
 <td>logout</td>
+</tr>
+<tr>
+<td>unsubscribe</td>
+</tr>
+</tbody></table>
+<h3 id='argument'>Argument</h3>
+<table><thead>
+<tr>
+<th>Events</th>
+<th>Instruments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trades</td>
+<td>XBTUSD</td>
+</tr>
+<tr>
+<td>orderbook</td>
+<td>BTC</td>
+</tr>
+<tr>
+<td>mytrades</td>
 <td></td>
 </tr>
 <tr>
-<td>trades</td>
+<td>myorders</td>
+<td></td>
+</tr>
+<tr>
+<td>positions</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -10330,56 +10304,63 @@ signature = HMAC(signature_message)</p>
 <h1 id='websocket-market-data-stream'>WebSocket Market Data Stream</h1>
 <p>Authentication is not required for market data stream</p>
 <h2 id='order-book-snapshot'>Order Book (Snapshot)</h2>
-<p>Command:<code>{ &quot;contract&quot;: &quot;BTCUSD&quot;, &quot;orderbook&quot;: &quot; &quot; }</code></p>
+<p>Command:<code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;orderbook:BTCUSD&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 
-<p>//Order book Snapshot for BTCUSD contract at 1590067427598647145 timestamp</p>
+<p>//Order book Snapshot for BTCUSD contract at 1592828870981575587 timestamp</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"orderbook-snapshot-BTCUSD-1590067427598647145"</span><span class="p">:{</span><span class="w">
-  </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"8973.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">249.0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"8974"</span><span class="p">:</span><span class="w"> </span><span class="mf">81266.0</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"8997.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> 
-    </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"10000"</span><span class="p">:</span><span class="w"> </span><span class="mf">2651.0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"9059"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"9060"</span><span class="p">:</span><span class="w"> </span><span class="mf">238989.0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"9060.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">62862.0</span><span class="p">,</span><span class="w"> 
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592828870981575587</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"8944"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"8945"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"8946"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"8947"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"10000"</span><span class="p">:</span><span class="w"> </span><span class="mf">2651.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"9043"</span><span class="p">:</span><span class="w"> </span><span class="mf">30330.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"9044"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"9045"</span><span class="p">:</span><span class="w"> </span><span class="mf">590261.0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='order-book-ticker'>Order Book (Ticker)</h2>
-<p>Command:<code>{ &quot;contract&quot;: &quot;BTCUSD&quot; }</code></p>
+<p>Command:<code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;orderbook:BTCUSD&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 
-<p>//Order book Ticker for BTCUSD contract at 1590067628959409438 timestamp</p>
+<p>//Order book Ticker for BTCUSD contract at 1592829185415529209 timestamp</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"orderbook-ticker-BTCUSD-1590067628959409438"</span><span class="p">:{</span><span class="w">
-  </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"changed"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"inserted"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"changed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"9060"</span><span class="p">:</span><span class="w"> </span><span class="mf">238978.0</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592829185415529209</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inserted"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"changed"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inserted"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"changed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"9043"</span><span class="p">:</span><span class="w"> </span><span class="mf">30331.0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"inserted"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"9059"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.0</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='trade-snapshot'>Trade (Snapshot)</h2>
-<p>Command:<code>{ &quot;contract&quot;: &quot;BTCUSD&quot;,  &quot;trades&quot;: &quot; &quot; }</code></p>
+<p>Command:<code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;trades:BTCUSD&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
@@ -10387,15 +10368,25 @@ signature = HMAC(signature_message)</p>
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"trades-BTCUSD"</span><span class="p">:[</span><span class="w"> </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592829837839</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w"> 
-      </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592829390110</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trades"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div><h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
@@ -10429,15 +10420,18 @@ signature = HMAC(signature_message)</p>
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"trades-BTCUSD"</span><span class="p">:[</span><span class="w"> </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1582025083482</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="mf">0.00197900</span><span class="p">,</span><span class="w">  
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="mf">9716.55000000</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="s2">"S"</span><span class="w">  
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592831064637</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trades"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 </span></code></pre></div><h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
@@ -10463,7 +10457,7 @@ signature = HMAC(signature_message)</p>
 </tr>
 </tbody></table>
 <h2 id='chart-ticker'>Chart (Ticker)</h2>
-<p>Command:<code>{ &quot;chart&quot;: &quot;BTCUSD-1M&quot; }</code></p>
+<p>Command:<code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;chart_1m:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
@@ -10471,27 +10465,31 @@ signature = HMAC(signature_message)</p>
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"BTCUSD-1M"</span><span class="p">:[</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">contract-name</span><span class="w"> </span><span class="err">&amp;</span><span class="w"> </span><span class="err">interval</span><span class="w"> </span><span class="err">(</span><span class="mi">1</span><span class="err">M)</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">minutes</span><span class="w">
-      </span><span class="mi">1582025100000</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-      </span><span class="mf">9726.5</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">open</span><span class="w">
-      </span><span class="mf">9726.77</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">high</span><span class="w">
-      </span><span class="mf">9722.08</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">low</span><span class="w">
-      </span><span class="mf">9722.08</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">low</span><span class="w">
-      </span><span class="mi">0</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">volume</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1592893560000</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+    </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">open</span><span class="w">
+    </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">high</span><span class="w">
+    </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">low</span><span class="w">
+    </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">close</span><span class="w">
+    </span><span class="mf">0.0</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">volume</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chart_1m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='mark-price-amp-index-price'>Mark Price &amp; Index Price</h2>
-<p>Command:<code>{ &quot;contract&quot;: &quot;BTCUSD&quot; }</code></p>
+<p>Command:<code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;markprice:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"mark_price_ticker-BTCUSD"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"IP"</span><span class="p">:</span><span class="w"> </span><span class="mf">6999.99</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">index</span><span class="w"> </span><span class="err">price</span><span class="w">
-    </span><span class="nl">"P"</span><span class="p">:</span><span class="w"> </span><span class="mf">6979.69</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
-    </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582025083000</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"IP"</span><span class="p">:</span><span class="w"> </span><span class="mf">9050.0</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">index</span><span class="w"> </span><span class="err">price</span><span class="w">
+  </span><span class="nl">"P"</span><span class="p">:</span><span class="w"> </span><span class="mf">8951.97</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+  </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592831293000</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markprice"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-5'>Response</h3>
 <table><thead>
@@ -10514,16 +10512,18 @@ signature = HMAC(signature_message)</p>
 </tr>
 </tbody></table>
 <h2 id='premium-index'>Premium Index</h2>
-<p>Command: <code>{ &quot;contract&quot;: &quot;BTCUSD&quot; }</code></p>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;premiumindex:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">".BTCUSDPI"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"r"</span><span class="p">:</span><span class="mf">0.9982796123777362</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"t"</span><span class="p">:</span><span class="mi">1582025520000</span><span class="w">     
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"R"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00061276</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592890620000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premiumindex"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-6'>Response</h3>
 <table><thead>
@@ -10542,7 +10542,7 @@ signature = HMAC(signature_message)</p>
 </tr>
 </tbody></table>
 <h2 id='funding-rate'>Funding Rate</h2>
-<p>Command: <code>{ &quot;contract&quot;: &quot;BTCUSD&quot;, &quot;fundingrate&quot;: &quot;&quot; }</code></p>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;fundingrate:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
@@ -10550,10 +10550,13 @@ signature = HMAC(signature_message)</p>
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"funding_rate_ticker-BTCUSD"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"R"</span><span class="p">:</span><span class="mf">0.004166666666666667</span><span class="p">,</span><span class="w">  
-    </span><span class="nl">"T"</span><span class="p">:</span><span class="mi">1582026300000</span><span class="w">    
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"R"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.03040413</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592812800000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fundingrate"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-7'>Response</h3>
 <table><thead>
@@ -10568,34 +10571,6 @@ signature = HMAC(signature_message)</p>
 </tr>
 <tr>
 <td>T</td>
-<td>Timestamp</td>
-</tr>
-</tbody></table>
-<h2 id='funding-basis'>Funding Basis</h2>
-<p>Command: <code>{ &quot;contract&quot;: &quot;BTCUSD&quot;}</code></p>
-
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"funding_basis_ticker-BTCUSD"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"r"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"t"</span><span class="p">:</span><span class="mi">1582026300000</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-8'>Response</h3>
-<table><thead>
-<tr>
-<th>FieldName</th>
-<th>Short Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>r</td>
-<td>Premium rate</td>
-</tr>
-<tr>
-<td>t</td>
 <td>Timestamp</td>
 </tr>
 </tbody></table>
@@ -10621,103 +10596,111 @@ Authentication is required for user data stream
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='position'>Position</h2>
-<p>Command: <code>{ &quot;position&quot;: &quot; &quot;}</code></p>
+</span></code></pre></div><h2 id='user-margin-2'>User Margin</h2>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;marginsettings:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"positions"</span><span class="p">:{</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"pid"</span><span class="p">:</span><span class="s2">"f6bc948c-10e1-423e-9d02-7f146ebb3nov"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sym"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">-68</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="mf">0.0069</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"collateral_currency"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"entry_price"</span><span class="p">:</span><span class="mf">9739.5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"mark_price"</span><span class="p">:</span><span class="mf">9710.91</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"liq_price"</span><span class="p">:</span><span class="mf">11890.5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"margin"</span><span class="p">:</span><span class="mf">0.0013</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverage_x"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"uPNL"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"uPNL_ROE"</span><span class="p">:</span><span class="mf">10.91</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rPNL"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"closed"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"pid"</span><span class="p">:</span><span class="s2">"f6bc948c-10e1-423e-9d02-7f146ebb3nov"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sym"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="mi">-68</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="mf">0.0069</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"collateral_currency"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"entry_price"</span><span class="p">:</span><span class="mf">9739.5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"mark_price"</span><span class="p">:</span><span class="mf">9710.91</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"liq_price"</span><span class="p">:</span><span class="mf">11890.5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"margin"</span><span class="p">:</span><span class="mf">0.0013</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverage_x"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"uPNL"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"uPNL_ROE"</span><span class="p">:</span><span class="mf">10.91</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rPNL"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rl"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cl"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"im"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mm"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.5000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ml"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.67</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marginsettings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='my-order-snapshot'>My Order (Snapshot)</h2>
-<p>Command: <code>{ &quot;myorderbook&quot;: &quot; &quot; }</code></p>
+</span></code></pre></div><h2 id='position'>Position</h2>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;positions:XBTUSDT&quot;]}</code></p>
 
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b38ec35d-d67d-4cfe-8890-d4cfccda724a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00022314</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"collateral_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entry_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9041.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mark_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">8962.86</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liq_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9411.88</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002962</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leverage_x"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uPNL"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000194</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uPNL_ROE"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rPNL"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000002</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"closed"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positions"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div><h2 id='my-order-snapshot'>My Order (Snapshot)</h2>
 <p>To filter your orderbook by contract, please include the contract symbol in the command, eg:</p>
 
-<p>Command: <code>{ &quot;myorderbook&quot;: &quot;BTCUSD&quot; }</code></p>
+<p>Command: <code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;myorders:XBTUSDT&quot;]}</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"myorders_snapshot"</span><span class="p">:[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">                                </span><span class="err">//contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592831064637</span><span class="p">,</span><span class="w">                            </span><span class="err">//</span><span class="w"> </span><span class="err">acceptance</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e7eea6-d2c5-4106-8e77-481eb41de0d7"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">OrderID</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37E1E7C53842BD"</span><span class="p">,</span><span class="w">                          </span><span class="err">//</span><span class="w"> </span><span class="err">UserID</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">                                      </span><span class="err">//</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">                                    </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                                         </span><span class="err">//</span><span class="w"> </span><span class="err">remaining</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">                                       </span><span class="err">//</span><span class="w"> </span><span class="err">order-side</span><span class="w"> </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="err">Sell</span><span class="p">,</span><span class="w"> </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="err">Buy</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">                                       </span><span class="err">//</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                                     </span><span class="err">//</span><span class="w"> </span><span class="err">Status</span><span class="w">
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">Time</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">Force</span><span class="w">
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filled"</span><span class="p">,</span><span class="w">                               </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">detailed</span><span class="w"> </span><span class="err">Status</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00011058</span><span class="p">,</span><span class="w">                                </span><span class="err">//</span><span class="w"> </span><span class="err">Value</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0</span><span class="p">,</span><span class="w">                                   </span><span class="err">//</span><span class="w"> </span><span class="err">Fill</span><span class="w"> </span><span class="err">Price</span><span class="w">
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reduce"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">                                     </span><span class="err">//</span><span class="w"> </span><span class="err">trigger</span><span class="w"> </span><span class="err">type</span><span class="w">
+      </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                             
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">                            
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">                           
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                            
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                       
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">                       
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">                
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">               
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">                         
-      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ehj14f7-6h71-48af-8h0b-6a45avf4590f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592830820512</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c174b30b-9d13-4067-921e-2d837a2afb6c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37E1E7C53842BD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">99999.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-9'>Response</h3>
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00100001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reduce"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorders"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div><h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10794,35 +10777,41 @@ Authentication is required for user data stream
 </tr>
 </tbody></table>
 <h2 id='my-order-ticker'>My Order (Ticker)</h2>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;myorders:XBTUSDT&quot;] }</code></p>
+
 <blockquote>
 <p>Example Response</p>
 
 <p>// One item per match and multiple items per snapshot on group change.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"myorders_ticker"</span><span class="p">:[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592834247533</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78307e2a-9cfe-40e2-bf1e-8f7650133c52"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37E1E7C53842BD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">99999.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trg"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-10'>Response</h3>
+      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00100001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reduce"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorders"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div><h3 id='response-9'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10898,7 +10887,7 @@ Authentication is required for user data stream
 <td>Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10923,129 +10912,117 @@ Authentication is required for user data stream
 </tr>
 </tbody></table>
 <h2 id='my-trades-snapshot'>My Trades (Snapshot)</h2>
-<p>Command: <code>{ &quot;mytrades&quot;: &quot;BTCUSD&quot;</code></p>
+<p>Command: <code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;mytrades:XBTUSDT&quot;] }</code></p>
 
 <p>To filter your trades by contract, please include the contract symbol in the command, eg:</p>
 
-<p>Command: <code>{ &quot;mytrades&quot;: &quot;BTCUSD&quot; }</code></p>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592831064</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08e7eea6-d2c5-4106-8e77-481eb41de0d7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000000000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.000000000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">9043.0000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0000000100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rpnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000000000</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592830673</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13f88c45-bd1f-4405-b435-2952dd3bfa5c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000000000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9040.000000000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">9040.0000000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0000000100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rpnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000000000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytrades"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div><h2 id='my-trades-ticker'>My Trades (Ticker)</h2>
+<p>Command:<code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;mytrades:XBTUSDT&quot;] }</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"mytrades_snapshot"</span><span class="p">:[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">                             
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">   
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">   
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">  
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">  
-  </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ehj14f7-6h71-48af-8h0b-6a45avf4590f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592830673</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13f88c45-bd1f-4405-b435-2952dd3bfa5c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='my-trades-ticker'>My Trades (Ticker)</h2>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"mytrades_ticker"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">                            
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9eavd4f7-6a71-48ai-82ub-6a45aj645k0f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">    
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">           
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">9040.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">9040.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">  
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accepted"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583409427176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ehj14f7-6h71-48af-8h0b-6a45avf4590f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37FB2199FDF244"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rpnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytrades"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='balances'>Balances</h2>
-<p>Command: <code>{&quot;balance&quot;: &quot;BTC&quot; / &quot;ALL&quot;</code></p>
+<p>Command: <code>{ &quot;op&quot;: &quot;subscribe/query&quot;, &quot;args&quot;: [&quot;balances:BTC&quot;]}</code></p>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"balance"</span><span class="p">:</span><span class="mf">202010.41097504</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bonus"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"upnl"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"margin"</span><span class="p">:</span><span class="mf">202010.41097504</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"position"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"order"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"available"</span><span class="p">:</span><span class="mf">202010.41097504</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"breakdown"</span><span class="p">:</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BTCUSD"</span><span class="p">:</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"upnl"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"position"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="mf">0.0</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"XBTM20"</span><span class="p">:</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"upnl"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"position"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="mf">0.0</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">201974.84537896</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.80966297</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000174</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mf">201975.65504367</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002942</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00012522</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mf">201975.65488903</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"XBTM20"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"upnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"XBTUSD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"upnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000174</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002942</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00012522</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"balances"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 </span></code></pre></div><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
