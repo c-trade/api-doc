@@ -41,10 +41,10 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
     "code": 100,
     "message": "Success",
     "data": {
-      "XBT (Bitcoin)": [
+      "BTC": [
         {
           "name": "BTCUSD",
-          "description": "BTCUSD is a XBT/USD perpetual contract priced on the .BXBT Index. Each contract is worth 1 USD of Bitcoin. \n\nFunding is paid and received every 8 hours. The next payout event is at 5:30 PM UTC+5:30.",
+          "description": "BTCUSD is a BTC/USD perpetual contract priced on the .BXBT Index. Each contract is worth 1 USD of Bitcoin. \n\nFunding is paid and received every 8 hours. The next payout event is at 5:30 PM UTC+5:30.",
           "type": "InversePerpetual",
           "expiryTS": 0,
           "settledIn": "BTC",
@@ -56,55 +56,8 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
           "takerFee": 0.011,
           "maxSize": 10000000,
           "minSize": 1
-        },
-        {
-          "name": "XBTH20",
-          "description": "XBTH20 is a XBT/USD futures contract settling on the .BXBT30M Index. Each contract is worth 1 USD of Bitcoin. This contract is ideal for speculation.",
-          "type": "Future",
-          "expiryTS": 1584642600000,
-          "settledIn": "ETH",
-          "dependentOnIndex": ".BXBT",
-          "underlyingBaseCurrency": "BTC",
-          "underlyingQuoteCurrency": "USD",
-          "minPriceINC": 0.5,
-          "makerFee": -0.025,
-          "takerFee": 0.075,
-          "maxSize": 100000,
-          "minSize": 1
-        },
-        {
-          "name": "XBTM20",
-          "description": "XBTM20 is a XBT/USD futures contract settling on the .BXBT30M Index. Each contract is worth 1 USD of Bitcoin. This contract is ideal for speculation.",
-          "type": "InverseFuture",
-          "expiryTS": 1593109800000,
-          "settledIn": "BTC",
-          "dependentOnIndex": ".BXBT",
-          "underlyingBaseCurrency": "BTC",
-          "underlyingQuoteCurrency": "USD",
-          "minPriceINC": 1,
-          "makerFee": -0.025,
-          "takerFee": 0.075,
-          "maxSize": 1000000,
-          "minSize": 1
         }
       ],
-      "gg": [
-        {
-          "name": "TEST",
-          "description": "testing",
-          "type": "Perpetual",
-          "expiryTS": 0,
-          "settledIn": "ETH",
-          "dependentOnIndex": ".USDBON",
-          "underlyingBaseCurrency": "EE",
-          "underlyingQuoteCurrency": "E",
-          "minPriceINC": 1,
-          "makerFee": 1,
-          "takerFee": 1,
-          "maxSize": 100000,
-          "minSize": 1
-        }
-      ]
     }
   }
 }
@@ -9581,7 +9534,7 @@ unsubscribe |
 
 Events | Instruments 
 --------- | ----------- 
-trades | XBTUSD
+trades | BTCUSD
 orderbook | BTC 
 mytrades | 
 myorders | 
@@ -9691,8 +9644,38 @@ Command:`{ "op": "subscribe", "args": ["orderbook:BTCUSD"] }`
       }
     },
   "event": "orderbook",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
 }
+```
+
+## Orderbook_L25
+
+Command:`{ "op": "subscribe", "args": ["orderbook_L25:BTCUSD"] }`
+
+> Example Response
+> //First 25 level of orderbook for BTCUSD
+
+```json
+  {
+    "data": {
+      "ts": 1593158809487605173,
+      "type": "ticker",
+      "buy": {
+        "inserted": {},
+        "changed": {
+          "9037": 13946.0
+        },
+        "deleted": {}
+      },
+      "sell": {
+        "inserted": {},
+        "changed": {},
+        "deleted": {}
+      }
+    },
+    "event": "orderbook_L25",
+    "instrument": "BTCUSD"
+  }
 ```
 
 ## Trade (Snapshot)
@@ -9753,7 +9736,7 @@ Command:`{ "contract": "BTCUSD"}`
       }
     ],
     "event": "trades",
-    "instrument": "XBTUSD"
+    "instrument": "BTCUSD"
   }
 }
 ```
@@ -9768,7 +9751,7 @@ s | Order-side "S": Sell, "B": Buy
 
 ## Chart (Ticker)
 
-Command:`{ "op": "subscribe", "args": ["chart_1m:XBTUSDT"] }`
+Command:`{ "op": "subscribe", "args": ["chart_1m:BTCUSD"] }`
 
 > Example Response
 
@@ -9785,13 +9768,13 @@ Command:`{ "op": "subscribe", "args": ["chart_1m:XBTUSDT"] }`
     0.0             // volume
   ],
   "event": "chart_1m",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
 }
 ```
 
 ## Mark Price & Index Price
 
-Command:`{ "op": "subscribe", "args": ["markprice:XBTUSDT"] }`
+Command:`{ "op": "subscribe", "args": ["markprice:BTCUSD"] }`
 
 > Example Response
 
@@ -9803,7 +9786,7 @@ Command:`{ "op": "subscribe", "args": ["markprice:XBTUSDT"] }`
   "T": 1592831293000  // timestamp
   },
 "event": "markprice",
-"instrument": "XBTUSD"
+"instrument": "BTCUSD"
 }
 ```
 
@@ -9816,7 +9799,7 @@ T | Timestamp in milliseconds
 
 ## Premium Index 
 
-Command: `{ "op": "subscribe", "args": ["premiumindex:XBTUSDT"] }`
+Command: `{ "op": "subscribe", "args": ["premiumindex:BTCUSD"] }`
 
 > Example Response
 
@@ -9827,7 +9810,7 @@ Command: `{ "op": "subscribe", "args": ["premiumindex:XBTUSDT"] }`
     "T": 1592890620000
   },
   "event": "premiumindex",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
 }
 ```
 
@@ -9839,7 +9822,7 @@ t | Timestamp
 
 ## Funding Rate 
 
-Command: `{ "op": "subscribe", "args": ["fundingrate:XBTUSDT"] }`
+Command: `{ "op": "subscribe", "args": ["fundingrate:BTCUSD"] }`
 
 > Example Response
 
@@ -9852,7 +9835,7 @@ Command: `{ "op": "subscribe", "args": ["fundingrate:XBTUSDT"] }`
     "T": 1592812800000
     },
   "event": "fundingrate",
-  "instrument": "XBTUSD",
+  "instrument": "BTCUSD",
   "op": "query"
 }
 ```
@@ -9862,6 +9845,78 @@ FieldName | Short Description
 --------- | ----------- 
 R | Funding rate
 T | Timestamp 
+
+## Funding Rate Prediction
+
+Command: `{ "op": "subscribe", "args": ["fundingrate_prediction:BTCUSD"] }`
+
+> Example Response
+
+> // One item per match and multiple items per snapshot on group change.
+
+```json
+{
+  "data": {
+    "R": -0.03040413,
+    "T": 1592812800000,
+    "NT": 1595030400000,
+    },
+  "event": "fundingrate_prediction",
+  "instrument": "BTCUSD",
+  "op": "query"
+}
+```
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+R | Funding rate
+T | Timestamp 
+NT | Next funding settlement timestamp
+
+## Stats 
+
+Command: `{ "op": "subscribe", "args": ["stats:BTCUSD"] }`
+
+> Example Response
+
+> // Return 24 hours high, 24 low and 24 hour turnover and open interest
+
+```json
+{
+  "data": {
+    "volume": 250844,
+    "turn_over": 27.74820594290235390496,
+    "max": 9045.0,
+    "min": 9037.0,
+    "change": 0.0,
+    "open_interest": 1145386,
+    "updated_at": 1593162835
+  },
+  "event": "stats",
+  "instrument": "BTCUSD"
+}
+```
+
+## Notification 
+
+Command: `{ "op": "subscribe", "args": ["notification"] }`
+
+> Example Response
+
+System-wide notifications
+
+```json
+{
+    "data": {
+      "type": "Success",
+      "title": "Order Filled",
+      "content": "10 contract of BTCUSD bought at 9045. The order has fully filled",
+      "time": "10:09:52"
+    },
+    "event": "notification"
+}
+```
 
 # WebSocket User Data Stream
 
@@ -9892,7 +9947,7 @@ Command: `{ "contract": "BTCUSD" }`
 
 ## User Margin 
 
-Command: `{ "op": "subscribe", "args": ["marginsettings:XBTUSDT"] }`
+Command: `{ "op": "subscribe", "args": ["marginsettings:BTCUSD"] }`
 
 > Example Response
 
@@ -9906,13 +9961,13 @@ Command: `{ "op": "subscribe", "args": ["marginsettings:XBTUSDT"] }`
     "ml": 16.67
   },
   "event": "marginsettings",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
 }
 ```
 
 ## Position
 
-Command: `{ "op": "subscribe", "args": ["positions:XBTUSDT"]}`
+Command: `{ "op": "subscribe", "args": ["positions:BTCUSD"]}`
 
 > Example Response
 
@@ -9922,7 +9977,7 @@ Command: `{ "op": "subscribe", "args": ["positions:XBTUSDT"]}`
     "open": [
     {
         "pid": "b38ec35d-d67d-4cfe-8890-d4cfccda724a",
-        "sym": "XBTUSD",
+        "sym": "BTCUSD",
         "size": -2,
         "value": 0.00022314,
         "collateral_currency": "BTC",
@@ -9939,7 +9994,7 @@ Command: `{ "op": "subscribe", "args": ["positions:XBTUSDT"]}`
     "closed": []
     },
   "event": "positions",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
   }
 }
 ```
@@ -9948,7 +10003,7 @@ Command: `{ "op": "subscribe", "args": ["positions:XBTUSDT"]}`
 
 To filter your orderbook by contract, please include the contract symbol in the command, eg:
 
-Command: `{ "op": "query", "args": ["myorders:XBTUSDT"]}`
+Command: `{ "op": "query", "args": ["myorders:BTCUSD"]}`
 
 > Example Response
 
@@ -9956,7 +10011,7 @@ Command: `{ "op": "query", "args": ["myorders:XBTUSDT"]}`
 {
   "data": [
   {
-      "sym": "XBTUSD",                                //contract name
+      "sym": "BTCUSD",                                //contract name
       "ts": 1592831064637,                            // acceptance timestamp
       "o": "08e7eea6-d2c5-4106-8e77-481eb41de0d7",    // OrderID
       "u": "37E1E7C53842BD",                          // UserID
@@ -9976,7 +10031,7 @@ Command: `{ "op": "query", "args": ["myorders:XBTUSDT"]}`
       "trgtyp": 0                                     // trigger type
       },
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1592830820512,
       "o": "c174b30b-9d13-4067-921e-2d837a2afb6c",
       "u": "37E1E7C53842BD",
@@ -9997,7 +10052,7 @@ Command: `{ "op": "query", "args": ["myorders:XBTUSDT"]}`
       },
   ],
   "event": "myorders",
-  "instrument": "XBTUSD",
+  "instrument": "BTCUSD",
   "op": "query"
   }
 }
@@ -10026,7 +10081,7 @@ trgtyp | Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)
 
 ## My Order (Ticker)
 
-Command: `{ "op": "subscribe", "args": ["myorders:XBTUSDT"] }`
+Command: `{ "op": "subscribe", "args": ["myorders:BTCUSD"] }`
 
 > Example Response
 
@@ -10036,7 +10091,7 @@ Command: `{ "op": "subscribe", "args": ["myorders:XBTUSDT"] }`
 {
   "data": [
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1592834247533,
       "o": "78307e2a-9cfe-40e2-bf1e-8f7650133c52",
       "u": "37E1E7C53842BD",
@@ -10057,7 +10112,7 @@ Command: `{ "op": "subscribe", "args": ["myorders:XBTUSDT"] }`
       }
     ],
     "event": "myorders",
-    "instrument": "XBTUSD"
+    "instrument": "BTCUSD"
   }
 }
 ```
@@ -10093,7 +10148,7 @@ s | Order-side "S": Sell, "B": Buy
 
 ## My Trades (Snapshot)
 
-Command: `{ "op": "query", "args": ["mytrades:XBTUSDT"] }`
+Command: `{ "op": "query", "args": ["mytrades:BTCUSD"] }`
 
 To filter your trades by contract, please include the contract symbol in the command, eg:
 
@@ -10103,7 +10158,7 @@ To filter your trades by contract, please include the contract symbol in the com
 {
   "data": [
   {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1592831064,
       "o": "08e7eea6-d2c5-4106-8e77-481eb41de0d7",
       "q": 1.0,
@@ -10120,7 +10175,7 @@ To filter your trades by contract, please include the contract symbol in the com
       "rpnl": 0.0000000000
       },
       {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1592830673,
       "o": "13f88c45-bd1f-4405-b435-2952dd3bfa5c",
       "q": 1.0,
@@ -10138,7 +10193,7 @@ To filter your trades by contract, please include the contract symbol in the com
       }
   ],
   "event": "mytrades",
-  "instrument": "XBTUSD",
+  "instrument": "BTCUSD",
   "op": "query"
   }
 }
@@ -10146,7 +10201,7 @@ To filter your trades by contract, please include the contract symbol in the com
 
 ## My Trades (Ticker)
 
-Command:`{ "op": "query", "args": ["mytrades:XBTUSDT"] }`
+Command:`{ "op": "query", "args": ["mytrades:BTCUSD"] }`
 
 > Example Response
 
@@ -10154,7 +10209,7 @@ Command:`{ "op": "query", "args": ["mytrades:XBTUSDT"] }`
 {
   "data": [
     {
-      "sym": "XBTUSD",
+      "sym": "BTCUSD",
       "ts": 1592830673,
       "o": "13f88c45-bd1f-4405-b435-2952dd3bfa5c",
       "q": 1.0,
@@ -10172,7 +10227,7 @@ Command:`{ "op": "query", "args": ["mytrades:XBTUSDT"] }`
     }
   ],
   "event": "mytrades",
-  "instrument": "XBTUSD"
+  "instrument": "BTCUSD"
 }
 ```
 
@@ -10199,7 +10254,7 @@ Command: `{ "op": "subscribe/query", "args": ["balances:BTC"]}`
         "position": 0.0,
         "order": 0.0
         },
-      "XBTUSD": {
+      "BTCUSD": {
         "upnl": 0.00000174,
         "position": 0.00002942,
         "order": 0.00012522
