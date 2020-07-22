@@ -44,7 +44,7 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
       "BTC": [
         {
           "name": "BTCUSD",
-          "description": "BTCUSD is a BTC/USD perpetual contract priced on the .BXBT Index. Each contract is worth 1 USD of Bitcoin. \n\nFunding is paid and received every 8 hours. The next payout event is at 5:30 PM UTC+5:30.",
+          "description": "A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. Funding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time.",
           "type": "InversePerpetual",
           "expiryTS": 0,
           "settledIn": "BTC",
@@ -72,53 +72,65 @@ This endpoint retrieves contracts menu.
 ## Get Contract Detail
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/contracts/ETHBTC' \
+curl --location --request GET 'https://api.c-trade.com/public/contracts/BTCUSD' \
 --header 'Content-Type: application/json'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "success": {
-    "code": 100,
-    "message": "Success",
-    "data": {
-      "name": "ETHBTC",
-      "aliasName": "EthBitcoin",
-      "groupName": "Bitcoin",
-      "underlyingQuoteCurrency": "BTC",
-      "underlyingBaseCurrency": "ETH",
-      "type": "Vanila Futures",
-      "currentPrice": 0,
-      "fairPrice": 0,
-      "changePerc": 0,
-      "initialMargin": 50,
-      "maintainceMargin": 25,
-      "maxLeverage": 1,
-      "makerFee": 0,
-      "takerFee": 0,
-      "settlementFee": 0,
-      "maxOrderQuantity": 0,
-      "minOrderQuantity": 0,
-      "maxPrice": 0,
-      "minPrice": 0,
-      "dailyTurnOver": 0,
-      "totalVolume": 0,
-      "refrenceUrl": "https://example.com/",
-      "nextFundingTS": 946684800000,
-      "interestBase": 0,
-      "interestQuote": 0,
-      "premium": 0,
-      "longFundingRate": 0,
-      "shortFundingRate": 0,
-      "fundingInterval": 6,
-      "addedOnTS": 946684800000,
-      "validTillTS": 32503593600000,
-      "status": false
-    }
-  }
-}
+{"success":
+  {"code":100,
+  "message":"Success",
+  "data":
+    {"name":"BTCUSD",
+    "description":"A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. \n\nFunding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time.",
+    "groupName":"BTC",
+    "underlyingQuoteCurrency":"USD",
+    "underlyingBaseCurrency":"BTC",
+    "baseBON":".BTCBON",
+    "quoteBON":".USDBON",
+    "settledIn":"BTC",
+    "type":2,
+    "makerFee":-0.0250,
+    "takerFee":0.0750,
+    "settlementFee":0.0000,
+    "maxPrice":1000000.0000000000,
+    "minPrice":0.5000000000,
+    "refrenceUrl":"",
+    "nextFundingTS":946684800000,
+    "premium":0.0000,
+    "longFundingRate":0.0000,
+    "shortFundingRate":0.0000,
+    "fundingInterval":480,
+    "addedOnTS":0,
+    "futureSettlementTS":0,
+    "status":true,
+    "dependentOnIndex":".BTCUSD",
+    "sortOrder":1,
+    "minSize":1,
+    "maxSize":1000000,
+    "markPriceDecimalScale":2,
+    "fundingRateDecimalScale":8,
+    "impactMarginSize":0.1000,
+    "strike":0.00000000,
+    "isCall":false,
+    "settlementIndex":"",
+    "fundingIntervalOffset":0,
+    "adlPerc":50.0000,
+    "adlMinBalance":-2.0000000000,
+    "markPriceInterval":5,
+    "minRiskLimit":0,
+    "tbl_CurrencySetting_SettledIn":null,
+    "tbl_Index_Master_DependentOnIndex":null,
+    "tbl_ReferralComissions":null,
+    "tbl_Positions":null,
+    "tbl_PremiumIndices_Master":null,
+    "tbl_MarkPrices":null,
+    "tbl_FundingRates":null,
+    "tbl_RiskLimits_Master":null,
+    "tbl_Customers_RiskLimit":null,
+    "tbl_Customers_Leverage":null}}}
 ```
 
 This endpoint retrieves a specific contract detail.
@@ -136,7 +148,7 @@ contractsymbol | The symbol of the contract
 ## Get Charts
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/charts/ETHBTC/1M?limit=100&ts=1574813820000'
+curl --location --request GET 'https://api.c-trade.com/public/charts/BTCUSD/1M?limit=100&ts=1574813820000'
 ```
 
 > The above command returns JSON structured like this:
@@ -215,51 +227,26 @@ ts | false | From timestamp in milliseconds, default = current time
 ## Get Indices List
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices-hierarchy' \
+curl --location --request GET 'https://api.c-trade.com/public/indices-menu' \
 --header 'Content-Type: application/json'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "success": {
-    "code": 100,
-    "message": "Success",
-    "data": {
-      "ASED": [
-        {
-          "name": "ASED",
-          "aliasName": "ASED"
-        }
-      ],
-      "AESR": [
-        {
-          "name": "AESR",
-          "aliasName": "AESR"
-        }
-      ],
-      "LTC Group": [
-        {
-          "name": "LTCUTC",
-          "aliasName": "LTC Name"
-        },
-        {
-          "name": "LTCWTC",
-          "aliasName": "LTC Name"
-        }
-      ],
-      "Bitcoin": [
-        {
-          "name": "LTCBTC",
-          "aliasName": "LtcBitcoin"
-        },
-        {
-          "name": "ETHBTC",
-          "aliasName": "EthBitcoin"
-        }
-      ]
-    }
+{"success":
+  {"code":100,
+    "message":"Success",
+    "data":
+      {"BTC":
+        [{"ticker":".BTCUSD",
+        "name":"Bitcoin USD Spot",
+        "type":"Base",
+        "description":"Bitcoin USD Price Index",
+        "parent":null,
+        "twapInterval":1,
+        "addedOnTS":1594909318794}
+      ]}
   }
 }
 ```
@@ -929,7 +916,7 @@ todo | todo
 ## Get Index Data
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices/ETHBTC/1?limit=500&ts=1575465605000'
+curl --location --request GET 'https://api.c-trade.com/public/indices/BTCUSD/1?limit=500&ts=1575465605000'
 ```
 
 > The above command returns JSON structured like this:
@@ -1468,7 +1455,7 @@ ts | false | From timestamp in milliseconds, default = current time
 ## Get Index Chart OHLC
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices-charts/ETHBTC/1M?limit=1000&ts=1575465605000'
+curl --location --request GET 'https://api.c-trade.com/public/indices-charts/BTCUSD/1M?limit=1000&ts=1575465605000'
 ```
 
 > The above command returns JSON structured like this:
