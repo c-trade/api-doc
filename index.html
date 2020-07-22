@@ -239,7 +239,7 @@
                     <a href="#get-charts" class="toc-h2 toc-link" data-title="Get Charts">Get Charts</a>
                   </li>
                   <li>
-                    <a href="#get-indices-list" class="toc-h2 toc-link" data-title="Get Indices List">Get Indices List</a>
+                    <a href="#get-funding-history" class="toc-h2 toc-link" data-title="Get funding history">Get funding history</a>
                   </li>
                   <li>
                     <a href="#get-indices-details" class="toc-h2 toc-link" data-title="Get Indices Details">Get Indices Details</a>
@@ -592,41 +592,61 @@
 <td>From timestamp in milliseconds, default = current time</td>
 </tr>
 </tbody></table>
-<h2 id='get-indices-list'>Get Indices List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices-menu'</span> <span class="se">\</span>
+<h2 id='get-funding-history'>Get funding history</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/funding-history'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this:
+by default user will get the first 100 reverse results</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"success"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"code"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-      </span><span class="p">{</span><span class="nl">"BTC"</span><span class="p">:</span><span class="w">
-        </span><span class="p">[{</span><span class="nl">"ticker"</span><span class="p">:</span><span class="s2">".BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Bitcoin USD Spot"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"Base"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Bitcoin USD Price Index"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"parent"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"twapInterval"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"addedOnTS"</span><span class="p">:</span><span class="mi">1594909318794</span><span class="p">}</span><span class="w">
-      </span><span class="p">]}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"contractName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00010000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595404800000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"contractName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00010000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595376000000</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves indices list.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-hierarchy</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='request-payload'>Request Payload</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>FieldName</th>
+<th>Mandatory</th>
+<th>Valid Values</th>
+<th>Default Values</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>contractsymbol</td>
-<td>The symbol of the contract</td>
+<td>timestamp</td>
+<td>YES</td>
+<td>BTCUSD</td>
+<td>No value</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>NO</td>
+<td>Number of records</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td>NO</td>
+<td>Valiid Timestamp</td>
+<td>0</td>
 </tr>
 </tbody></table>
 <h2 id='get-indices-details'>Get Indices Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices-detailed-breakdown/.BXBT/1'</span>
@@ -1217,7 +1237,7 @@
 <p>This endpoint retrieves data of a specific index.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8269,7 +8289,7 @@
 <p>This endpoint retrieves index chart OHLC of a specific index.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8526,7 +8546,7 @@
 <p>This endpoint retrieves a specific order book.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/order-book/&lt;contractsymbol&gt;/&lt;ordernumber&gt;</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8639,7 +8659,7 @@ signature = HMAC(signature_message)
 <p><code>POST https://api.c-trade.com/api/new-order</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
-<h3 id='request-payload'>Request Payload</h3>
+<h3 id='request-payload-2'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -8726,7 +8746,7 @@ signature = HMAC(signature_message)
 <p>This endpoint cancel a new order</p>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-order</code></p>
-<h3 id='request-payload-2'>Request Payload</h3>
+<h3 id='request-payload-3'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -8769,7 +8789,7 @@ signature = HMAC(signature_message)
 <p><code>POST https://api.c-trade.com/api/all-orders</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
-<h3 id='request-payload-3'>Request Payload</h3>
+<h3 id='request-payload-4'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9081,7 +9101,7 @@ signature = HMAC(signature_message)
 <p>This endpoint post my trade history  //todo</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/my-trade-history</code></p>
-<h3 id='request-payload-4'>Request Payload</h3>
+<h3 id='request-payload-5'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9188,7 +9208,7 @@ signature = HMAC(signature_message)
 <p>This endpoint post open orders  //todo</p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/open-orders</code></p>
-<h3 id='request-payload-5'>Request Payload</h3>
+<h3 id='request-payload-6'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9241,7 +9261,7 @@ signature = HMAC(signature_message)
 <p>This endpoint get wallet balance</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/wallet-balance</code></p>
-<h3 id='request-payload-6'>Request Payload</h3>
+<h3 id='request-payload-7'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9312,7 +9332,7 @@ signature = HMAC(signature_message)
 <p>This endpoint cancel multi orders.</p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-multi-orders</code></p>
-<h3 id='request-payload-7'>Request Payload</h3>
+<h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9367,7 +9387,7 @@ signature = HMAC(signature_message)
 <p>This endpoint cancel all orders.</p>
 <h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
-<h3 id='request-payload-8'>Request Payload</h3>
+<h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9514,7 +9534,7 @@ signature = HMAC(signature_message)
 <p>This endpoint place multi orders.</p>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/place-all-orders</code></p>
-<h3 id='request-payload-9'>Request Payload</h3>
+<h3 id='request-payload-10'>Request Payload</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
