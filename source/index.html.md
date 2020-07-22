@@ -228,30 +228,35 @@ Parameter | Required | Description
 limit | false | Limit for data size per page, default = 500, max = 1000
 ts | false | From timestamp in milliseconds, default = current time
 
-## Get Indices List
+
+## Get funding history
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices-menu' \
+curl --location --request GET 'https://api.c-trade.com/public/funding-history' \
 --header 'Content-Type: application/json'
 ```
 
 > The above command returns JSON structured like this:
+> by default user will get the first 100 reverse results
 
 ```json
-{"success":
-  {"code":100,
-    "message":"Success",
-    "data":
-      {"BTC":
-        [{"ticker":".BTCUSD",
-        "name":"Bitcoin USD Spot",
-        "type":"Base",
-        "description":"Bitcoin USD Price Index",
-        "parent":null,
-        "twapInterval":1,
-        "addedOnTS":1594909318794}
-      ]}
-  }
+{
+    "success": {
+        "code": 100,
+        "message": "Success",
+        "data": [
+            {
+                "contractName": "BTCUSD",
+                "rate": 0.00010000,
+                "ts": 1595404800000
+            },
+            {
+                "contractName": "BTCUSD",
+                "rate": 0.00010000,
+                "ts": 1595376000000
+            }
+        ]
+    }
 }
 ```
 
@@ -261,11 +266,13 @@ This endpoint retrieves indices list.
 
 `GET https://api.c-trade.com/public/indices-hierarchy`
 
-### URL Parameters
+### Request Payload
 
-Parameter | Description
---------- | -----------
-contractsymbol | The symbol of the contract
+FieldName | Mandatory | Valid Values | Default Values
+--------- | ----------- | ----------- | -----------
+timestamp | YES | BTCUSD | No value
+recvWindow | NO	| Number of records | 100
+Contract | NO | Valiid Timestamp | 0
 
 ## Get Indices Details
 
