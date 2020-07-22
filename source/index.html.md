@@ -53,7 +53,7 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
           "underlyingQuoteCurrency": "USD",
           "minPriceINC": 0.5,
           "makerFee": -0.025,
-          "takerFee": 0.011,
+          "takerFee": 0.075,
           "maxSize": 10000000,
           "minSize": 1
         }
@@ -79,58 +79,62 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts/BTCUSD' 
 > The above command returns JSON structured like this:
 
 ```json
-{"success":
-  {"code":100,
-  "message":"Success",
-  "data":
-    {"name":"BTCUSD",
-    "description":"A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. \n\nFunding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time.",
-    "groupName":"BTC",
-    "underlyingQuoteCurrency":"USD",
-    "underlyingBaseCurrency":"BTC",
-    "baseBON":".BTCBON",
-    "quoteBON":".USDBON",
-    "settledIn":"BTC",
-    "type":2,
-    "makerFee":-0.0250,
-    "takerFee":0.0750,
-    "settlementFee":0.0000,
-    "maxPrice":1000000.0000000000,
-    "minPrice":0.5000000000,
-    "refrenceUrl":"",
-    "nextFundingTS":946684800000,
-    "premium":0.0000,
-    "longFundingRate":0.0000,
-    "shortFundingRate":0.0000,
-    "fundingInterval":480,
-    "addedOnTS":0,
-    "futureSettlementTS":0,
-    "status":true,
-    "dependentOnIndex":".BTCUSD",
-    "sortOrder":1,
-    "minSize":1,
-    "maxSize":1000000,
-    "markPriceDecimalScale":2,
-    "fundingRateDecimalScale":8,
-    "impactMarginSize":0.1000,
-    "strike":0.00000000,
-    "isCall":false,
-    "settlementIndex":"",
-    "fundingIntervalOffset":0,
-    "adlPerc":50.0000,
-    "adlMinBalance":-2.0000000000,
-    "markPriceInterval":5,
-    "minRiskLimit":0,
-    "tbl_CurrencySetting_SettledIn":null,
-    "tbl_Index_Master_DependentOnIndex":null,
-    "tbl_ReferralComissions":null,
-    "tbl_Positions":null,
-    "tbl_PremiumIndices_Master":null,
-    "tbl_MarkPrices":null,
-    "tbl_FundingRates":null,
-    "tbl_RiskLimits_Master":null,
-    "tbl_Customers_RiskLimit":null,
-    "tbl_Customers_Leverage":null}}}
+{
+    "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+            "name": "BTCUSD",
+            "description": "A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. \n\nFunding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time.",
+            "groupName": "BTC",
+            "underlyingQuoteCurrency": "USD",
+            "underlyingBaseCurrency": "BTC",
+            "baseBON": ".BTCBON",
+            "quoteBON": ".USDBON",
+            "settledIn": "BTC",
+            "type": 2,
+            "makerFee": -0.0250,
+            "takerFee": 0.0750,
+            "settlementFee": 0.0000,
+            "maxPrice": 1000000.0000000000,
+            "minPrice": 0.5000000000,
+            "refrenceUrl": "",
+            "nextFundingTS": 946684800000,
+            "premium": 0.0000,
+            "longFundingRate": 0.0000,
+            "shortFundingRate": 0.0000,
+            "fundingInterval": 480,
+            "addedOnTS": 0,
+            "futureSettlementTS": 0,
+            "status": true,
+            "dependentOnIndex": ".BTCUSD",
+            "sortOrder": 1,
+            "minSize": 1,
+            "maxSize": 1000000,
+            "markPriceDecimalScale": 2,
+            "fundingRateDecimalScale": 8,
+            "impactMarginSize": 0.1000,
+            "strike": 0.00000000,
+            "isCall": false,
+            "settlementIndex": "",
+            "fundingIntervalOffset": 0,
+            "adlPerc": 50.0000,
+            "adlMinBalance": -2.0000000000,
+            "markPriceInterval": 5,
+            "minRiskLimit": 0,
+            "tbl_CurrencySetting_SettledIn": null,
+            "tbl_Index_Master_DependentOnIndex": null,
+            "tbl_ReferralComissions": null,
+            "tbl_Positions": null,
+            "tbl_PremiumIndices_Master": null,
+            "tbl_MarkPrices": null,
+            "tbl_FundingRates": null,
+            "tbl_RiskLimits_Master": null,
+            "tbl_Customers_RiskLimit": null,
+            "tbl_Customers_Leverage": null
+        }
+    }
+}
 ```
 
 This endpoint retrieves a specific contract detail.
@@ -273,632 +277,54 @@ curl --location --request GET 'https://api.c-trade.com/public/indices-detailed-b
 
 ```json
 {
-  "success": {
-    "code": 100,
-    "message": "Success",
-    "data": {
-      "composite_breakdown": [
-        {
-          "ts": 1580131620000,
-          "exchange": "okex",
-          "price": 0.0193736667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131620000,
-          "exchange": "kraken",
-          "price": 0.0193803333,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131620000,
-          "exchange": "coinbase",
-          "price": 0.01937,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131620000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131620000,
-          "exchange": "binance",
-          "price": 0.0193796333,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131560000,
-          "exchange": "okex",
-          "price": 0.0193703333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131560000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131560000,
-          "exchange": "coinbase",
-          "price": 0.01937,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131560000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131560000,
-          "exchange": "binance",
-          "price": 0.0193778833,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131500000,
-          "exchange": "okex",
-          "price": 0.0193728333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131500000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131500000,
-          "exchange": "coinbase",
-          "price": 0.0193786667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131500000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131500000,
-          "exchange": "binance",
-          "price": 0.0193794167,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131440000,
-          "exchange": "okex",
-          "price": 0.0193683333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131440000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131440000,
-          "exchange": "coinbase",
-          "price": 0.0193866667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131440000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131440000,
-          "exchange": "binance",
-          "price": 0.0193773667,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131380000,
-          "exchange": "okex",
-          "price": 0.0193775,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131380000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131380000,
-          "exchange": "coinbase",
-          "price": 0.0194003333,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131380000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131380000,
-          "exchange": "binance",
-          "price": 0.0193811667,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131320000,
-          "exchange": "okex",
-          "price": 0.0193793333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131320000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131320000,
-          "exchange": "coinbase",
-          "price": 0.0194036667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131320000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131320000,
-          "exchange": "binance",
-          "price": 0.0193896667,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131260000,
-          "exchange": "okex",
-          "price": 0.0193838333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131260000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131260000,
-          "exchange": "coinbase",
-          "price": 0.019393,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131260000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131260000,
-          "exchange": "binance",
-          "price": 0.0193934,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131200000,
-          "exchange": "okex",
-          "price": 0.0193891667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131200000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131200000,
-          "exchange": "coinbase",
-          "price": 0.0193936667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131200000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131200000,
-          "exchange": "binance",
-          "price": 0.0193959,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131140000,
-          "exchange": "okex",
-          "price": 0.0193968333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131140000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131140000,
-          "exchange": "coinbase",
-          "price": 0.0194013333,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131140000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131140000,
-          "exchange": "binance",
-          "price": 0.0194010833,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131080000,
-          "exchange": "okex",
-          "price": 0.0193973333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131080000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131080000,
-          "exchange": "coinbase",
-          "price": 0.0194011667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131080000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131080000,
-          "exchange": "binance",
-          "price": 0.0194073167,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131020000,
-          "exchange": "okex",
-          "price": 0.0193921667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580131020000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131020000,
-          "exchange": "coinbase",
-          "price": 0.0193941667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580131020000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580131020000,
-          "exchange": "binance",
-          "price": 0.0194010667,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130960000,
-          "exchange": "okex",
-          "price": 0.0193783333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130960000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130960000,
-          "exchange": "coinbase",
-          "price": 0.01937,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130960000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130960000,
-          "exchange": "binance",
-          "price": 0.0193880167,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130900000,
-          "exchange": "okex",
-          "price": 0.01937,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130900000,
-          "exchange": "kraken",
-          "price": 0.019389,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130900000,
-          "exchange": "coinbase",
-          "price": 0.01937,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130900000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130900000,
-          "exchange": "binance",
-          "price": 0.0193811167,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130840000,
-          "exchange": "okex",
-          "price": 0.0193673333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130840000,
-          "exchange": "kraken",
-          "price": 0.019378,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130840000,
-          "exchange": "coinbase",
-          "price": 0.0193796667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130840000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130840000,
-          "exchange": "binance",
-          "price": 0.0193730833,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130780000,
-          "exchange": "okex",
-          "price": 0.019369,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130780000,
-          "exchange": "kraken",
-          "price": 0.01939,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130780000,
-          "exchange": "coinbase",
-          "price": 0.0193798333,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130780000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130780000,
-          "exchange": "binance",
-          "price": 0.0193760333,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130720000,
-          "exchange": "okex",
-          "price": 0.0193716667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130720000,
-          "exchange": "kraken",
-          "price": 0.0193825,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130720000,
-          "exchange": "coinbase",
-          "price": 0.01937,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130720000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130720000,
-          "exchange": "binance",
-          "price": 0.0193776833,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130660000,
-          "exchange": "okex",
-          "price": 0.0193698333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130660000,
-          "exchange": "kraken",
-          "price": 0.01938,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130660000,
-          "exchange": "coinbase",
-          "price": 0.0193756667,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130660000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130660000,
-          "exchange": "binance",
-          "price": 0.01937735,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130600000,
-          "exchange": "okex",
-          "price": 0.0193718333,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130600000,
-          "exchange": "kraken",
-          "price": 0.01938,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130600000,
-          "exchange": "coinbase",
-          "price": 0.0193733333,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130600000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130600000,
-          "exchange": "binance",
-          "price": 0.0193820833,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130540000,
-          "exchange": "okex",
-          "price": 0.0193716667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130540000,
-          "exchange": "kraken",
-          "price": 0.0193801667,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130540000,
-          "exchange": "coinbase",
-          "price": 0.0193715,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130540000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130540000,
-          "exchange": "binance",
-          "price": 0.01938025,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130480000,
-          "exchange": "okex",
-          "price": 0.0193706667,
-          "weightage": 30
-        },
-        {
-          "ts": 1580130480000,
-          "exchange": "kraken",
-          "price": 0.01938,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130480000,
-          "exchange": "coinbase",
-          "price": 0.01938,
-          "weightage": 10
-        },
-        {
-          "ts": 1580130480000,
-          "exchange": "bitfinix",
-          "price": 0.019223,
-          "weightage": 20
-        },
-        {
-          "ts": 1580130480000,
-          "exchange": "binance",
-          "price": 0.0193805167,
-          "weightage": 20
+    "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+            "composite_breakdown": [
+                {
+                    "ts": 1595415300000,
+                    "indexTicker": null,
+                    "exchange": "kraken",
+                    "price": 9344.6000000000,
+                    "weightage": 25.00
+                },
+                {
+                    "ts": 1595415300000,
+                    "indexTicker": null,
+                    "exchange": "gemini",
+                    "price": 9345.6700000000,
+                    "weightage": 0.00
+                },
+                {
+                    "ts": 1595415300000,
+                    "indexTicker": null,
+                    "exchange": "coinbase pro",
+                    "price": 9344.0500000000,
+                    "weightage": 25.00
+                },
+                {
+                    "ts": 1595415300000,
+                    "indexTicker": null,
+                    "exchange": "bittrex",
+                    "price": 9348.3600000000,
+                    "weightage": 25.00
+                },
+                {
+                    "ts": 1595415300000,
+                    "indexTicker": null,
+                    "exchange": "bitstamp",
+                    "price": 9345.7800000000,
+                    "weightage": 25.00
+                },
+            ],
+            "indices_using_this": [],
+            "contracts_using_this": [
+                "BTCUSD"
+            ]
         }
-      ],
-      "indices_using_this": [
-        ".BXBTJPY",
-        ".BXBT30M",
-        ".BXBTJPY30M",
-        ".XBTJPY30M"
-      ],
-      "contracts_using_this": [
-        "TRXH20",
-        "XBTH20",
-        "BCHH20",
-        "EOSH20",
-        "ETHUSD",
-        "ETHH20",
-        "LTCH20",
-        "XRPH20"
-      ]
     }
-  }
-}
-```
+}```
 
 This endpoint retrieves details of a specific index.
 
