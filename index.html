@@ -245,9 +245,6 @@
                     <a href="#get-indices-details" class="toc-h2 toc-link" data-title="Get Indices Details">Get Indices Details</a>
                   </li>
                   <li>
-                    <a href="#get-index-data" class="toc-h2 toc-link" data-title="Get Index Data">Get Index Data</a>
-                  </li>
-                  <li>
                     <a href="#get-index-chart-ohlc" class="toc-h2 toc-link" data-title="Get Index Chart OHLC">Get Index Chart OHLC</a>
                   </li>
                   <li>
@@ -413,7 +410,7 @@
           </span><span class="nl">"underlyingQuoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"minPriceINC"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
           </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
           </span><span class="nl">"maxSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w">
           </span><span class="nl">"minSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -431,58 +428,62 @@
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"success"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="nl">"code"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. </span><span class="se">\n\n</span><span class="s2">Funding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"groupName"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlyingQuoteCurrency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlyingBaseCurrency"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"baseBON"</span><span class="p">:</span><span class="s2">".BTCBON"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quoteBON"</span><span class="p">:</span><span class="s2">".USDBON"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"settledIn"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="mf">-0.0250</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="mf">0.0750</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"settlementFee"</span><span class="p">:</span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="mf">1000000.0000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="mf">0.5000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"refrenceUrl"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"nextFundingTS"</span><span class="p">:</span><span class="mi">946684800000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"premium"</span><span class="p">:</span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"longFundingRate"</span><span class="p">:</span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shortFundingRate"</span><span class="p">:</span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fundingInterval"</span><span class="p">:</span><span class="mi">480</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"addedOnTS"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"futureSettlementTS"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dependentOnIndex"</span><span class="p">:</span><span class="s2">".BTCUSD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sortOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"minSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"maxSize"</span><span class="p">:</span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"markPriceDecimalScale"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fundingRateDecimalScale"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impactMarginSize"</span><span class="p">:</span><span class="mf">0.1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"strike"</span><span class="p">:</span><span class="mf">0.00000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isCall"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"settlementIndex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fundingIntervalOffset"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"adlPerc"</span><span class="p">:</span><span class="mf">50.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"adlMinBalance"</span><span class="p">:</span><span class="mf">-2.0000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"markPriceInterval"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"minRiskLimit"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_CurrencySetting_SettledIn"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_Index_Master_DependentOnIndex"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_ReferralComissions"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_Positions"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_PremiumIndices_Master"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_MarkPrices"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_FundingRates"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_RiskLimits_Master"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_Customers_RiskLimit"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tbl_Customers_Leverage"</span><span class="p">:</span><span class="kc">null</span><span class="p">}}}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A BTCUSD perpetual contract has no expiry date. It is derived from BTC and priced on the .BTCUSD Index. Each contract is worth 1 USD in BTC. </span><span class="se">\n\n</span><span class="s2">Funding is paid and received every 8 hours - 00:00 ,08:00, 16:00 UTC time."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"groupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"underlyingQuoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"underlyingBaseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"baseBON"</span><span class="p">:</span><span class="w"> </span><span class="s2">".BTCBON"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quoteBON"</span><span class="p">:</span><span class="w"> </span><span class="s2">".USDBON"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"settledIn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0750</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"settlementFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000000.0000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"refrenceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nextFundingTS"</span><span class="p">:</span><span class="w"> </span><span class="mi">946684800000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"premium"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longFundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"shortFundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fundingInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">480</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"addedOnTS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"futureSettlementTS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dependentOnIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">".BTCUSD"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"minSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"markPriceDecimalScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fundingRateDecimalScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"impactMarginSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"strike"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isCall"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"settlementIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fundingIntervalOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"adlPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"adlMinBalance"</span><span class="p">:</span><span class="w"> </span><span class="mf">-2.0000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"markPriceInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"minRiskLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_CurrencySetting_SettledIn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_Index_Master_DependentOnIndex"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_ReferralComissions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_Positions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_PremiumIndices_Master"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_MarkPrices"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_FundingRates"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_RiskLimits_Master"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_Customers_RiskLimit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tbl_Customers_Leverage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific contract detail.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -634,653 +635,73 @@
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"composite_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131620000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193736667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131620000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193803333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131620000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131620000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131620000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193796333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131560000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193703333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131560000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131560000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131560000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131560000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193778833</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131500000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193728333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131500000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131500000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193786667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131500000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131500000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193794167</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131440000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193683333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131440000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131440000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193866667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131440000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131440000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193773667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131380000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193775</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131380000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131380000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194003333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131380000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131380000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193811667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131320000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193793333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131320000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131320000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194036667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131320000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131320000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193896667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131260000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193838333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131260000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131260000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019393</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131260000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131260000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193934</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131200000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193891667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131200000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131200000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193936667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131200000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131200000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193959</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131140000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193968333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131140000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131140000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194013333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131140000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131140000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194010833</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131080000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193973333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131080000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131080000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194011667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131080000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131080000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194073167</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131020000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193921667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131020000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131020000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193941667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131020000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580131020000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0194010667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130960000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193783333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130960000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130960000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130960000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130960000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193880167</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130900000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130900000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019389</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130900000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130900000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130900000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193811167</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130840000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193673333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130840000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019378</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130840000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193796667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130840000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130840000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193730833</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130780000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019369</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130780000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01939</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130780000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193798333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130780000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130780000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193760333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130720000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193716667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130720000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193825</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130720000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130720000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130720000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193776833</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130660000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193698333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130660000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01938</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130660000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193756667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130660000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130660000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01937735</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130600000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193718333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130600000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01938</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130600000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193733333</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130600000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130600000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193820833</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130540000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193716667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130540000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193801667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130540000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193715</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130540000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130540000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01938025</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130480000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okex"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193706667</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130480000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01938</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130480000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01938</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130480000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitfinix"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019223</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1580130480000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0193805167</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"composite_breakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595415300000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"indexTicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kraken"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9344.6000000000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.00</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595415300000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"indexTicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gemini"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9345.6700000000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595415300000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"indexTicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase pro"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9344.0500000000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.00</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595415300000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"indexTicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bittrex"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9348.3600000000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.00</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595415300000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"indexTicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">9345.7800000000</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weightage"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.00</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"indices_using_this"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"contracts_using_this"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"BTCUSD"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"indices_using_this"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">".BXBTJPY"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">".BXBT30M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">".BXBTJPY30M"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">".XBTJPY30M"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"contracts_using_this"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"TRXH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"XBTH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"BCHH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EOSH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ETHUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ETHH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"LTCH20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"XRPH20"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err">```</span><span class="w">
+
+</span><span class="err">This</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">retrieves</span><span class="w"> </span><span class="err">details</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">specific</span><span class="w"> </span><span class="err">index.</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP</span><span class="w"> </span><span class="err">Request</span><span class="w">
+
+</span><span class="err">`GET</span><span class="w"> </span><span class="err">https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;`</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">URL</span><span class="w"> </span><span class="err">Parameters</span><span class="w">
+
+</span><span class="err">Parameter</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Description</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">index</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">index</span><span class="w"> 
+</span><span class="err">todo</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">todo</span><span class="w">
+
+</span><span class="err">##</span><span class="w"> </span><span class="err">Get</span><span class="w"> </span><span class="err">Index</span><span class="w"> </span><span class="err">Data</span><span class="w">
+
+</span><span class="err">```shell</span><span class="w">
+</span><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="err">'https://api.c-trade.com/public/indices/BTCUSD/</span><span class="mi">1</span><span class="err">?limit=</span><span class="mi">500</span><span class="err">&amp;ts=</span><span class="mi">1575465605000</span><span class="err">'</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves details of a specific index.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>index</td>
-<td>The index</td>
-</tr>
-<tr>
-<td>todo</td>
-<td>todo</td>
-</tr>
-</tbody></table>
-<h2 id='get-index-data'>Get Index Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices/BTCUSD/1?limit=500&amp;ts=1575465605000'</span>
-</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1794,9 +1215,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves data of a specific index.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8846,9 +8267,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves index chart OHLC of a specific index.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9103,9 +8524,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific order book.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/order-book/&lt;contractsymbol&gt;/&lt;ordernumber&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9214,7 +8635,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint create a new order</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/new-order</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -9303,7 +8724,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint cancel a new order</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-order</code></p>
 <h3 id='request-payload-2'>Request Payload</h3>
 <table><thead>
@@ -9344,7 +8765,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post all order // todo</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/all-orders</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -9658,7 +9079,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">      
 </span></code></pre></div>
 <p>This endpoint post my trade history  //todo</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/my-trade-history</code></p>
 <h3 id='request-payload-4'>Request Payload</h3>
 <table><thead>
@@ -9765,7 +9186,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post open orders  //todo</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/open-orders</code></p>
 <h3 id='request-payload-5'>Request Payload</h3>
 <table><thead>
@@ -9818,7 +9239,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get wallet balance</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/wallet-balance</code></p>
 <h3 id='request-payload-6'>Request Payload</h3>
 <table><thead>
@@ -9889,7 +9310,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel multi orders.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-multi-orders</code></p>
 <h3 id='request-payload-7'>Request Payload</h3>
 <table><thead>
@@ -9944,7 +9365,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel all orders.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
 <h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
@@ -10091,7 +9512,7 @@ signature = HMAC(signature_message)
 
 </span></code></pre></div>
 <p>This endpoint place multi orders.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/place-all-orders</code></p>
 <h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
