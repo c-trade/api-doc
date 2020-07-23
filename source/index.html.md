@@ -48,7 +48,7 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
           "type": "InversePerpetual",
           "expiryTS": 0,
           "settledIn": "BTC",
-          "dependentOnIndex": ".BXBT",
+          "dependentOnIndex": ".BTCUSD",
           "underlyingBaseCurrency": "BTC",
           "underlyingQuoteCurrency": "USD",
           "minPriceINC": 0.5,
@@ -277,7 +277,7 @@ Contract | NO | Valiid Timestamp | 0
 ## Get Indices Details
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices-detailed-breakdown/.BXBT/1'
+curl --location --request GET 'https://api.c-trade.com/public/indices-detailed-breakdown/.BTCUSD/1'
 ```
 
 > The above command returns JSON structured like this:
