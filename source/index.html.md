@@ -8288,7 +8288,7 @@ IsPostOnly | NO | True/False
 ## POST Cancel Order
 
 ```shell
-curl --location --request POST '{{api_url}}/api/cancel-order' \
+curl --location --request POST 'https://api.c-trade.com/api/cancel-order' \
 --header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: EF950375703CE12226EE653B78B5154B3563ECFA0C458C0476025C4246B0CCBB52E2987CF2E95BDEB6D5A8E01BF87302DF0C8EE601DC4716B918979F27451C89' \
@@ -8376,7 +8376,7 @@ odst | Order detailed Status
 ## POST My Trade History
 
 ```shell
-curl --location --request POST '{{api_url}}/LP/my-trade-history' \
+curl --location --request POST 'https://api.c-trade.com/LP/my-trade-history' \
 --header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: 14F846BFC247D40B56A71547888C0E51D226E835683A530BE55A27ED93C3B6F1681C4F8EFED8BAD949B9C8A12D8E323A931FD33FD54B703D23367E272E662ECB' \
@@ -8603,7 +8603,7 @@ tif	| Time in force
 ## POST My Trade History
 
 ```shell
-curl --location --request POST '{{api_url}}/api/open-orders' \
+curl --location --request POST 'https://api.c-trade.com/api/open-orders' \
 --header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: eedcfe4022dce12898e9171327de3daa3e1339dd5f788a778effdc85d02456b5' \
@@ -8631,7 +8631,7 @@ Contract | NO | BTCUSD
 ## POST Wallet Balance
 
 ```shell
-curl --location --request POST '{{api_url}}/api/wallet-balance' \
+curl --location --request POST 'https://api.c-trade.com/api/wallet-balance' \
 --header 'apiKey: 5693851c-7030-4383-b814-dc47336ac137' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: 56E8B6C4AE66DBFFF1C11E79C03F9938E9C8A0E1B4005DFEE7769700B861A9B411C9FDF7ACB048F643E793A9890B01410F1A82B69C87C5920BDB54E33DA3FDF8' \
@@ -8676,7 +8676,7 @@ Contract | NO | BTCUSD
 ## POST Cancel Muliti Orders
 
 ```shell
-curl --location --request POST '{{api_url}}/api/cancel-multi-orders' \
+curl --location --request POST 'https://api.c-trade.com/api/cancel-multi-orders' \
 --header 'Content-Type: application/json' \
 --header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
 --header 'HMAC: 213f60555b3eda2c79c8fc36e01363407041e03af351b5f73518133377937110' \
@@ -8739,7 +8739,7 @@ Contract | NO | BTCUSD
 ## POST Cancel All Orders
 
 ```shell
-curl --location --request POST '{{api_url}}/api/cancel-all-orders' \
+curl --location --request POST 'https://api.c-trade.com/api/cancel-all-orders' \
 --header 'Content-Type: application/json' \
 --header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
 --header 'HMAC: 90e665bf0ab0f2867bc9472a8762ff336a984d4361ec819e0beac328238852bf' \
@@ -8786,7 +8786,7 @@ Contract | NO | BTCUSD
 ## POST Place All Orders
 
 ```shell
-curl --location --request POST '{{api_url}}/api/place-multi-orders' \
+curl --location --request POST 'https://api.c-trade.com/api/place-multi-orders' \
 --header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
 --header 'Content-Type: application/json' \
 --header 'HMAC: 773a9a4fcdd64473c0453846c3b0a91e6848a9d93a79a6fab1be731b88d1445d' \
