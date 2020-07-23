@@ -888,7 +888,7 @@ ts | false | From timestamp in milliseconds, default = current time
 ## Get Index Chart OHLC
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/indices-charts/BTCUSD/1M?limit=1000&ts=1575465605000'
+curl --location --request GET 'https://api.c-trade.com/public/indices-charts/.BTCUSD/1M?limit=1000&ts=1575465605000'
 ```
 
 > The above command returns JSON structured like this:
