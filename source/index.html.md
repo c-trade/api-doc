@@ -8190,7 +8190,6 @@ Message authentication signature. The request message is hashed with the API sec
     * The payload should not contain any whitespace between the names and values
     * The Request URI should not contain the host name. e.g. `/api/orders` instead of `https://myexchange.com/api/orders`
 
-Python Snippet: https://repl.it/@AnkitSinghal1/modulus-derivatives-hmac-signature-python
 
 ## POST New Order
 
