@@ -9599,7 +9599,7 @@ signature = HMAC(signature_message)
 <h1 id='websocket-api'>WebSocket API</h1><h2 id='establish-a-connection'>Establish a Connection</h2>
 <p>C-trade offers a complete pub/sub API with table diffing over WebSocket. You may subscribe to real-time changes on any available table.</p>
 
-<p>Connect your websocket client to <code>ws.c-trade.com/updates</code>
+<p>Connect your websocket client to <code>ws.c-trade.com/updatesV2</code>
 Command: <code>{ operation&quot;: &quot;argument&quot; }</code></p>
 <h3 id='operation'>Operation</h3>
 <table><thead>
@@ -9672,7 +9672,7 @@ Command: <code>{ operation&quot;: &quot;argument&quot; }</code></p>
 <p>Message authentication signature. The request message is hashed with the API secret key using SHA256 algorithm. The structure of the message:</p>
 
 <ul>
-<li>Request URI i.e. /updates</li>
+<li>Request URI i.e. /updatesV2</li>
 <li>The unix timestamp value</li>
 <li>The payload in JSON format.</li>
 <li>To ensure the signature is successfully validated, please be aware of the following:
@@ -9680,14 +9680,14 @@ Command: <code>{ operation&quot;: &quot;argument&quot; }</code></p>
 <ul>
 <li>Each piece of information in the signature message should be separated by a new line. (see the example)</li>
 <li>The payload should not contain any whitespace between the names and values</li>
-<li>The Request URI should not contain the host name. e.g. &#39;/updates&#39; instead of &#39;https://myexchange.com/updates&#39;</li>
+<li>The Request URI should not contain the host name. e.g. &#39;/updatesV2&#39; instead of &#39;https://myexchange.com/updatesV2&#39;</li>
 </ul></li>
 </ul>
 
 <blockquote>
-<p>// Example for calculating signature message for a Socket message request to {{base_url}}/updates</p>
+<p>// Example for calculating signature message for a Socket message request to {{base_url}}/updatesV2</p>
 
-<p>signature_message = &quot;/updates&quot; + &quot;\n&quot; + &quot;1587820973&quot; + &quot;\n&quot; + &quot;{&quot;contract&quot;:&quot;BTCUSD&quot;,&quot;orderbook&quot;:&quot;&quot;}&quot;
+<p>signature_message = &quot;/updatesV2&quot; + &quot;\n&quot; + &quot;1587820973&quot; + &quot;\n&quot; + &quot;{&quot;contract&quot;:&quot;BTCUSD&quot;,&quot;orderbook&quot;:&quot;&quot;}&quot;
 signature = HMAC(signature_message)</p>
 
 <p>// computed signature should be Hexadecimal equivalent of the HMAC signature.</p>
