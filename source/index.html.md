@@ -8936,7 +8936,7 @@ IsPostOnly | NO | True/False
 
 C-trade offers a complete pub/sub API with table diffing over WebSocket. You may subscribe to real-time changes on any available table.
 
-Connect your websocket client to `ws.c-trade.com/updates`
+Connect your websocket client to `ws.c-trade.com/updatesV2`
 Command: `{ operation": "argument" }`
 
 ### Operation
@@ -8986,17 +8986,17 @@ An APIkey based authentication request will require HMAC Signature for following
 
 Message authentication signature. The request message is hashed with the API secret key using SHA256 algorithm. The structure of the message:
 
-* Request URI i.e. /updates
+* Request URI i.e. /updatesV2
 * The unix timestamp value
 * The payload in JSON format.
 * To ensure the signature is successfully validated, please be aware of the following:
     * Each piece of information in the signature message should be separated by a new line. (see the example)
     * The payload should not contain any whitespace between the names and values
-    * The Request URI should not contain the host name. e.g. '/updates' instead of 'https://myexchange.com/updates'
+    * The Request URI should not contain the host name. e.g. '/updatesV2' instead of 'https://myexchange.com/updatesV2'
 
-> // Example for calculating signature message for a Socket message request to {{base_url}}/updates
+> // Example for calculating signature message for a Socket message request to {{base_url}}/updatesV2
 
-> signature_message = "/updates" + "\n" + "1587820973" + "\n" + "{"contract":"BTCUSD","orderbook":""}"
+> signature_message = "/updatesV2" + "\n" + "1587820973" + "\n" + "{"contract":"BTCUSD","orderbook":""}"
 > signature = HMAC(signature_message)
 
 > // computed signature should be Hexadecimal equivalent of the HMAC signature.
