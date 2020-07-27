@@ -8301,6 +8301,23 @@ curl --location --request POST 'https://api.c-trade.com/api/cancel-order' \
 
 This endpoint cancel a new order
 
+```json
+{
+  "success": [
+    {
+      "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+          "userID": "37FB2199FDF244",
+          "order_id": "d45e47a8-24f1-4718-b350-77798a91f67a",
+          "symbol":"BTCUSD"
+        }
+      }
+    }
+  ]
+}
+
 ### HTTP Request
 
 `POST https://api.c-trade.com/api/cancel-order`
@@ -8705,7 +8722,8 @@ curl --location --request POST 'https://api.c-trade.com/api/cancel-multi-orders'
         "message": "Success",
         "data": {
           "userID": "332424",
-          "orderID": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8"
+          "order_id": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8",
+          "symbol":"BTCUSD"
         }
       }
     }
@@ -8760,7 +8778,8 @@ curl --location --request POST 'https://api.c-trade.com/api/cancel-all-orders' \
         "message": "Success",
         "data": {
           "userID": "332424",
-          "orderID": "d45e47a8-24f1-4718-b350-77798a91f67a"
+          "order_id": "d45e47a8-24f1-4718-b350-77798a91f67a",
+          "symbol":"BTCUSD"
         }
       }
     }
