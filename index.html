@@ -274,13 +274,16 @@
                     <a href="#post-wallet-balance" class="toc-h2 toc-link" data-title="POST Wallet Balance">POST Wallet Balance</a>
                   </li>
                   <li>
-                    <a href="#post-cancel-muliti-orders" class="toc-h2 toc-link" data-title="POST Cancel Muliti Orders">POST Cancel Muliti Orders</a>
-                  </li>
-                  <li>
                     <a href="#post-cancel-all-orders" class="toc-h2 toc-link" data-title="POST Cancel All Orders">POST Cancel All Orders</a>
                   </li>
                   <li>
-                    <a href="#post-place-all-orders" class="toc-h2 toc-link" data-title="POST Place All Orders">POST Place All Orders</a>
+                    <a href="#post-order-detail" class="toc-h2 toc-link" data-title="POST Order Detail">POST Order Detail</a>
+                  </li>
+                  <li>
+                    <a href="#post-update-order" class="toc-h2 toc-link" data-title="POST Update Order">POST Update Order</a>
+                  </li>
+                  <li>
+                    <a href="#post-position-details" class="toc-h2 toc-link" data-title="POST Position Details">POST Position Details</a>
                   </li>
               </ul>
           </li>
@@ -9285,78 +9288,6 @@ signature = HMAC(signature_message)
 <td>BTCUSD</td>
 </tr>
 </tbody></table>
-<h2 id='post-cancel-muliti-orders'>POST Cancel Muliti Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/cancel-multi-orders'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'HMAC: 213f60555b3eda2c79c8fc36e01363407041e03af351b5f73518133377937110'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">'{
-     "timestamp":"1590230475",
-    "recvWindow":1000,
-    "Oid": [
-        {
-            "Orderid":"07114653-9fa0-4c5d-a797-14936cfc33a3"
-        },
-        {
-            "Orderid":"39e9cfc8-2cfe-48a7-ad0a-927490818ca8"
-        }
-        ]
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39e9cfc8-2cfe-48a7-ad0a-927490818ca8"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">3036</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload_Invalid_OrderID"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Invalid orderid "</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint cancel multi orders.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
-<p><code>POST https://api.c-trade.com/api/cancel-multi-orders</code></p>
-<h3 id='request-payload-7'>Request Payload</h3>
-<table><thead>
-<tr>
-<th>FieldName</th>
-<th>Mandatory</th>
-<th>Valid Values</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>timestamp</td>
-<td>YES</td>
-<td>Current TS in seconds</td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>NO</td>
-<td>Default is 10 seconds</td>
-</tr>
-<tr>
-<td>Contract</td>
-<td>NO</td>
-<td>BTCUSD</td>
-</tr>
-</tbody></table>
 <h2 id='post-cancel-all-orders'>POST Cancel All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/cancel-all-orders'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99'</span> <span class="se">\</span>
@@ -9387,8 +9318,76 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel all orders.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
+<h3 id='request-payload-7'>Request Payload</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Mandatory</th>
+<th>Valid Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>YES</td>
+<td>Current TS in seconds</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>NO</td>
+<td>Default is 10 seconds</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td>NO</td>
+<td>BTCUSD</td>
+</tr>
+</tbody></table>
+<h2 id='post-order-detail'>POST Order Detail</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/order-detail'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "timestamp":"1592471370",
+    "recvWindow":10000,
+    "Contract":"BTCUSD"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1592199466766</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc5e773d-f304-4c97-9d29-baa9c5fb2884"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"odst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trgtyp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint get order detail</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://api.c-trade.com/api/order-detail</code></p>
 <h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
 <tr>
@@ -9413,129 +9412,153 @@ signature = HMAC(signature_message)
 <td>BTCUSD</td>
 </tr>
 </tbody></table>
-<h2 id='post-place-all-orders'>POST Place All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/place-multi-orders'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99'</span> <span class="se">\</span>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>FieldName</th>
+<th>Short Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sym</td>
+<td>Contract Name</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>o</td>
+<td>OrderId</td>
+</tr>
+<tr>
+<td>u</td>
+<td>Order-side &quot;S&quot;: Sell, &quot;B&quot;: Buy</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>Stop Price</td>
+</tr>
+<tr>
+<td>p</td>
+<td>Price</td>
+</tr>
+<tr>
+<td>r</td>
+<td>Remaining</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Order side</td>
+</tr>
+<tr>
+<td>q</td>
+<td>Size or quantity</td>
+</tr>
+<tr>
+<td>st</td>
+<td>Non-active statuys</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>Time in Force</td>
+</tr>
+<tr>
+<td>t</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>odst</td>
+<td>Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected</td>
+</tr>
+<tr>
+<td>v</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>fp</td>
+<td>Full Price</td>
+</tr>
+<tr>
+<td>trg</td>
+<td>Trigger</td>
+</tr>
+<tr>
+<td>trgtyp</td>
+<td>Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)</td>
+</tr>
+</tbody></table>
+<h2 id='post-update-order'>POST Update Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/update-order'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'HMAC: 773a9a4fcdd64473c0453846c3b0a91e6848a9d93a79a6fab1be731b88d1445d'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
-     "timestamp":"1590229685",
-    "recvWindow":1000,
-    "Orderpayload": [
-        {
-          "symbol": "BTCUSD",
-          "side": "BUY",
-          "orderQty": 2,
-          "price": 30,
-          "stopPrice": 0,
-          "orderType": "LIMIT",
-          "timeinForce": "GTC",
-          "triggerType": "LastPrice",
-          "isReduceOnly": false,
-          "IsCloseOnTrigger": false,
-          "IsHiddenOrder": false,
-          "IsPostOnly": false
-        },
-        {
-          "symbol": "BTCUSD",
-          "side": "SELL",
-          "orderQty": 1,
-          "price": 7030,
-          "stopPrice": 0,
-          "orderType": "LIMIT",
-          "timeinForce": "GTC",
-          "triggerType": "LastPrice",
-          "isReduceOnly": false,
-          "IsCloseOnTrigger": false,
-          "IsHiddenOrder": false,
-          "IsPostOnly": false
-        }
-    ]
-}
-'</span>
+    "timestamp":"1592199378",
+      "recvWindow":10000,
+    "OrderID":"fc963bbf-59fe-4915-aedd-ce7a98a97e91",
+      "size":2,
+      "price":"",
+      "stopPrice":""
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"natsPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"trailingAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39e9cfc8-2cfe-48a7-ad0a-927490818ca8"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00068132</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001999</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"filledPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06666666</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isReduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isCloseOnTrigger"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isHiddenOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isPostOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"mtCalc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001999</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"maintainanceMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"initialMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"initialCollateral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00066666</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"takerfeePerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">8748.51</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06666666</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transactionFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000733</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"twoWayFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001466</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"maintainanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00033333</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"costNormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00068132</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"costAbnormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.06609006</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00068132</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"pLatMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06643805</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"costOfPlacingNewOrder"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0006813333</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"natsPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">1700</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trailingAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11446e69-fbe4-4130-a628-45328dd99463"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">31.35895787</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000012</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"filledPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00117647</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isReduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isCloseOnTrigger"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isHiddenOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isPostOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"mtCalc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maintainanceMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"initialMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"initialCollateral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001176</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"takerfeePerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.027</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9227.65</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00117647</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transactionFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2e-7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"twoWayFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4e-7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maintainanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000588</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"costNormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000012</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"costAbnormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00095361</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000012</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"pLatMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00095973</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"costOfPlacingNewOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"natsPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">7030</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"trailingAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"340a1eb4-f502-47f7-8518-15a1b36feaf2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002867</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"filledPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint place multi orders.</p>
+<p>This endpoint get order detail</p>
 <h3 id='http-request-15'>HTTP Request</h3>
-<p><code>POST https://api.c-trade.com/api/place-all-orders</code></p>
+<p><code>POST https://api.c-trade.com/api/update-order</code></p>
 <h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
 <tr>
@@ -9545,59 +9568,107 @@ signature = HMAC(signature_message)
 </tr>
 </thead><tbody>
 <tr>
-<td>symbol</td>
-<td>Yes</td>
-<td>BTCUSD</td>
+<td>timestamp</td>
+<td>YES</td>
+<td>Current TS in seconds</td>
 </tr>
 <tr>
-<td>side</td>
-<td>Yes</td>
-<td>BUY,SELL</td>
+<td>recvWindow</td>
+<td>NO</td>
+<td>Default is 10 seconds</td>
 </tr>
 <tr>
-<td>orderQty</td>
-<td>Yes</td>
+<td>OrderID</td>
+<td>YES</td>
+<td>String</td>
+</tr>
+<tr>
+<td>size</td>
+<td>YES/NO</td>
 <td>Integer and Greater than Zero</td>
 </tr>
 <tr>
 <td>price</td>
-<td>Yes</td>
+<td>YES/NO</td>
 <td>Decimal and Greater than Zero</td>
 </tr>
 <tr>
 <td>stopPrice</td>
-<td>Yes</td>
+<td>YES/NO</td>
 <td>Decimal and Greater than Zero</td>
 </tr>
+</tbody></table>
+
+<p>Note :Between size or price or stopPrice one of them is required in requested payload.</p>
+<h2 id='post-position-details'>POST Position Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.c-trade.com/api/position-details \
+--header '</span>apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6<span class="s1">' \
+--header '</span>Content-Type: application/json<span class="s1">' \
+--header '</span>HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186<span class="s1">' \
+--data-raw '</span><span class="o">{</span>
+    <span class="s2">"timestamp"</span>:<span class="s2">"1593093984"</span>,
+      <span class="s2">"recvWindow"</span>:10000,
+    <span class="s2">"Contract"</span>:<span class="s2">"XBTM20"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTM20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">".BXBT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"settleCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"markValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00010857</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avgEntryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9420.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9210.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">4722.12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"positionMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00010381</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unrealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000242</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"realizedPnl_Fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">-8e-8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"realizedPnl_Funding"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"realizedPnl_Earning"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankruptPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">4710.31</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1593091762</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"initial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initialMarginPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maintenanceMarginPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.005</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-payload-10'>Request Payload</h3>
+<table><thead>
 <tr>
-<td>orderType</td>
-<td>Yes</td>
-<td>LIMIT,MARKET,STOPMARKET,STOPLIMIT,TAKEPROFITLIMIT,TAKEPROFITMARKET</td>
+<th>FieldName</th>
+<th>Mandatory</th>
+<th>Valid Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>YES</td>
+<td>Current TS in seconds</td>
 </tr>
 <tr>
-<td>timeinForce</td>
+<td>recvWindow</td>
 <td>NO</td>
-<td>GTC,DO,IOC,FOK</td>
+<td>Default is 10 seconds</td>
 </tr>
 <tr>
-<td>triggerType</td>
+<td>Contract</td>
 <td>NO</td>
-<td>MarkPrice,IndexPrice,LastPrice</td>
-</tr>
-<tr>
-<td>isReduceOnly</td>
-<td>NO</td>
-<td>True/False</td>
-</tr>
-<tr>
-<td>IsCloseOnTrigger</td>
-<td>NO</td>
-<td>True/False</td>
-</tr>
-<tr>
-<td>IsPostOnly</td>
-<td>NO</td>
-<td>True/False</td>
+<td>BTCUSD</td>
 </tr>
 </tbody></table>
 <h1 id='websocket-api'>WebSocket API</h1><h2 id='establish-a-connection'>Establish a Connection</h2>
@@ -9809,7 +9880,7 @@ signature = HMAC(signature_message)</p>
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='response-3'>Response</h3>
+</span></code></pre></div><h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9854,7 +9925,7 @@ signature = HMAC(signature_message)</p>
     </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="err">}</span><span class="w">
-</span></code></pre></div><h3 id='response-4'>Response</h3>
+</span></code></pre></div><h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9913,7 +9984,7 @@ signature = HMAC(signature_message)</p>
 </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markprice"</span><span class="p">,</span><span class="w">
 </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-5'>Response</h3>
+</span></code></pre></div><h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9947,7 +10018,7 @@ signature = HMAC(signature_message)</p>
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premiumindex"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-6'>Response</h3>
+</span></code></pre></div><h3 id='response-7'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -9980,7 +10051,7 @@ signature = HMAC(signature_message)</p>
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-7'>Response</h3>
+</span></code></pre></div><h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10014,7 +10085,7 @@ signature = HMAC(signature_message)</p>
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-8'>Response</h3>
+</span></code></pre></div><h3 id='response-9'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10198,7 +10269,7 @@ Authentication is required for user data stream
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="err">}</span><span class="w">
-</span></code></pre></div><h3 id='response-9'>Response</h3>
+</span></code></pre></div><h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10309,7 +10380,7 @@ Authentication is required for user data stream
     </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="err">}</span><span class="w">
-</span></code></pre></div><h3 id='response-10'>Response</h3>
+</span></code></pre></div><h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
@@ -10385,7 +10456,7 @@ Authentication is required for user data stream
 <td>Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-12'>Response</h3>
 <table><thead>
 <tr>
 <th>FieldName</th>
