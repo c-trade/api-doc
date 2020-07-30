@@ -8690,70 +8690,6 @@ timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
 Contract | NO | BTCUSD
 
-## POST Cancel Muliti Orders
-
-```shell
-curl --location --request POST 'https://api.c-trade.com/api/cancel-multi-orders' \
---header 'Content-Type: application/json' \
---header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
---header 'HMAC: 213f60555b3eda2c79c8fc36e01363407041e03af351b5f73518133377937110' \
---data-raw '{
-	 "timestamp":"1590230475",
-	"recvWindow":1000,
-	"Oid": [
-		{
-			"Orderid":"07114653-9fa0-4c5d-a797-14936cfc33a3"
-		},
-		{
-			"Orderid":"39e9cfc8-2cfe-48a7-ad0a-927490818ca8"
-		}
-		]
-}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "success": [
-    {
-      "success": {
-        "code": 100,
-        "message": "Success",
-        "data": {
-          "userID": "332424",
-          "order_id": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8",
-          "symbol":"BTCUSD"
-        }
-      }
-    }
-  ],
-  "error": [
-    {
-      "error": {
-        "code": 3036,
-        "message": "Payload_Invalid_OrderID",
-        "description": " Invalid orderid "
-      }
-    }
-  ]
-}
-```
-
-This endpoint cancel multi orders.
-
-### HTTP Request
-
-`POST https://api.c-trade.com/api/cancel-multi-orders`
-
-### Request Payload
-
-FieldName | Mandatory | Valid Values
---------- | ----------- | -----------
-timestamp | YES | Current TS in seconds
-recvWindow | NO	| Default is 10 seconds
-Contract | NO | BTCUSD
-
 ## POST Cancel All Orders
 
 ```shell
@@ -8802,152 +8738,238 @@ timestamp | YES | Current TS in seconds
 recvWindow | NO	| Default is 10 seconds
 Contract | NO | BTCUSD
 
-## POST Place All Orders
+## POST Order Detail
 
 ```shell
-curl --location --request POST 'https://api.c-trade.com/api/place-multi-orders' \
---header 'apiKey: cee3d621-86b6-4db2-85a8-f69db6b4cc99' \
+curl --location --request POST 'https://api.c-trade.com/api/order-detail' \
+--header 'apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6' \
 --header 'Content-Type: application/json' \
---header 'HMAC: 773a9a4fcdd64473c0453846c3b0a91e6848a9d93a79a6fab1be731b88d1445d' \
+--header 'HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186' \
 --data-raw '{
-     "timestamp":"1590229685",
-	"recvWindow":1000,
-	"Orderpayload": [
-		{
-		  "symbol": "BTCUSD",
-		  "side": "BUY",
-		  "orderQty": 2,
-		  "price": 30,
-		  "stopPrice": 0,
-		  "orderType": "LIMIT",
-		  "timeinForce": "GTC",
-		  "triggerType": "LastPrice",
-		  "isReduceOnly": false,
-		  "IsCloseOnTrigger": false,
-		  "IsHiddenOrder": false,
-		  "IsPostOnly": false
-		},
-		{
-		  "symbol": "BTCUSD",
-		  "side": "SELL",
-		  "orderQty": 1,
-		  "price": 7030,
-		  "stopPrice": 0,
-		  "orderType": "LIMIT",
-		  "timeinForce": "GTC",
-		  "triggerType": "LastPrice",
-		  "isReduceOnly": false,
-		  "IsCloseOnTrigger": false,
-		  "IsHiddenOrder": false,
-		  "IsPostOnly": false
-		}
-	]
-}
-'
+	"timestamp":"1592471370",
+	"recvWindow":10000,
+	"Contract":"BTCUSD"
+}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "success": [
-    {
-      "success": {
-        "code": 100,
-        "message": "Success",
-        "data": {
-          "natsPayload": {
-            "symbol": "BTCUSD",
-            "size": 2,
-            "side": 1,
-            "type": 2,
-            "timeInForce": 1,
-            "limitPrice": 30,
-            "stopPrice": 0,
-            "trailingAmount": 0,
-            "orderID": "39e9cfc8-2cfe-48a7-ad0a-927490818ca8",
-            "userID": "332424",
-            "balance": 100000,
-            "orderMargin": 0.00068132,
-            "liquidationPrice": 0.00001999,
-            "takerFee": 0.011,
-            "makerFee": -0.025,
-            "filledPrice": 0,
-            "orderValue": 0.06666666,
-            "isReduceOnly": false,
-            "isCloseOnTrigger": false,
-            "isHiddenOrder": false,
-            "isPostOnly": false,
-            "triggerType": 0
-          },
-          "mtCalc": {
-            "liquidationPrice": 0.00001999,
-            "maintainanceMarginPerc": 0.5,
-            "initialMarginPerc": 1,
-            "leverage": 0,
-            "initialCollateral": 0.00066666,
-            "takerfeePerc": 0.011,
-            "fundingRate": 0,
-            "markPrice": 8748.51,
-            "orderSize": 0.06666666,
-            "transactionFee": -0.00000733,
-            "twoWayFee": 0.00001466,
-            "maintainanceMargin": 0.00033333,
-            "costNormal": 0.00068132,
-            "costAbnormal": -0.06609006,
-            "cost": 0.00068132,
-            "pLatMarkPrice": 0.06643805,
-            "costOfPlacingNewOrder": 0.0006813333
-          }
-        }
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": [
+      {
+        "sym": "BTCUSD",
+        "ts": 1592199466766,
+        "o": "dc5e773d-f304-4c97-9d29-baa9c5fb2884",
+        "u": "332424",
+        "sp": 0,
+        "p": 100,
+        "r": 1,
+        "s": "S",
+        "q": 1,
+        "st": true,
+        "tif": "DO",
+        "t": "Limit",
+        "odst": "Rejected",
+        "v": 0.01,
+        "fp": 0,
+        "trg": false,
+        "trgtyp": 0
       }
-    },
-    {
-      "success": {
-        "code": 100,
-        "message": "Success",
-        "data": {
-          "natsPayload": {
-            "symbol": "BTCUSD",
-            "size": 1,
-            "side": 2,
-            "type": 2,
-            "timeInForce": 1,
-            "limitPrice": 7030,
-            "stopPrice": 0,
-            "trailingAmount": 0,
-            "orderID": "340a1eb4-f502-47f7-8518-15a1b36feaf2",
-            "userID": "332424",
-            "balance": 100000,
-            "orderMargin": 0.00002867,
-            "liquidationPrice": 1000000,
-            "takerFee": 0.011,
-            "makerFee": -0.025,
-            "filledPrice": 0,
-  
+    ]
+  }
+}
 ```
 
-This endpoint place multi orders.
+This endpoint get order detail
 
 ### HTTP Request
 
-`POST https://api.c-trade.com/api/place-all-orders`
+`POST https://api.c-trade.com/api/order-detail`
 
 ### Request Payload
 
 FieldName | Mandatory | Valid Values
 --------- | ----------- | -----------
-symbol | Yes | BTCUSD
-side | Yes | BUY,SELL
-orderQty | Yes | Integer and Greater than Zero
-price | Yes | Decimal and Greater than Zero
-stopPrice | Yes | Decimal and Greater than Zero
-orderType | Yes| LIMIT,MARKET,STOPMARKET,STOPLIMIT,TAKEPROFITLIMIT,TAKEPROFITMARKET
-timeinForce	| NO | GTC,DO,IOC,FOK
-triggerType | NO	| MarkPrice,IndexPrice,LastPrice
-isReduceOnly | NO | True/False
-IsCloseOnTrigger | NO | True/False
-IsPostOnly | NO | True/False
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | BTCUSD
+
+### Response
+FieldName | Short Description 
+--------- | ----------- 
+sym | Contract Name
+ts | Timestamp 
+o | OrderId 
+u | Order-side "S": Sell, "B": Buy
+sp | Stop Price
+p | Price
+r | Remaining
+s | Order side
+q | Size or quantity
+st | Non-active statuys
+tif | Time in Force
+t | Order type
+odst | Order detailed Status : Accepted, PartiallyFilled, Filled, Cancel, Rejected
+v | Value
+fp | Full Price
+trg | Trigger
+trgtyp | Trigger : 0(Last Price), 1(Mark Price), 2(Index Price)
+
+## POST Update Order
+
+```shell
+curl --location --request POST 'https://api.c-trade.com/api/update-order' \
+--header 'apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186' \
+--data-raw '{
+    "timestamp":"1592199378",
+	  "recvWindow":10000,
+    "OrderID":"fc963bbf-59fe-4915-aedd-ce7a98a97e91",
+	  "size":2,
+	  "price":"",
+	  "stopPrice":""
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": {
+      "natsPayload": {
+        "symbol": "XBTUSD",
+        "size": 2,
+        "side": 1,
+        "type": 2,
+        "timeInForce": 2,
+        "limitPrice": 1700,
+        "stopPrice": 0,
+        "trailingAmount": 0,
+        "orderID": "11446e69-fbe4-4130-a628-45328dd99463",
+        "userID": "332424",
+        "balance": 31.35895787,
+        "orderMargin": 0.000012,
+        "liquidationPrice": 0.5,
+        "takerFee": 0.011,
+        "makerFee": -0.025,
+        "filledPrice": 0,
+        "orderValue": 0.00117647,
+        "isReduceOnly": false,
+        "isCloseOnTrigger": false,
+        "isHiddenOrder": false,
+        "isPostOnly": false,
+        "triggerType": 0
+      },
+      "mtCalc": {
+        "liquidationPrice": 0.5,
+        "maintainanceMarginPerc": 0.5,
+        "initialMarginPerc": 1,
+        "leverage": 0,
+        "initialCollateral": 0.00001176,
+        "takerfeePerc": 0.011,
+        "fundingRate": -0.027,
+        "markPrice": 9227.65,
+        "orderSize": 0.00117647,
+        "transactionFee": -1.2e-7,
+        "twoWayFee": 2.4e-7,
+        "maintainanceMargin": 0.00000588,
+        "costNormal": 0.000012,
+        "costAbnormal": -0.00095361,
+        "cost": 0.000012,
+        "pLatMarkPrice": 0.00095973,
+        "costOfPlacingNewOrder": 0
+      }
+    }
+  }
+}
+```
+
+This endpoint get order detail
+
+### HTTP Request
+
+`POST https://api.c-trade.com/api/update-order`
+
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO | Default is 10 seconds
+OrderID | YES | String
+size | YES/NO	| Integer and Greater than Zero
+price | YES/NO | Decimal and Greater than Zero
+stopPrice | YES/NO | Decimal and Greater than Zero
+
+Note :Between size or price or stopPrice one of them is required in requested payload.
+
+## POST Position Details
+
+```shell
+curl --location --request POST 'https://api.c-trade.com/api/position-details \
+--header 'apiKey: bd9fb587-7a0c-437e-b8ca-57c05ee52ad6' \
+--header 'Content-Type: application/json' \
+--header 'HMAC: bcd91b4b7ef7cd6a4406de364ef4daaad279b7a9db9559f953ec6ec4eb447186' \
+--data-raw '{
+    "timestamp":"1593093984",
+	  "recvWindow":10000,
+    "Contract":"XBTM20"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": [
+      {
+        "account": "332424",
+        "symbol": "XBTM20",
+        "underlying": ".BXBT",
+        "settleCurrency": "BTC",
+        "baseCurrency": "BTC",
+        "quoteCurrency": "USD",
+        "type": 3,
+        "size": 1,
+        "markValue": 0.00010857,
+        "avgEntryPrice": 9420.5,
+        "markPrice": 9210.5,
+        "liquidationPrice": 4722.12,
+        "positionMargin": 0.00010381,
+        "unrealizedPnl": -0.00000242,
+        "realizedPnl_Fee": -8e-8,
+        "realizedPnl_Funding": 0,
+        "realizedPnl_Earning": 0,
+        "bankruptPrice": 4710.31,
+        "timeStamp": 1593091762,
+        "initial": {
+          "leverage": 1,
+          "initialMarginPercent": 0,
+          "maintenanceMarginPercent": 0.005
+        }
+      }
+    ]
+  }
+}
+```
+### Request Payload
+
+FieldName | Mandatory | Valid Values
+--------- | ----------- | -----------
+timestamp | YES | Current TS in seconds
+recvWindow | NO	| Default is 10 seconds
+Contract | NO | BTCUSD
 
 # WebSocket API
 
