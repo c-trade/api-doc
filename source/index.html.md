@@ -338,14 +338,14 @@ This endpoint retrieves details of a specific index.
 
 ### HTTP Request
 
-`GET https://api.c-trade.com/public/indices/BTCUSD/1?limit=<limit>&ts=<ts>`
+`GET https://api.c-trade.com/public/public/indices-detailed-breakdown/<index>/<time>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 index | The index 
-todo | todo
+time | time for the chart data grouping(in minutes)
 
 ## Get Index Data
 
@@ -390,14 +390,14 @@ This endpoint retrieves data of a specific index.
 
 ### HTTP Request
 
-`GET https://api.c-trade.com/public/indices-detailed-breakdown/<index>/<time>`
+`GET https://api.c-trade.com/public/indices/<index>/<interval>?limit=<limit>&ts=<ts>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 index | The index 
-time | time for the chart data grouping(in minutes)
+interval | The interval of charts
 
 ### Request Parameters
 
@@ -454,76 +454,6 @@ curl --location --request GET 'https://api.c-trade.com/public/indices-charts/.BT
         0.020161,
         0.0201675,
         0.020161
-      ],
-      [
-        1575465240000,
-        0.02017075,
-        0.0201675,
-        0.02017075,
-        0.02016525
-      ],
-      [
-        1575465180000,
-        0.02018025,
-        0.02017075,
-        0.020182,
-        0.02017075
-      ],
-      [
-        1575465120000,
-        0.02018775,
-        0.02018025,
-        0.02018775,
-        0.02018025
-      ],
-      [
-        1575465060000,
-        0.020189,
-        0.02018775,
-        0.02019,
-        0.020185
-      ],
-      [
-        1575465000000,
-        0.020187,
-        0.020189,
-        0.02018925,
-        0.0201845
-      ],
-      [
-        1575464940000,
-        0.02019525,
-        0.020187,
-        0.02019525,
-        0.0201855
-      ],
-      [
-        1575464880000,
-        0.0202,
-        0.02019525,
-        0.020203,
-        0.020195
-      ],
-      [
-        1575464820000,
-        0.02019975,
-        0.0202,
-        0.0202015,
-        0.0201965
-      ],
-      [
-        1575464760000,
-        0.02019875,
-        0.02019975,
-        0.02020175,
-        0.0201985
-      ],
-      [
-        1575464700000,
-        0.0201955,
-        0.02019875,
-        0.020199,
-        0.02019525
       ]
     ]
   }
@@ -534,7 +464,7 @@ This endpoint retrieves index chart OHLC of a specific index.
 
 ### HTTP Request
 
-`GET https://api.c-trade.com/public/indices-detailed-breakdown/<index>/<interval>`
+`GET https://api.c-trade.com/public/indices-charts/<index>/<interval>?limit=<limit>&ts=<ts>`
 
 ### URL Parameters
 
