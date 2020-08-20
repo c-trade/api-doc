@@ -87,3 +87,16 @@ Special Thanks
 - [middleman-syntax](https://github.com/middleman/middleman-syntax)
 - [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+
+## Project development instructions
+### Setup
+1. If not installed already, please install Ruby on your machine (https://www.ruby-lang.org/en/documentation/installation/)
+2. Then install Bundler (run the following command: gem install bundler)
+3. Clone the repository from https://github.com/c-trade/api-doc
+4. Run the command "bundle install" from the root of your project, in order to install all dependencies
+
+### Making changes
+1. Make the changes you want in the project (main template is /source/index.html.md)
+2. Commit and push the changes to the master branch of the repository
+3. Run "./deploy.sh" from the root of your project
+4. The changes are now deployed to https://c-trade.github.io/api-doc/
