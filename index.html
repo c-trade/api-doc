@@ -245,6 +245,9 @@
                     <a href="#get-indices-details" class="toc-h2 toc-link" data-title="Get Indices Details">Get Indices Details</a>
                   </li>
                   <li>
+                    <a href="#get-index-data" class="toc-h2 toc-link" data-title="Get Index Data">Get Index Data</a>
+                  </li>
+                  <li>
                     <a href="#get-index-chart-ohlc" class="toc-h2 toc-link" data-title="Get Index Chart OHLC">Get Index Chart OHLC</a>
                   </li>
                   <li>
@@ -702,26 +705,29 @@ by default user will get the first 100 reverse results</p>
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="err">```</span><span class="w">
-
-</span><span class="err">This</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">retrieves</span><span class="w"> </span><span class="err">details</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">specific</span><span class="w"> </span><span class="err">index.</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP</span><span class="w"> </span><span class="err">Request</span><span class="w">
-
-</span><span class="err">`GET</span><span class="w"> </span><span class="err">https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;`</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">URL</span><span class="w"> </span><span class="err">Parameters</span><span class="w">
-
-</span><span class="err">Parameter</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Description</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">index</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">index</span><span class="w"> 
-</span><span class="err">todo</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">todo</span><span class="w">
-
-</span><span class="err">##</span><span class="w"> </span><span class="err">Get</span><span class="w"> </span><span class="err">Index</span><span class="w"> </span><span class="err">Data</span><span class="w">
-
-</span><span class="err">```shell</span><span class="w">
-</span><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="err">'https://api.c-trade.com/public/indices/BTCUSD/</span><span class="mi">1</span><span class="err">?limit=</span><span class="mi">500</span><span class="err">&amp;ts=</span><span class="mi">1575465605000</span><span class="err">'</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>This endpoint retrieves details of a specific index.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.c-trade.com/public/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>The index</td>
+</tr>
+<tr>
+<td>time</td>
+<td>time for the chart data grouping(in minutes)</td>
+</tr>
+</tbody></table>
+<h2 id='get-index-data'>Get Index Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/indices/BTCUSD/1?limit=500&amp;ts=1575465605000'</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -750,494 +756,14 @@ by default user will get the first 100 reverse results</p>
       </span><span class="nl">"1575525060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198272042</span><span class="p">,</span><span class="w">
       </span><span class="nl">"1575525000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198370917</span><span class="p">,</span><span class="w">
       </span><span class="nl">"1575524940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198313875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198276125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198266375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198385833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198413958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198425208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198431195</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198418417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198356</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198286375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198197583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198210417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198323792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198252208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198542208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575524040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01986355</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198738333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198844333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198860583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019871975</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198679417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198751417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199085375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01990945</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199156792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199241458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199197708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199178398</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199185208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199219375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199163292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199166583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575523020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199264625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199235667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199263667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019928525</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199307345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199307125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199334667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199384083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199475083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199523292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199524333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199568125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199632833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199645833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199654583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199655833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199659792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575522000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199686237</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199656583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199667708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199686208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199684958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199709958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199754333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199739917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199738059</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199823875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199816292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199809417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199867708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199894754</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019993875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199865208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575521040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199746125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199477375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199017593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198870917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0198566125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199382125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199431042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199511625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199533</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199543</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199504792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199505292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199489833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199479042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199485042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199487042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199487542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575520020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199485667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199485417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199490625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019951575</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019953025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199519583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199456208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199489042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199564042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199604625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199637708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019964325</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199664</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199680875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199703208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199738875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199756625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575519000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199743458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199719875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199670708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199630958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199653</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199692833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199684625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199680208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199628792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199647792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199631667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01996045</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199631875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01996605</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199649458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199640583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575518040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199585583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199569208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199556833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199525417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199528542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01995325</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199486915</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199499625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199548417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199582208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199739833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199776875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199801292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199813125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01998</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019981375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199819</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575517020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199857583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199901625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01998735</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199858</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199839875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199798708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199682292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199642208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199606042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199529875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199522708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199503992</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199466583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01994815</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199468017</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199456292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199415167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575516000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199365</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199355542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199356458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199380542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199378583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199372542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199340583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199334625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199359331</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019937175</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199373</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199380833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199393833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199455208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019945825</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199419</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575515040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199420458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019946525</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199408458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199337625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199335958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199382542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199468708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199578458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199613708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199601542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199622</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199594458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199569917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199559458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019953975</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199537542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575514020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199563208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199565833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199567212</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199575898</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199607792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199606292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01996165</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199581792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199588167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199630583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199634155</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199632417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199623583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199640542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199636333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199595</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019957025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575513000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199549458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199541625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199529373</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199538875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199573667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199571125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199596208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199620917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199652625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01997005</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199743356</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199792625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019983775</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199867875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199912424</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0199927167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575512040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019998075</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200009583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200009167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020003775</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200082875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020012925</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200205625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200246333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200284833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020028175</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02003</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200332417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200393875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200447</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200456375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200417792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200382542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575511020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200420208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200426458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200385958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200426167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200442333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200458833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200463625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020051875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200542292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200603417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020064375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200676407</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200702833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200697375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200674292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200625917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200638042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575510000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200627667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200613708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200609585</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200605875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200585792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200569333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02005715</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200627583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200632833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200591792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200581375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020057775</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200545458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200534875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200534083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200523417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575509040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200523042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200518292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200495708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200462083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200419417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200414625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020040275</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200406833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200412958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200424288</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200392792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200361417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200363708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200331875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200290292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020030975</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200326833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575508020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200311458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200318042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200353375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200395093</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200384542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200382583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200393375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020042325</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200428333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200425542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02004015</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200394542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200372958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200405958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200404119</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200381125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02003675</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575507000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200405208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200422333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200421</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02004155</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020040725</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200405333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200422125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200434958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020044475</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200408417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200389458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200383208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200361917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200399333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200346167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200368822</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575506040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200425542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200441583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200502</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200519208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02005735</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200579583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200564</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200545167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200520941</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200585083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200651095</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200611195</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200648583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200669042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200724583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200643208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200580458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575505020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020056775</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200517458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200492458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020058625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200603625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200616708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200620167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200686042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200702932</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200703083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200717</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200785792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200813333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200881333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200915208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200867625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200853708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575504000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200737958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200718333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200714167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200704417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020065675</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200610083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200623458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200611208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200585792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200552167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200544292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200504083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200475167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200474203</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200486208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200513992</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575503040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200531875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200520208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200511917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020049375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200458792</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200499958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200508083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200626458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200651583</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200686708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200700083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02006965</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200650958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200630167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200580458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200536333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200523042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575502020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200514125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200544083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02005435</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200545958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200546208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200541458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200539125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200541125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200534458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02005345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200557458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200520458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020046175</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200451458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200453333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02004355</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200391958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575501000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200343958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200322083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200325125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200331458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200362167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200338875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200305208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200223542</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200265875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200331708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200340333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020037075</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200330167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200352958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200378208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200357958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575500040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200372833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200368875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200343458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020030628</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200292458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200231042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200208625</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200325875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020035425</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200366708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200384458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200383833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200303917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200247875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200295333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200356958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499080000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200371083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575499020000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020036725</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498960000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200457333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498900000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020052975</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498840000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200593375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498780000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200615</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498720000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200543083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498660000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020066825</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498600000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02007445</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498540000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200770125</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498480000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200767458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498420000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200816458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498360000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200864667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498300000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200852292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498240000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200873708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498180000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02008815</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498120000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200908292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498060000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200907708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575498000000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020095325</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497940000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200954417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497880000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200855517</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497820000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020078425</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497760000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200827</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497700000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200835167</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497640000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200871292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497580000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200849375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497520000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200816042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497460000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200776333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497400000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200624417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497340000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200564042</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497280000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200632958</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497220000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200646208</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497160000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200649375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497100000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020062175</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575497040000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200636708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496980000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200711833</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496920000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200750856</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496860000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020070675</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496800000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200656458</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496740000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200655917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496680000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200674966</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496620000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200649708</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496560000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200635417</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496500000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200650667</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496440000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200653917</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496380000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200740292</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496320000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200789875</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496260000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0200945083</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496200000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0201003333</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"1575496140000"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020088275</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves data of a specific index.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.c-trade.com/public/indices/&lt;index&gt;/&lt;interval&gt;?limit=&lt;limit&gt;&amp;ts=&lt;ts&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1249,8 +775,8 @@ by default user will get the first 100 reverse results</p>
 <td>The index</td>
 </tr>
 <tr>
-<td>time</td>
-<td>time for the chart data grouping(in minutes)</td>
+<td>interval</td>
+<td>The interval of charts</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-2'>Request Parameters</h3>
@@ -1316,85 +842,15 @@ by default user will get the first 100 reverse results</p>
         </span><span class="mf">0.020161</span><span class="p">,</span><span class="w">
         </span><span class="mf">0.0201675</span><span class="p">,</span><span class="w">
         </span><span class="mf">0.020161</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575465240000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02017075</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201675</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02017075</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02016525</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575465180000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018025</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02017075</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020182</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02017075</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575465120000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018775</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018025</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018775</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018025</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575465060000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020189</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018775</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020185</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575465000000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020187</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020189</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02018925</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201845</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575464940000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019525</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020187</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019525</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201855</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575464880000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0202</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019525</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020203</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020195</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575464820000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019975</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0202</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0202015</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201965</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575464760000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019875</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019975</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02020175</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201985</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="mi">1575464700000</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.0201955</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019875</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.020199</span><span class="p">,</span><span class="w">
-        </span><span class="mf">0.02019525</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves index chart OHLC of a specific index.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.c-trade.com/public/indices-detailed-breakdown/&lt;index&gt;/&lt;todo&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.c-trade.com/public/indices-charts/&lt;index&gt;/&lt;interval&gt;?limit=&lt;limit&gt;&amp;ts=&lt;ts&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1406,8 +862,8 @@ by default user will get the first 100 reverse results</p>
 <td>The index</td>
 </tr>
 <tr>
-<td>todo</td>
-<td>todo</td>
+<td>interval</td>
+<td>The interval of charts</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-3'>Request Parameters</h3>
@@ -1458,89 +914,7 @@ by default user will get the first 100 reverse results</p>
         </span><span class="nl">"10248.89"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.070299</span><span class="p">,</span><span class="w">
         </span><span class="nl">"10248.57"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
         </span><span class="nl">"10248.24"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10248.18"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10248.12"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.019512</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10246.58"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.6399999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10246.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.841608</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10246.55"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.091852</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10246.2"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1154329999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10246.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.103809</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.9"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.88"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2928009999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.77"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.606115</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.55"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.195051</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10245.22"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2439649999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.88"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0044879999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.87"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0011199999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.606287</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.33"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.175426</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.31"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0869999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.11"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7335979999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10244.03"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5839999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.91"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.130304</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.9"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6063689999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.63"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.49"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0168239999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.31"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2999999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.3"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.606478</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.18"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.16"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244039</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.15"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0336489999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.13"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.09"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01682</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10243.05"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.016108</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10242.18"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.225828</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10241.74"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0336289999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10241.67"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2214359999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10241.11"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.160975</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10241.1"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244061</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.99"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0488009999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.92"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.195294</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.183678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.2"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3952379999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.1"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.240073</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10240.03"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.152429</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10239.72"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.317338</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10239.6"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.14649</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10239.25"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10239.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.100927</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10239.04"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244115</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.95"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.93"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2441659999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.92"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.388952</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.88"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.030394</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.86"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.095956</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.23"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0285669999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.22"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244183</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10238.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0034169999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10237.8"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.226379</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10237.79"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10237.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001678</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10237.37"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0010269999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10237.17"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.251039</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.98"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244185</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.84"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.74"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3048589999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.61"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012503</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.100338</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.21"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.4269689999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002089</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.16"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0376649999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10236.12"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0120059999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10235.85"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.065753</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10235.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.173</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10235.53"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0010499999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10235.36"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10235.09"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.036537</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.93"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.244197</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.89"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2802879999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.88"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001309</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.78"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0010499999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.69"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.68"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0035049999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10234.51"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0053699999</span><span class="w">
+        </span><span class="nl">"10248.18"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"10260"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1248129999</span><span class="p">,</span><span class="w">
@@ -1562,96 +936,16 @@ by default user will get the first 100 reverse results</p>
         </span><span class="nl">"10251.88"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2999999999</span><span class="p">,</span><span class="w">
         </span><span class="nl">"10251.98"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.437466</span><span class="p">,</span><span class="w">
         </span><span class="nl">"10251.99"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0299999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10252.87"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.010943</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10252.9"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243921</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10252.93"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.402316</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10253.63"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.425283</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10253.7"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.329095</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10253.99"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10254.49"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.17"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002926</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.31"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3999619999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.32"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3911029999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.33"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.149428</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.34"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.144064</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.35"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0488009999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10255.59"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1306509999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.4"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.131441</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.41"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1993689999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.49"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.191283</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.44665</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.63"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10256.92"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2399999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10257.48"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3157929999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10257.54"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10258.74"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0025339999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.05"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.023192</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.08"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00936</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.36"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4258259999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.54"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.63"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243685</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10259.85"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.036614</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10260.19"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9089999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10260.31"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11271</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10260.49"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1542179999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10260.5"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003504</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10260.69"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1605179999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10261.34"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.195053</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10261.37"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.04761</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10261.67"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0016999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10261.69"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243685</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10262.02"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.162524</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10262.03"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0245389999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10262.61"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.194882</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10262.64"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.252</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10263.74"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.185564</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10263.75"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2436099999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10264.42"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.248</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10264.9"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.044524</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10265.07"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0971899999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10265.81"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2435269999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10266.36"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.016806</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10266.66"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0016</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10266.81"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0336199999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10267.53"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.117072</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10267.87"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243479</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10267.92"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2921719999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10267.93"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0336199999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10268.32"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.174468</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10268.52"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10268.53"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.016784</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10268.65"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.024</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.23"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001021</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.25"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.84"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012259</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.92"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243546</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.97"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6872129999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10269.99"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.078392</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.04"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0019469999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.23"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017288</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.51"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.028791</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.8</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.8"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0020939999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10270.83"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001064</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10271.17"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0013209999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10271.41"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0025799999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10271.69"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.232033</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10271.98"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.243546</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.09"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1947019999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.1"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.048675</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.23"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.051511</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.56"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1008339999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.61"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3135999999</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"10272.7"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001946</span><span class="w">
+        </span><span class="nl">"10252.87"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.010943</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific order book.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/order-book/&lt;contractsymbol&gt;/&lt;ordernumber&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1758,7 +1052,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint create a new order</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/new-order</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -1893,7 +1187,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="err">'</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint post all order // todo</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/all-orders</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -2126,88 +1420,13 @@ signature = HMAC(signature_message)
         </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583408427</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc5c5144-e448-4fc4-9593-80c8f9e0dcbf"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8900</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mi">8900</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583411706</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"569ab73e-e1cb-4cb8-8d57-4c887dedd4af"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mf">8896.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">8896.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583411757</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"427054a0-2b12-4afa-b7fc-3bf71e476bbc"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8896</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">8896.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583411759</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070f683f-9d4c-47cd-a277-66e4f6442aae"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8896</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">8896.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583411761</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3355d81-d75a-4841-968f-5f3972a20544"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="mi">8896</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ep"</span><span class="p">:</span><span class="w"> </span><span class="mf">8896.5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"r"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tif"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">      
 </span></code></pre></div>
 <p>This endpoint post my trade history  //todo</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/my-trade-history</code></p>
 <h3 id='request-payload-4'>Request Payload</h3>
 <table><thead>
@@ -2314,7 +1533,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post open orders  //todo</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/open-orders</code></p>
 <h3 id='request-payload-5'>Request Payload</h3>
 <table><thead>
@@ -2367,7 +1586,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get wallet balance</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/wallet-balance</code></p>
 <h3 id='request-payload-6'>Request Payload</h3>
 <table><thead>
@@ -2423,7 +1642,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel all orders.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
 <h3 id='request-payload-7'>Request Payload</h3>
 <table><thead>
@@ -2491,7 +1710,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get order detail</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/order-detail</code></p>
 <h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
@@ -2662,7 +1881,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get order detail</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/update-order</code></p>
 <h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
