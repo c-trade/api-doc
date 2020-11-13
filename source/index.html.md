@@ -69,6 +69,59 @@ This endpoint retrieves contracts menu.
 
 `GET https://api.c-trade.com/public/contracts-menu`
 
+
+## Get Contracts
+
+```shell
+curl --location --request GET 'https://api.c-trade.com/public/contracts' \
+--header 'Content-Type: application/json'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": {
+    "code": 100,
+    "message": "Success",
+    "data": {
+      "XBTUSD": [
+        {
+          "ticker_id": "XBTUSD",
+          "base_currency": "BTC",
+          "target_currency": "USD",
+          "last_price": 10401,
+          "target_volume": 72.41775094,
+          "bid": 10683,
+          "ask": 10683.5,
+          "high": 10479.5,
+          "low": 10385,
+          "product_type": 2,
+          "open_interest": 12000,
+          "index_price": 10499.99,
+          "index_name": ".BTCUSD",
+          "index_currency": null,
+          "start_timestamp": 1579003874251,
+          "end_timestamp": 0,
+          "funding_rate": 0.0034,
+          "next_funding_rate": 0.0034,
+          "next_funding_rate_timestamp": 1601024400000,
+          "maker_fee": -0.025,
+          "taker_fee": 0.075,
+          "base_volume": 753217
+        }
+      ]
+    }
+  }
+}
+```
+
+This endpoint retrieves all contract details.
+
+### HTTP Request
+
+`GET https://api.c-trade.com/public/contracts`
+
 ## Get Contract Detail
 
 ```shell
