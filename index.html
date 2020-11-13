@@ -233,6 +233,9 @@
                     <a href="#get-contracts-menu" class="toc-h2 toc-link" data-title="Get Contracts Menu">Get Contracts Menu</a>
                   </li>
                   <li>
+                    <a href="#get-contracts" class="toc-h2 toc-link" data-title="Get Contracts">Get Contracts</a>
+                  </li>
+                  <li>
                     <a href="#get-contract-detail" class="toc-h2 toc-link" data-title="Get Contract Detail">Get Contract Detail</a>
                   </li>
                   <li>
@@ -425,6 +428,50 @@
 <p>This endpoint retrieves contracts menu.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/contracts-menu</code></p>
+<h2 id='get-contracts'>Get Contracts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/contracts'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"XBTUSD"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"ticker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XBTUSD"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"target_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"last_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10401</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"target_volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.41775094</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="mi">10683</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="mf">10683.5</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">10479.5</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">10385</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"open_interest"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"index_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10499.99</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"index_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">".BTCUSD"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"index_currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579003874251</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"end_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"funding_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0034</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"next_funding_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0034</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"next_funding_rate_timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601024400000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maker_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"taker_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">753217</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all contract details.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.c-trade.com/public/contracts</code></p>
 <h2 id='get-contract-detail'>Get Contract Detail</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.c-trade.com/public/contracts/BTCUSD'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
@@ -489,7 +536,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific contract detail.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/contracts/&lt;contractsymbol&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -558,7 +605,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves charts of a specific contract detail.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/charts/&lt;contractsymbol&gt;/&lt;interval&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -622,7 +669,7 @@ by default user will get the first 100 reverse results</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves indices list.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-hierarchy</code></p>
 <h3 id='request-payload'>Request Payload</h3>
 <table><thead>
@@ -708,7 +755,7 @@ by default user will get the first 100 reverse results</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves details of a specific index.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/public/indices-detailed-breakdown/&lt;index&gt;/&lt;time&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -761,7 +808,7 @@ by default user will get the first 100 reverse results</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves data of a specific index.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices/&lt;index&gt;/&lt;interval&gt;?limit=&lt;limit&gt;&amp;ts=&lt;ts&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -848,7 +895,7 @@ by default user will get the first 100 reverse results</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves index chart OHLC of a specific index.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/indices-charts/&lt;index&gt;/&lt;interval&gt;?limit=&lt;limit&gt;&amp;ts=&lt;ts&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -943,7 +990,7 @@ by default user will get the first 100 reverse results</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific order book.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://api.c-trade.com/public/order-book/&lt;contractsymbol&gt;/&lt;ordernumber&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -1052,7 +1099,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint create a new order</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/new-order</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -1187,7 +1234,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="err">'</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint post all order // todo</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/all-orders</code></p>
 
 <p>Note: place order using api-key and HMAC authentication.</p>
@@ -1426,7 +1473,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">      
 </span></code></pre></div>
 <p>This endpoint post my trade history  //todo</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/my-trade-history</code></p>
 <h3 id='request-payload-4'>Request Payload</h3>
 <table><thead>
@@ -1533,7 +1580,7 @@ signature = HMAC(signature_message)
 }'</span>
 </code></pre></div>
 <p>This endpoint post open orders  //todo</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/open-orders</code></p>
 <h3 id='request-payload-5'>Request Payload</h3>
 <table><thead>
@@ -1586,7 +1633,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get wallet balance</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/wallet-balance</code></p>
 <h3 id='request-payload-6'>Request Payload</h3>
 <table><thead>
@@ -1642,7 +1689,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint cancel all orders.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/cancel-all-orders</code></p>
 <h3 id='request-payload-7'>Request Payload</h3>
 <table><thead>
@@ -1710,7 +1757,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get order detail</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/order-detail</code></p>
 <h3 id='request-payload-8'>Request Payload</h3>
 <table><thead>
@@ -1881,7 +1928,7 @@ signature = HMAC(signature_message)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint get order detail</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST https://api.c-trade.com/api/update-order</code></p>
 <h3 id='request-payload-9'>Request Payload</h3>
 <table><thead>
@@ -2248,7 +2295,7 @@ signature = HMAC(signature_message)</p>
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trades"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
@@ -2536,7 +2583,7 @@ Authentication is required for user data stream
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positions"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='my-order-snapshot'>My Order (Snapshot)</h2>
 <p>To filter your orderbook by contract, please include the contract symbol in the command, eg:</p>
 
@@ -2592,7 +2639,7 @@ Authentication is required for user data stream
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
@@ -2703,7 +2750,7 @@ Authentication is required for user data stream
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorders"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
@@ -2853,7 +2900,7 @@ Authentication is required for user data stream
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='my-trades-ticker'>My Trades (Ticker)</h2>
 <p>Command:<code>{ &quot;op&quot;: &quot;query&quot;, &quot;args&quot;: [&quot;mytrades:BTCUSD&quot;] }</code></p>
 
@@ -2915,7 +2962,7 @@ Authentication is required for user data stream
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"balances"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
