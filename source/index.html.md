@@ -85,30 +85,31 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts' \
     "code": 100,
     "message": "Success",
     "data": {
-      "XBTUSD": [
+      "BTCUSD": [
         {
-          "ticker_id": "XBTUSD",
+          "contract": "BTCUSD",
+          "ticker_id": "BTC-USD",
           "base_currency": "BTC",
           "target_currency": "USD",
-          "last_price": 10401,
-          "target_volume": 72.41775094,
-          "bid": 10683,
-          "ask": 10683.5,
-          "high": 10479.5,
-          "low": 10385,
-          "product_type": 2,
-          "open_interest": 12000,
-          "index_price": 10499.99,
+          "last_price": 15250,
+          "target_volume": 0,
+          "bid": 16325.5,
+          "ask": 16326,
+          "high": 15250,
+          "low": 15250,
+          "product_type": "InversePerpetual",
+          "open_interest": 78039309,
+          "index_price": 16326.21,
           "index_name": ".BTCUSD",
           "index_currency": null,
-          "start_timestamp": 1579003874251,
+          "start_timestamp": 0,
           "end_timestamp": 0,
-          "funding_rate": 0.0034,
-          "next_funding_rate": 0.0034,
-          "next_funding_rate_timestamp": 1601024400000,
+          "funding_rate": 0.0001,
+          "next_funding_rate": 0.0001,
+          "next_funding_rate_timestamp": 1605283200000,
           "maker_fee": -0.025,
           "taker_fee": 0.075,
-          "base_volume": 753217
+          "base_volume": 0
         }
       ]
     }
@@ -116,7 +117,7 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts' \
 }
 ```
 
-This endpoint retrieves all contract details.
+This endpoint retrieves all contracts details.
 
 ### HTTP Request
 
@@ -536,7 +537,7 @@ ts | false | From timestamp in milliseconds
 ## Get Order Book
 
 ```shell
-curl --location --request GET 'https://api.c-trade.com/public/order-book/BTCUSD/200'
+curl --location --request GET 'https://api.c-trade.com/public/orderbook/BTCUSD/5'
 ```
 
 > The above command returns JSON structured like this:
@@ -547,49 +548,51 @@ curl --location --request GET 'https://api.c-trade.com/public/order-book/BTCUSD/
     "code": 100,
     "message": "Success",
     "data": {
-      "ts": 15816876568905832,
-      "bids": {
-        "10235": 1.30376,
-        "10236": 0.081586,
-        "10237": 0.127691,
-        "10238": 0.366522,
-        "10240": 24.3739479999,
-        "10241": 0.090064,
-        "10242": 0.0020769999,
-        "10243": 0.0012099999,
-        "10244": 9.400743,
-        "10249.39": 0.196964,
-        "10249.35": 5.977335,
-        "10249.34": 3.5499999999,
-        "10249.28": 2,
-        "10249.08": 2,
-        "10248.89": 0.070299,
-        "10248.57": 0.01,
-        "10248.24": 0.01,
-        "10248.18": 0.2
-      },
-      "asks": {
-        "10260": 0.1248129999,
-        "10263": 0.4245209999,
-        "10264": 0.143539,
-        "10265": 0.127448,
-        "10266": 0.047008,
-        "10267": 1.015334,
-        "10268": 0.1268529999,
-        "10269": 0.317711,
-        "10270": 5.047899,
-        "10271": 0.1467,
-        "10272": 0.271602,
-        "10251.77": 0.4975919999,
-        "10251.78": 0.068425,
-        "10251.81": 2,
-        "10251.85": 2,
-        "10251.86": 2,
-        "10251.88": 0.2999999999,
-        "10251.98": 0.437466,
-        "10251.99": 0.0299999999,
-        "10252.87": 0.010943
-      }
+      "ts": 1605262933633794000,
+      "bids": [
+        [
+          16325.5,
+          202599
+        ],
+        [
+          16325,
+          227408
+        ],
+        [
+          16324.5,
+          206122
+        ],
+        [
+          16324,
+          152706
+        ],
+        [
+          16323.5,
+          203795
+        ]
+      ],
+      "asks": [
+        [
+          16338,
+          44485
+        ],
+        [
+          16337.5,
+          42068
+        ],
+        [
+          16337,
+          42591
+        ],
+        [
+          16336.5,
+          36627
+        ],
+        [
+          16336,
+          46735
+        ]
+      ]
     }
   }
 }
@@ -599,7 +602,7 @@ This endpoint retrieves a specific order book.
 
 ### HTTP Request
 
-`GET https://api.c-trade.com/public/order-book/<contractsymbol>/<ordernumber>`
+`GET https://api.c-trade.com/public/orderbook/<contractsymbol>/<ordernumber>`
 
 ### URL Parameters
 
