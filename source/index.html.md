@@ -619,7 +619,20 @@ ordernumber | The specific ordernumber
 
 ## HMAC Signature Calculation
 
+```shell
+// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
+{
+    timestamp:1587820973,
+    recvWindow:10000,
+    orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
+}
+
+signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
+signature = HMAC(signature_message)
+
+// computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
+```python
 // Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
 {
     timestamp:1587820973,
@@ -1425,12 +1438,43 @@ Message authentication signature. The request message is hashed with the API sec
     * The payload should not contain any whitespace between the names and values
     * The Request URI should not contain the host name. e.g. '/updatesV2' instead of 'https://myexchange.com/updatesV2'
 
-> // Example for calculating signature message for a Socket message request to {{base_url}}/updatesV2
+```shell
+// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
+{
+    timestamp:1587820973,
+    recvWindow:10000,
+    orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
+}
 
-> signature_message = "/updatesV2" + "\n" + "1587820973" + "\n" + "{"contract":"BTCUSD","orderbook":""}"
-> signature = HMAC(signature_message)
+signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
+signature = HMAC(signature_message)
 
-> // computed signature should be Hexadecimal equivalent of the HMAC signature.
+// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+```
+```python
+// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
+{
+    timestamp:1587820973,
+    recvWindow:10000,
+    orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
+}
+
+signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
+signature = HMAC(signature_message)
+
+// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+```
+```javascript
+var data = {
+  timestamp:1593093984,
+  Contract:'BTCUSD'
+}
+
+var signature_message = "POST" + "\n" + "/api/position-details" + "\n" + "1593093984" + "\n" + JSON.stringify(data);
+var signature = sha256.hmac(secret_key, signature_message);
+
+// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+```
 
 # WebSocket Market Data Stream
 
