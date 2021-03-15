@@ -418,7 +418,9 @@
           </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
           </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
           </span><span class="nl">"maxSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"minSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="nl">"minSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sizePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sizeIncrement"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -511,6 +513,8 @@
             </span><span class="nl">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nl">"minSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nl">"maxSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizeIncrement"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
             </span><span class="nl">"markPriceDecimalScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nl">"fundingRateDecimalScale"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
             </span><span class="nl">"impactMarginSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1000</span><span class="p">,</span><span class="w">
@@ -1018,10 +1022,19 @@ by default user will get the first 100 reverse results</p>
     orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
 }
 
-signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
+signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
 signature = HMAC(signature_message)
 
 // computed signature should be Hexadecimal equivalent of the HMAC signature. 
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">timestamp</span><span class="p">:</span><span class="mi">1593093984</span><span class="p">,</span>
+  <span class="na">Contract</span><span class="p">:</span><span class="dl">'</span><span class="s1">BTCUSD</span><span class="dl">'</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">signature_message</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/api/position-details</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">1593093984</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">signature</span> <span class="o">=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nx">hmac</span><span class="p">(</span><span class="nx">secret_key</span><span class="p">,</span> <span class="nx">signature_message</span><span class="p">);</span>
+
+<span class="c1">// computed signature should be Hexadecimal equivalent of the HMAC signature. </span>
 </code></pre></div>
 <p>Message authentication signature. The request message is hashed with the API secret key using SHA256 algorithm. The structure of the message:</p>
 
