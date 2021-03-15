@@ -55,7 +55,9 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts-menu' \
           "makerFee": -0.025,
           "takerFee": 0.075,
           "maxSize": 10000000,
-          "minSize": 1
+          "minSize": 1,
+          "sizePrecision": 1,
+          "sizeIncrement": 0.1,
         }
       ],
     }
@@ -165,6 +167,8 @@ curl --location --request GET 'https://api.c-trade.com/public/contracts/BTCUSD' 
             "sortOrder": 1,
             "minSize": 1,
             "maxSize": 1000000,
+            "sizePrecision": 1,
+            "sizeIncrement": 0.1,
             "markPriceDecimalScale": 2,
             "fundingRateDecimalScale": 8,
             "impactMarginSize": 0.1000,
@@ -623,8 +627,19 @@ ordernumber | The specific ordernumber
     orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
 }
 
-signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
+signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
 signature = HMAC(signature_message)
+
+// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+```
+```javascript
+var data = {
+  timestamp:1593093984,
+  Contract:'BTCUSD'
+}
+
+var signature_message = "POST" + "\n" + "/api/position-details" + "\n" + "1593093984" + "\n" + JSON.stringify(data);
+var signature = sha256.hmac(secret_key, signature_message);
 
 // computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
