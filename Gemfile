@@ -1,8 +1,8 @@
-ruby '>=2.3.1'
+ruby '>= 2.5'
 source 'https://rubygems.org'
 
 # Middleman
-gem 'middleman', '~>4.3'
+gem 'middleman', :github => 'middleman/middleman', :branch => '4.x'
 gem 'middleman-syntax', '~> 3.2'
 gem 'middleman-autoprefixer', '~> 2.7'
 gem 'middleman-sprockets', '~> 4.1'
