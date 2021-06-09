@@ -633,17 +633,24 @@ signature = HMAC(signature_message)
 // computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
 ```python
-// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
-{
-    timestamp:1587820973,
-    recvWindow:10000,
-    orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
-}
+# Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
+import hmac
+import json
+import hashlib
 
-signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
-signature = HMAC(signature_message)
+def CalcHMAC_API(method, url, timestamp, payload, key):
+  res = ''
+  res += method.upper() + '\n'
+  res += url + '\n'
+  res += str(timestamp) + '\n'
+  res += json.dumps(payload, separators=(',', ':'))
+  h = hmac.new(bytes(key, 'utf-8'), bytes(res, 'utf-8'), hashlib.sha256)
+  return h.hexdigest()
 
-// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+apiSecret = "xxxxxxxxxxxxxxxxx"
+hamc = CalcHMAC_API("POST", "/api/open-orders", "1587820973", "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}", apiSecret)
+
+# computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
 ```javascript
 var data = {
@@ -1452,17 +1459,24 @@ signature = HMAC(signature_message)
 // computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
 ```python
-// Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
-{
-    timestamp:1587820973,
-    recvWindow:10000,
-    orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'
-}
+# Example for calculating signature message for a POST Request to {{base_url}}/api/open-orders
+import hmac
+import json
+import hashlib
 
-signature_message = "POST" + "\n" + "/api/open-orders" + "\n" + "1587820973" + "\n" + "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}"
-signature = HMAC(signature_message)
+def CalcHMAC_API(method, url, timestamp, payload, key):
+  res = ''
+  res += method.upper() + '\n'
+  res += url + '\n'
+  res += str(timestamp) + '\n'
+  res += json.dumps(payload, separators=(',', ':'))
+  h = hmac.new(bytes(key, 'utf-8'), bytes(res, 'utf-8'), hashlib.sha256)
+  return h.hexdigest()
 
-// computed signature should be Hexadecimal equivalent of the HMAC signature. 
+apiSecret = "xxxxxxxxxxxxxxxxx"
+hamc = CalcHMAC_API("POST", "/api/open-orders", "1587820973", "{timestamp:1587820973,recvWindow:10000,orderID:'3ec4facb-c2bf-4bdf-8adf-b11e2851d235'}", apiSecret)
+
+# computed signature should be Hexadecimal equivalent of the HMAC signature. 
 ```
 ```javascript
 var data = {
