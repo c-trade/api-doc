@@ -1177,49 +1177,62 @@ signature <span class="o">=</span> HMAC<span class="o">(</span>signature_message
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">3037</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload_Instant_Liquidation"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"natsPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"trailingAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8b9fe45a-17a1-4df5-b074-eb78ce10824e"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332424"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01040456</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">104.26539296</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"filledPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"mtCalc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">104.26539296</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"maintainanceMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"initialMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.0909</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"initialCollateral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00090909</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"takerfeePerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9054.91</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orderSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transactionFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0000075</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"twoWayFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000015</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"maintainanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"costNormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00092409</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"costAbnormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01040456</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01040456</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pLatMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00988956</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"natsPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"limitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stopPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62da8a28-f47b-46c6-a7e0-f0f87696e0e1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789ABCDE"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stopOrderActivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"remaining"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"takerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"makerFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.025</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isReduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isCloseOnTrigger"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isHiddenOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isPostOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"cancellationCounter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"triggerType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">114.87088463</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.010015</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"orderValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"userContract"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789ABCDE"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"contract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mtCalc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"maintainanceMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"initialMarginPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"initialCollateral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"takerfeePerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00115296</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19824.83</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"orderSize"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"transactionFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.5E-06</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"twoWayFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5E-05</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"maintainanceMargin"</span><span class="p">:</span><span class="w"> </span><span class="mi">5E-05</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"costNormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.010015</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"costAbnormal"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01001455</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.010015</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pLatMarkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00994955</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"costOfPlacingNewOrder"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint create a new order</p>
@@ -1278,7 +1291,7 @@ signature <span class="o">=</span> HMAC<span class="o">(</span>signature_message
 <tr>
 <td>timeinForce</td>
 <td>NO</td>
-<td>GTC</td>
+<td>GTC/DO/IOC/FOK</td>
 </tr>
 <tr>
 <td>triggerType</td>
