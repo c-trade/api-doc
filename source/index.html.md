@@ -700,49 +700,62 @@ curl --location --request POST 'https://api.c-trade.com/api/new-order' \
 
 ```json
 {
-  "error": {
-    "code": 3037,
-    "message": "Payload_Instant_Liquidation",
-    "description": {
-      "natsPayload": {
-        "symbol": "BTCUSD",
-        "size": 1,
-        "side": 2,
-        "type": 2,
-        "timeInForce": 2,
-        "limitPrice": 100,
-        "stopPrice": 0,
-        "trailingAmount": 0,
-        "orderID": "8b9fe45a-17a1-4df5-b074-eb78ce10824e",
-        "userID": "332424",
-        "balance": 10,
-        "orderMargin": 0.01040456,
-        "liquidationPrice": 104.26539296,
-        "takerFee": 0.075,
-        "makerFee": -0.025,
-        "filledPrice": 0,
-        "orderValue": 0.01
-      },
-      "mtCalc": {
-        "liquidationPrice": 104.26539296,
-        "maintainanceMarginPerc": 5,
-        "initialMarginPerc": 9.0909,
-        "leverage": 11,
-        "initialCollateral": 0.00090909,
-        "takerfeePerc": 0.075,
-        "fundingRate": 0.91,
-        "markPrice": 9054.91,
-        "orderSize": 0.01,
-        "transactionFee": -0.0000075,
-        "twoWayFee": 0.000015,
-        "maintainanceMargin": 0.0005,
-        "costNormal": 0.00092409,
-        "costAbnormal": 0.01040456,
-        "cost": 0.01040456,
-        "pLatMarkPrice": -0.00988956
-      }
+    "success": {
+        "code": 100,
+        "message": "Success",
+        "data": {
+            "natsPayload": {
+                "symbol": "BTCUSD",
+                "side": 2,
+                "type": 2,
+                "limitPrice": 100.0,
+                "stopPrice": 0.0,
+                "orderID": "62da8a28-f47b-46c6-a7e0-f0f87696e0e1",
+                "userID": "123456789ABCDE",
+                "stopOrderActivated": false,
+                "status": 1,
+                "remaining": 1.0,
+                "takerFee": 0.075,
+                "makerFee": -0.025,
+                "size": 1.0,
+                "liquidationPrice": 20000.0,
+                "isReduceOnly": false,
+                "isCloseOnTrigger": false,
+                "isHiddenOrder": false,
+                "isPostOnly": false,
+                "timeInForce": 2,
+                "cancellationCounter": 0,
+                "triggerType": 0,
+                "balance": 114.87088463,
+                "orderMargin": 0.010015,
+                "orderValue": 0.01,
+                "userContract": {
+                    "user": "123456789ABCDE",
+                    "contract": "BTCUSD"
+                }
+            },
+            "mtCalc": {
+                "liquidationPrice": 20000.0,
+                "maintainanceMarginPerc": 0.5,
+                "initialMarginPerc": 100.0,
+                "leverage": 1.0,
+                "initialCollateral": 0.01,
+                "takerfeePerc": 0.075,
+                "fundingRate": 0.00115296,
+                "markPrice": 19824.83,
+                "orderSize": 0.01,
+                "transactionFee": -7.5E-06,
+                "twoWayFee": 1.5E-05,
+                "maintainanceMargin": 5E-05,
+                "costNormal": 0.010015,
+                "costAbnormal": 0.01001455,
+                "cost": 0.010015,
+                "pLatMarkPrice": -0.00994955,
+                "costOfPlacingNewOrder": 0.0,
+                "balance": 0.0
+            }
+        }
     }
-  }
 }
 ```
 
@@ -766,7 +779,7 @@ orderQty | Yes | Integer and Greater than Zero
 price | Yes | Decimal and Greater than Zero
 stopPrice | Yes |	Decimal and Greater than Zero
 orderType	| Yes	| LIMIT
-timeinForce	| NO |	GTC
+timeinForce	| NO |	GTC/DO/IOC/FOK
 triggerType	| NO | 	MarkPrice
 isReduceOnly | NO | True/False
 IsCloseOnTrigger | NO | True/False
